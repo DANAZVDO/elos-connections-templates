@@ -2,30 +2,18 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elos — Artes Semana 1 | Instagram Feed Carousel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Elos - Artes Semana 1</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  background: #0A1628;
-  color: #F5F5F0;
-  font-family: 'Satoshi', sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 20px 80px;
-}
-
 /* ── Backgrounds ── */
 .bg-navy { background: linear-gradient(160deg, #0A1628, #132238, #1A3050); }
 .bg-navy-dark { background: linear-gradient(160deg, #060F1E, #0A1628, #0E1F36); }
 .bg-red-accent { background: linear-gradient(160deg, #0A1628, #132238, rgba(191,10,48,0.2)); }
 .bg-gold-accent { background: linear-gradient(160deg, #0A1628, #132238, rgba(201,168,76,0.12)); }
-
 .pattern-dots {
   position: relative;
 }
@@ -37,7 +25,6 @@ body {
   background-size: 24px 24px;
   pointer-events: none;
 }
-
 /* ── Utility ── */
 .text-gold-grad {
   background: linear-gradient(135deg, #E8D07A, #C9A84C);
@@ -45,7 +32,6 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
 .tag {
   display: inline-block;
   background: #BF0A30;
@@ -57,7 +43,6 @@ body {
   letter-spacing: 3px;
   margin-bottom: 24px;
 }
-
 .cta-btn {
   display: inline-block;
   background: #C9A84C;
@@ -76,14 +61,12 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(201,168,76,0.25);
 }
-
 .number-stat {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 140px;
   line-height: 1;
   color: #C9A84C;
 }
-
 .divider {
   width: 80px;
   height: 4px;
@@ -91,7 +74,6 @@ body {
   margin: 24px auto;
   border-radius: 2px;
 }
-
 .flag-stripe {
   position: absolute;
   bottom: 0;
@@ -100,7 +82,6 @@ body {
   height: 5px;
   background: linear-gradient(90deg, #BF0A30 50%, #C9A84C 50%);
 }
-
 .logo-mark {
   position: absolute;
   top: 40px;
@@ -112,7 +93,6 @@ body {
   opacity: 0.9;
   z-index: 10;
 }
-
 .slide-num {
   position: absolute;
   top: 44px;
@@ -124,7 +104,6 @@ body {
   letter-spacing: 2px;
   z-index: 10;
 }
-
 /* ── Glass Card ── */
 .glass-card {
   background: rgba(255,255,255,0.04);
@@ -133,7 +112,6 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border-radius: 20px;
 }
-
 /* ── Carousel Wrapper ── */
 .post-label {
   text-align: center;
@@ -144,19 +122,6 @@ body {
   margin-bottom: 16px;
   text-transform: uppercase;
 }
-
-.carousel-wrap {
-  position: relative;
-  width: 1080px;
-  height: 1080px;
-  overflow: hidden;
-  border-radius: 16px;
-  margin-bottom: 60px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-}
-
-.slides { position: relative; width: 100%; height: 100%; }
-
 .slide {
   position: absolute;
   inset: 0;
@@ -170,50 +135,12 @@ body {
   pointer-events: none;
   transition: opacity 0.4s ease;
 }
-.slide.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 .content-safe {
   width: calc(100% - 108px);
   max-width: 972px;
   padding: 0;
   z-index: 2;
   position: relative;
-}
-
-/* ── Navigation ── */
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: #F5F5F0;
-  font-size: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 20;
-  transition: background 0.2s ease;
-}
-.nav-btn:hover { background: rgba(255,255,255,0.15); }
-.nav-btn.prev { left: 28px; }
-.nav-btn.next { right: 28px; }
-
-.dots {
-  position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 20;
 }
 .dot {
   width: 8px;
@@ -224,29 +151,24 @@ body {
   cursor: pointer;
 }
 .dot.active { background: #C9A84C; transform: scale(1.4); }
-
 /* ── Slide-specific Utilities ── */
 .slide-left { align-items: flex-start; justify-content: center; }
 .slide-left .content-safe { padding-left: 0; }
 .slide-right { align-items: flex-end; justify-content: center; }
 .slide-right .content-safe { padding-right: 0; text-align: right; }
-
 h1, h2, h3 {
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 400;
   letter-spacing: 2px;
 }
-
 .text-slate { color: #94A3B8; }
 .text-cream { color: #F5F5F0; }
 .text-gold { color: #C9A84C; }
 .text-red { color: #BF0A30; }
-
 .icon-big {
   font-size: 64px;
   margin-bottom: 16px;
 }
-
 .photo-circle {
   width: 240px;
   height: 240px;
@@ -259,7 +181,6 @@ h1, h2, h3 {
   margin: 0 auto 32px;
   background: rgba(201,168,76,0.08);
 }
-
 .check-item {
   display: flex;
   align-items: center;
@@ -275,7 +196,6 @@ h1, h2, h3 {
   font-weight: 700;
   flex-shrink: 0;
 }
-
 .phase-number {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 160px;
@@ -285,12 +205,10 @@ h1, h2, h3 {
   position: relative;
   z-index: 1;
 }
-
 .phase-content {
   position: relative;
   z-index: 2;
 }
-
 /* ── 2-column comparison ── */
 .compare-col {
   flex: 1;
@@ -298,7 +216,6 @@ h1, h2, h3 {
   text-align: center;
 }
 .compare-col:first-child { border-right: 1px solid rgba(255,255,255,0.1); }
-
 /* ── Global Title ── */
 .global-title {
   text-align: center;
@@ -315,50 +232,52 @@ h1, h2, h3 {
   font-weight: 300;
 }
 
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { background: #0A1628; color: #F5F5F0; font-family: 'Satoshi', sans-serif; min-height: 100vh; overflow-x: hidden; }
+.header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180deg, #0A1628 60%, transparent); padding: 12px 16px 20px; text-align: center; }
+.header h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(22px, 5.5vw, 36px); color: #C9A84C; letter-spacing: 3px; }
+.header p { font-size: clamp(11px, 2.8vw, 15px); color: #94A3B8; margin-top: 2px; }
+.post-card { margin: 0 0 12px; overflow: hidden; position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.post-card .post-label { font-family: 'Bebas Neue', sans-serif; font-size: clamp(13px, 3.2vw, 18px); letter-spacing: 3px; color: #94A3B8; text-transform: uppercase; padding: 14px 16px 0; text-align: center; }
+.swiper { width: 100%; max-width: 412px; margin: 0 auto; aspect-ratio: 9 / 16; }
+.swiper-slide { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(28px, 5vw, 48px) clamp(20px, 4vw, 36px); text-align: center; position: relative; overflow: hidden; }
+.swiper-slide.left { align-items: flex-start; text-align: left; }
+.content-safe { width: 100%; max-width: 380px; z-index: 2; position: relative; }
+.swiper-pagination-bullet { background: rgba(255,255,255,0.25); opacity: 1; }
+.swiper-pagination-bullet-active { background: #C9A84C; }
+.swiper-pagination { position: relative; bottom: 8px !important; }
+
 </style>
 </head>
 <body>
-
-<div class="global-title">
-  <h1>ELOS · ARTES SEMANA 1</h1>
-  <p>AUTORIDADE — Instagram Feed Carousel 1080x1080</p>
+<div class="header">
+  <h1>ELOS CONNECTIONS</h1>
+  <p>Semana 1 - Autoridade</p>
 </div>
-
-<!-- ================================================================ -->
-<!-- POST 1 — Dia 1 Segunda: "Trabalhar legalmente nos EUA" (6 slides) -->
-<!-- ================================================================ -->
-<div class="post-label">DIA 1 — SEGUNDA</div>
-<div class="carousel-wrap" id="post-1">
-  <div class="slides" id="post-1-slides">
-    <!-- S1: Capa -->
-    <div class="slide active bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">1 / 6</div>
-      <div class="flag-stripe"></div>
-      <div class="content-safe" style="text-align:left;">
-        <span class="tag">VISTOS H2A &amp; H2B</span>
+<div class="post-card">
+  <div class="post-label">DIA 1 — SEGUNDA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<span class="tag">VISTOS H2A &amp; H2B</span>
         <h1 style="font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:1;color:#F5F5F0;max-width:700px;">TRABALHAR<br>NOS EUA É<br>POSSÍVEL</h1>
         <p style="font-family:'Satoshi',sans-serif;font-size:28px;font-weight:300;color:#94A3B8;margin-top:20px;">E a gente prova.</p>
+        </div>
       </div>
-    </div>
-    <!-- S2: Stat -->
-    <div class="slide bg-gold-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">2 / 6</div>
-      <div class="content-safe" style="text-align:center;">
-        <div class="number-stat">100+</div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<div class="number-stat">100+
         <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:3px;color:#F5F5F0;margin-top:8px;">BRASILEIROS<br>CONTRATADOS</div>
         <div class="divider"></div>
         <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;max-width:600px;">Com salário em dólar, moradia e transporte pagos.</p>
       </div>
-    </div>
-    <!-- S3: Grid 3 cards -->
-    <div class="slide bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">3 / 6</div>
-      <div class="content-safe" style="display:flex;gap:28px;">
-        <div class="glass-card" style="flex:1;padding:36px 24px;text-align:center;">
-          <div style="font-size:48px;margin-bottom:12px;">&#x1F4B0;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<div class="glass-card" style="flex:1;padding:36px 24px;text-align:center;">
+          <div style="font-size:48px;margin-bottom:12px;">&#x1F4B0;
           <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:2px;color:#C9A84C;margin-bottom:8px;">US$3–5.5K</div>
           <p style="font-size:18px;font-weight:300;color:#94A3B8;">Salário por mês em dólar americano</p>
         </div>
@@ -373,74 +292,56 @@ h1, h2, h3 {
           <p style="font-size:18px;font-weight:300;color:#94A3B8;">Do Brasil ao trabalho nos EUA</p>
         </div>
       </div>
-    </div>
-    <!-- S4: Photo + quote -->
-    <div class="slide bg-red-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">4 / 6</div>
-      <div class="content-safe" style="text-align:center;">
-        <div class="photo-circle">&#x1F477;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-red-accent pattern-dots">
+        <div class="content-safe">
+<div class="photo-circle">&#x1F477;
         <p style="font-family:'Satoshi',sans-serif;font-size:32px;font-weight:400;color:#F5F5F0;max-width:700px;line-height:1.4;">Gente comum.<br>Resultados<br>extraordinários.</p>
       </div>
-    </div>
-    <!-- S5: Text left-aligned -->
-    <div class="slide bg-navy-dark pattern-dots" style="align-items:flex-start;justify-content:center;">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">5 / 6</div>
-      <div class="content-safe" style="text-align:left;">
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:1;color:#F5F5F0;max-width:750px;">NÃO É AGÊNCIA DE INTERCÂMBIO.</h1>
-        <div style="height:8px;"></div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<h1 style="font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:1;color:#F5F5F0;max-width:750px;">NÃO É AGÊNCIA DE INTERCÂMBIO.</h1>
+        <div style="height:8px;">
         <p style="font-family:'Satoshi',sans-serif;font-size:28px;font-weight:300;color:#C9A84C;">É método. É preparação completa.</p>
       </div>
-    </div>
-    <!-- S6: CTA -->
-    <div class="slide bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">6 / 6</div>
-      <div class="content-safe" style="text-align:center;">
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:1;color:#F5F5F0;max-width:700px;">NÃO É MILAGRE.<br>É MÉTODO.</h1>
-        <div class="cta-btn">COMENTA "EUA"</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<h1 style="font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:1;color:#F5F5F0;max-width:700px;">NÃO É MILAGRE.<br>É MÉTODO.</h1>
+        <div class="cta-btn">COMENTA "EUA"
+      </div>
+        </div>
       </div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-1',-1)">&#8249;</button>
-  <button class="nav-btn next" onclick="navigate('post-1',1)">&#8250;</button>
-  <div class="dots" id="post-1-dots"></div>
 </div>
-
-<!-- ================================================================ -->
-<!-- POST 2 — Dia 2 Terça: "A porta legal para os EUA" (7 slides) -->
-<!-- ================================================================ -->
-<div class="post-label">DIA 2 — TERÇA</div>
-<div class="carousel-wrap" id="post-2">
-  <div class="slides" id="post-2-slides">
-    <!-- S1: Capa -->
-    <div class="slide active bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">1 / 7</div>
-      <div class="flag-stripe"></div>
-      <div class="content-safe" style="text-align:left;">
-        <span class="tag">VISTOS H2A &amp; H2B</span>
+<div class="post-card">
+  <div class="post-label">DIA 2 — TERÇA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<span class="tag">VISTOS H2A &amp; H2B</span>
         <h1 style="font-family:'Bebas Neue',sans-serif;font-size:76px;line-height:1;color:#F5F5F0;max-width:750px;">A PORTA<br>LEGAL PARA<br>OS EUA</h1>
+        </div>
       </div>
-    </div>
-    <!-- S2: Educational -->
-    <div class="slide bg-gold-accent pattern-dots" style="align-items:flex-start;justify-content:center;">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">2 / 7</div>
-      <div class="content-safe" style="text-align:left;">
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1.1;color:#C9A84C;max-width:700px;">POR QUE ESSES VISTOS EXISTEM?</h1>
-        <div style="height:16px;"></div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<h1 style="font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1.1;color:#C9A84C;max-width:700px;">POR QUE ESSES VISTOS EXISTEM?</h1>
+        <div style="height:16px;">
         <p style="font-family:'Satoshi',sans-serif;font-size:26px;font-weight:300;color:#94A3B8;max-width:650px;line-height:1.5;">Os EUA enfrentam escassez de mão de obra em setores essenciais. Para suprir essa demanda, o governo criou vistos de trabalho temporário para estrangeiros.</p>
       </div>
-    </div>
-    <!-- S3: Split 2 cards -->
-    <div class="slide bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">3 / 7</div>
-      <div class="content-safe" style="display:flex;gap:28px;">
-        <div class="glass-card" style="flex:1;padding:44px 32px;text-align:center;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:#C9A84C;letter-spacing:4px;margin-bottom:16px;">H2A</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<div class="glass-card" style="flex:1;padding:44px 32px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:#C9A84C;letter-spacing:4px;margin-bottom:16px;">H2A
           <p style="font-size:22px;font-weight:400;color:#F5F5F0;margin-bottom:20px;">Setor Agrícola</p>
           <p style="font-size:18px;font-weight:300;color:#94A3B8;line-height:1.5;">Colheita, plantio, operação de máquinas, pecuária e processamento agrícola.</p>
         </div>
@@ -450,510 +351,337 @@ h1, h2, h3 {
           <p style="font-size:18px;font-weight:300;color:#94A3B8;line-height:1.5;">Construção civil, hotelaria, paisagismo, limpeza e transporte.</p>
         </div>
       </div>
-    </div>
-    <!-- S4: Empregadores certificados -->
-    <div class="slide bg-red-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">4 / 7</div>
-      <div class="content-safe" style="text-align:center;">
-        <div style="font-size:56px;margin-bottom:16px;">&#x1F4CB;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-red-accent pattern-dots">
+        <div class="content-safe">
+<div style="font-size:56px;margin-bottom:16px;">&#x1F4CB;
         <h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1.1;color:#F5F5F0;max-width:700px;">EMPREGADORES<br>CERTIFICADOS PELO<br>DEPARTAMENTO DE<br>TRABALHO DOS EUA</h1>
       </div>
-    </div>
-    <!-- S5: Stat -->
-    <div class="slide bg-gold-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">5 / 7</div>
-      <div class="content-safe" style="text-align:center;">
-        <div class="number-stat">3 A 10</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<div class="number-stat">3 A 10
         <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:3px;color:#F5F5F0;margin-top:8px;">MESES</div>
         <div class="divider"></div>
         <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;">De contrato renovável</p>
       </div>
-    </div>
-    <!-- S6: List -->
-    <div class="slide bg-navy-dark pattern-dots" style="align-items:flex-start;justify-content:center;">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">6 / 7</div>
-      <div class="content-safe" style="text-align:left;">
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;color:#C9A84C;margin-bottom:40px;">O EMPREGADOR PAGA:</h1>
-        <div class="check-item" style="font-size:24px;">Passagem aérea ida e volta</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;color:#C9A84C;margin-bottom:40px;">O EMPREGADOR PAGA:</h1>
+        <div class="check-item" style="font-size:24px;">Passagem aérea ida e volta
         <div class="check-item" style="font-size:24px;">Moradia durante todo o contrato</div>
         <div class="check-item" style="font-size:24px;">Transporte casa-trabalho</div>
         <div class="check-item" style="font-size:24px;">Visto e taxas consulares</div>
         <div class="check-item" style="font-size:24px;">Alimentação ou auxílio</div>
       </div>
-    </div>
-    <!-- S7: CTA -->
-    <div class="slide bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">7 / 7</div>
-      <div class="content-safe" style="text-align:center;">
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:1;color:#F5F5F0;max-width:700px;">FICOU<br>CURIOSO?</h1>
-        <div class="cta-btn">MANDA DM</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<h1 style="font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:1;color:#F5F5F0;max-width:700px;">FICOU<br>CURIOSO?</h1>
+        <div class="cta-btn">MANDA DM
+      </div>
+        </div>
       </div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-2',-1)">&#8249;</button>
-  <button class="nav-btn next" onclick="navigate('post-2',1)">&#8250;</button>
-  <div class="dots" id="post-2-dots"></div>
 </div>
-
-<!-- ================================================================ -->
-<!-- POST 3 — Dia 3 Quarta: "H2A vs H2B" (8 slides) -->
-<!-- ================================================================ -->
-<div class="post-label">DIA 3 — QUARTA</div>
-<div class="carousel-wrap" id="post-3">
-  <div class="slides" id="post-3-slides">
-    <!-- S1: Capa -->
-    <div class="slide active bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">1 / 8</div>
-      <div class="flag-stripe"></div>
-      <div class="content-safe" style="text-align:left;">
-        <span class="tag">COMPARAÇÃO</span>
+<div class="post-card">
+  <div class="post-label">DIA 3 — QUARTA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<span class="tag">COMPARAÇÃO</span>
         <h1 style="font-family:'Bebas Neue',sans-serif;font-size:80px;line-height:1;color:#F5F5F0;max-width:750px;">H2A vs<br>H2B</h1>
         <p style="font-family:'Satoshi',sans-serif;font-size:26px;font-weight:300;color:#94A3B8;margin-top:16px;">Entenda de uma vez qual o visto certo para você.</p>
+        </div>
       </div>
-    </div>
-    <!-- S2: H2A detail -->
-    <div class="slide bg-gold-accent pattern-dots" style="align-items:flex-start;justify-content:center;">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">2 / 8</div>
-      <div class="content-safe" style="text-align:left;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:64px;color:#C9A84C;letter-spacing:6px;margin-bottom:20px;">H2A</div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:64px;color:#C9A84C;letter-spacing:6px;margin-bottom:20px;">H2A
         <h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1.1;color:#F5F5F0;margin-bottom:24px;">VISTO AGRÍCOLA</h1>
         <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;max-width:700px;line-height:1.6;">Colheita de frutas e vegetais, plantio, operação de máquinas agrícolas, manejo de rebanhos, processamento e embalagem de alimentos.</p>
       </div>
-    </div>
-    <!-- S3: H2B detail -->
-    <div class="slide bg-red-accent pattern-dots" style="align-items:flex-start;justify-content:center;">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">3 / 8</div>
-      <div class="content-safe" style="text-align:left;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:64px;color:#C9A84C;letter-spacing:6px;margin-bottom:20px;">H2B</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-red-accent pattern-dots">
+        <div class="content-safe">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:64px;color:#C9A84C;letter-spacing:6px;margin-bottom:20px;">H2B
         <h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1.1;color:#F5F5F0;margin-bottom:24px;">VISTO NÃO-AGRÍCOLA</h1>
         <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;max-width:700px;line-height:1.6;">Construção civil, hotelaria e resorts, paisagismo, serviços de limpeza, transporte, processamento de carnes e frutos do mar.</p>
       </div>
-    </div>
-    <!-- S4: Stat contract -->
-    <div class="slide bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">4 / 8</div>
-      <div class="content-safe" style="text-align:center;">
-        <div class="number-stat">3 A 10</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<div class="number-stat">3 A 10
         <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:3px;color:#F5F5F0;margin-top:8px;">MESES</div>
         <div class="divider"></div>
         <p style="font-family:'Satoshi',sans-serif;font-size:28px;font-weight:400;color:#C9A84C;">de contrato renovável</p>
       </div>
-    </div>
-    <!-- S5: Benefits list -->
-    <div class="slide bg-navy-dark pattern-dots" style="align-items:flex-start;justify-content:center;">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">5 / 8</div>
-      <div class="content-safe" style="text-align:left;">
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;color:#C9A84C;margin-bottom:40px;">BENEFÍCIOS INCLUSOS:</h1>
-        <div class="check-item" style="font-size:24px;">Passagem aérea internacional</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;color:#C9A84C;margin-bottom:40px;">BENEFÍCIOS INCLUSOS:</h1>
+        <div class="check-item" style="font-size:24px;">Passagem aérea internacional
         <div class="check-item" style="font-size:24px;">Moradia completa nos EUA</div>
         <div class="check-item" style="font-size:24px;">Transporte local diário</div>
         <div class="check-item" style="font-size:24px;">Taxas do visto pagas</div>
         <div class="check-item" style="font-size:24px;">Salário em dólar</div>
       </div>
-    </div>
-    <!-- S6: Salary stat -->
-    <div class="slide bg-gold-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">6 / 8</div>
-      <div class="content-safe" style="text-align:center;">
-        <div class="number-stat" style="font-size:100px;">US$3K</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<div class="number-stat" style="font-size:100px;">US$3K
         <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:2px;color:#C9A84C;margin-top:4px;">A US$5.500</div>
         <div class="divider"></div>
         <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;">R$15.000 a R$32.000 por mês</p>
       </div>
-    </div>
-    <!-- S7: Comparison 2-column -->
-    <div class="slide bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">7 / 8</div>
-      <div class="content-safe" style="display:flex;">
-        <div class="compare-col">
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<div class="compare-col">
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#C9A84C;letter-spacing:4px;margin-bottom:24px;">H2A</h1>
           <p style="font-size:20px;font-weight:300;color:#94A3B8;line-height:1.8;">Agrícola<br>Temporada<br>Colheita<br>Campo<br>Fazendas</p>
-        </div>
+        
         <div class="compare-col">
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#BF0A30;letter-spacing:4px;margin-bottom:24px;">H2B</h1>
           <p style="font-size:20px;font-weight:300;color:#94A3B8;line-height:1.8;">Não-agrícola<br>Construção<br>Hotelaria<br>Serviços<br>Transporte</p>
         </div>
       </div>
-    </div>
-    <!-- S8: CTA -->
-    <div class="slide bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">8 / 8</div>
-      <div class="content-safe" style="text-align:center;">
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:1;color:#F5F5F0;max-width:750px;">NÃO SABE QUAL<br>É O SEU?</h1>
-        <div class="cta-btn">MANDA DM</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<h1 style="font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:1;color:#F5F5F0;max-width:750px;">NÃO SABE QUAL<br>É O SEU?</h1>
+        <div class="cta-btn">MANDA DM
+      </div>
+        </div>
       </div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-3',-1)">&#8249;</button>
-  <button class="nav-btn next" onclick="navigate('post-3',1)">&#8250;</button>
-  <div class="dots" id="post-3-dots"></div>
 </div>
-
-<!-- ================================================================ -->
-<!-- POST 4 — Dia 4 Quinta: "Quem está por trás da Elos" (5 slides) -->
-<!-- ================================================================ -->
-<div class="post-label">DIA 4 — QUINTA</div>
-<div class="carousel-wrap" id="post-4">
-  <div class="slides" id="post-4-slides">
-    <!-- S1: Capa -->
-    <div class="slide active bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">1 / 5</div>
-      <div class="flag-stripe"></div>
-      <div class="content-safe" style="text-align:left;">
-        <span class="tag">BASTIDORES</span>
+<div class="post-card">
+  <div class="post-label">DIA 4 — QUINTA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<span class="tag">BASTIDORES</span>
         <h1 style="font-family:'Bebas Neue',sans-serif;font-size:80px;line-height:1;color:#F5F5F0;max-width:750px;">QUEM VAI<br>TE GUIAR</h1>
+        </div>
       </div>
-    </div>
-    <!-- S2: André -->
-    <div class="slide bg-gold-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">2 / 5</div>
-      <div class="content-safe" style="display:flex;align-items:center;gap:52px;">
-        <div class="photo-circle" style="margin:0;">&#x1F468;</div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<div class="photo-circle" style="margin:0;">&#x1F468;
         <div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:#F5F5F0;">ANDRÉ</div>
           <p style="font-family:'Satoshi',sans-serif;font-size:24px;font-weight:300;color:#94A3B8;margin-top:8px;max-width:500px;">Experiência real no mercado americano. Viveu e trabalhou nos EUA.</p>
         </div>
       </div>
-    </div>
-    <!-- S3: Ozeas -->
-    <div class="slide bg-red-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">3 / 5</div>
-      <div class="content-safe" style="display:flex;align-items:center;gap:52px;flex-direction:row-reverse;">
-        <div class="photo-circle" style="margin:0;">&#x1F468;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-red-accent pattern-dots">
+        <div class="content-safe">
+<div class="photo-circle" style="margin:0;">&#x1F468;
         <div style="text-align:right;">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:#F5F5F0;">OZEAS</div>
           <p style="font-family:'Satoshi',sans-serif;font-size:24px;font-weight:300;color:#94A3B8;margin-top:8px;max-width:500px;">Formação multidisciplinar. Metodologia e estratégia de ponta a ponta.</p>
         </div>
       </div>
-    </div>
-    <!-- S4: Motivation -->
-    <div class="slide bg-navy-dark pattern-dots" style="align-items:flex-start;justify-content:center;">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">4 / 5</div>
-      <div class="content-safe" style="text-align:left;">
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;color:#C9A84C;margin-bottom:28px;">NOSSA MOTIVAÇÃO</h1>
-        <p style="font-family:'Satoshi',sans-serif;font-size:26px;font-weight:300;color:#F5F5F0;max-width:700px;line-height:1.6;">Depois de anos vendo brasileiros sendo enganados por falsas promessas, decidimos criar um caminho legal, transparente e acessível para quem realmente quer trabalhar nos Estados Unidos.</p>
+        </div>
       </div>
-    </div>
-    <!-- S5: CTA -->
-    <div class="slide bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">5 / 5</div>
-      <div class="content-safe" style="text-align:center;">
-        <div class="number-stat" style="font-size:100px;">+100</div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<h1 style="font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;color:#C9A84C;margin-bottom:28px;">NOSSA MOTIVAÇÃO</h1>
+        <p style="font-family:'Satoshi',sans-serif;font-size:26px;font-weight:300;color:#F5F5F0;max-width:700px;line-height:1.6;">Depois de anos vendo brasileiros sendo enganados por falsas promessas, decidimos criar um caminho legal, transparente e acessível para quem realmente quer trabalhar nos Estados Unidos.</p>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<div class="number-stat" style="font-size:100px;">+100
         <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:3px;color:#F5F5F0;margin-top:8px;">FAMÍLIAS<br>IMPACTADAS</div>
         <div class="divider"></div>
         <div class="cta-btn">MANDA DM</div>
       </div>
-    </div>
-  </div>
-  <button class="nav-btn prev" onclick="navigate('post-4',-1)">&#8249;</button>
-  <button class="nav-btn next" onclick="navigate('post-4',1)">&#8250;</button>
-  <div class="dots" id="post-4-dots"></div>
-</div>
-
-<!-- ================================================================ -->
-<!-- POST 5 — Dia 5 Sexta: "As 7 fases do método" (9 slides) -->
-<!-- ================================================================ -->
-<div class="post-label">DIA 5 — SEXTA</div>
-<div class="carousel-wrap" id="post-5">
-  <div class="slides" id="post-5-slides">
-    <!-- S1: Capa -->
-    <div class="slide active bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">1 / 9</div>
-      <div class="flag-stripe"></div>
-      <div class="content-safe" style="text-align:left;">
-        <span class="tag">MÉTODO</span>
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:1;color:#F5F5F0;max-width:750px;">O CAMINHO<br>COMPLETO ATÉ<br>OS EUA</h1>
-        <p style="font-family:'Satoshi',sans-serif;font-size:26px;font-weight:300;color:#94A3B8;margin-top:16px;">7 fases</p>
+        </div>
       </div>
     </div>
-    <!-- S2: Fase 01 -->
-    <div class="slide bg-gold-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">2 / 9</div>
-      <div class="content-safe" style="display:flex;align-items:center;gap:40px;">
-        <div class="phase-number">01</div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+<div class="post-card">
+  <div class="post-label">DIA 5 — SEXTA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<span class="tag">MÉTODO</span>
+        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:1;color:#F5F5F0;max-width:750px;">O CAMINHO<br>COMPLETO ATÉ<br>OS EUA</h1>
+        <p style="font-family:'Satoshi',sans-serif;font-size:26px;font-weight:300;color:#94A3B8;margin-top:16px;">7 fases</p>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<div class="phase-number">01
         <div class="phase-content">
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:#F5F5F0;">CADASTRO<br>E PERFIL</h1>
           <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;margin-top:12px;">Análise completa do seu histórico profissional.</p>
         </div>
       </div>
-    </div>
-    <!-- S3: Fase 02 -->
-    <div class="slide bg-navy-dark pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">3 / 9</div>
-      <div class="content-safe" style="display:flex;align-items:center;gap:40px;">
-        <div class="phase-number">02</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<div class="phase-number">02
         <div class="phase-content">
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:#F5F5F0;">PREPARAÇÃO<br>DE DOCUMENTOS</h1>
           <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;margin-top:12px;">Passaporte, currículo e certificações alinhados.</p>
         </div>
       </div>
-    </div>
-    <!-- S4: Fase 03 -->
-    <div class="slide bg-red-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">4 / 9</div>
-      <div class="content-safe" style="display:flex;align-items:center;gap:40px;">
-        <div class="phase-number">03</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-red-accent pattern-dots">
+        <div class="content-safe">
+<div class="phase-number">03
         <div class="phase-content">
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:#F5F5F0;">MATCH COM<br>EMPREGADOR</h1>
           <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;margin-top:12px;">Conexão com empresas certificadas nos EUA.</p>
         </div>
       </div>
-    </div>
-    <!-- S5: Fase 04 -->
-    <div class="slide bg-gold-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">5 / 9</div>
-      <div class="content-safe" style="display:flex;align-items:center;gap:40px;">
-        <div class="phase-number">04</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<div class="phase-number">04
         <div class="phase-content">
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:#F5F5F0;">ENTREVISTA<br>E OFERTA</h1>
           <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;margin-top:12px;">Treinamento para entrevista e negociação da oferta.</p>
         </div>
       </div>
-    </div>
-    <!-- S6: Fase 05 -->
-    <div class="slide bg-navy-dark pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">6 / 9</div>
-      <div class="content-safe" style="display:flex;align-items:center;gap:40px;">
-        <div class="phase-number">05</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<div class="phase-number">05
         <div class="phase-content">
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:#F5F5F0;">PROCESSO<br>DO VISTO</h1>
           <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;margin-top:12px;">Acompanhamento até a aprovação consular.</p>
         </div>
       </div>
-    </div>
-    <!-- S7: Fase 06 -->
-    <div class="slide bg-red-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">7 / 9</div>
-      <div class="content-safe" style="display:flex;align-items:center;gap:40px;">
-        <div class="phase-number">06</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-red-accent pattern-dots">
+        <div class="content-safe">
+<div class="phase-number">06
         <div class="phase-content">
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:#F5F5F0;">EMBARQUE<br>E CHEGADA</h1>
           <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;margin-top:12px;">Orientação de viagem e recepção nos EUA.</p>
         </div>
       </div>
-    </div>
-    <!-- S8: Fase 07 -->
-    <div class="slide bg-gold-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">8 / 9</div>
-      <div class="content-safe" style="display:flex;align-items:center;gap:40px;">
-        <div class="phase-number">07</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<div class="phase-number">07
         <div class="phase-content">
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:#F5F5F0;">SUPORTE<br>DURANTE<br>ESTADIA</h1>
           <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;margin-top:12px;">Acompanhamento durante todo o contrato nos EUA.</p>
         </div>
       </div>
-    </div>
-    <!-- S9: CTA -->
-    <div class="slide bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">9 / 9</div>
-      <div class="content-safe" style="text-align:center;">
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:1;color:#F5F5F0;max-width:750px;">NÃO EXISTE<br>ATALHO. EXISTE<br>MÉTODO.</h1>
-        <div class="cta-btn">COMENTA "FASES"</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<h1 style="font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:1;color:#F5F5F0;max-width:750px;">NÃO EXISTE<br>ATALHO. EXISTE<br>MÉTODO.</h1>
+        <div class="cta-btn">COMENTA "FASES"
+      </div>
+        </div>
       </div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-5',-1)">&#8249;</button>
-  <button class="nav-btn next" onclick="navigate('post-5',1)">&#8250;</button>
-  <div class="dots" id="post-5-dots"></div>
 </div>
-
-<!-- ================================================================ -->
-<!-- POST 6 — Dia 6 Sábado: "Por que a Elos é diferente" (6 slides) -->
-<!-- ================================================================ -->
-<div class="post-label">DIA 6 — SÁBADO</div>
-<div class="carousel-wrap" id="post-6">
-  <div class="slides" id="post-6-slides">
-    <!-- S1: Capa -->
-    <div class="slide active bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">1 / 6</div>
-      <div class="flag-stripe"></div>
-      <div class="content-safe" style="text-align:left;">
-        <span class="tag">DIFERENCIAIS</span>
+<div class="post-card">
+  <div class="post-label">DIA 6 — SÁBADO</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<span class="tag">DIFERENCIAIS</span>
         <h1 style="font-family:'Bebas Neue',sans-serif;font-size:76px;line-height:1;color:#F5F5F0;max-width:750px;">O QUE NOS<br>DIFERENCIA?</h1>
+        </div>
       </div>
-    </div>
-    <!-- S2: Plataforma própria -->
-    <div class="slide bg-gold-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">2 / 6</div>
-      <div class="content-safe" style="text-align:center;">
-        <div class="glass-card" style="padding:56px 52px;max-width:700px;">
-          <div style="font-size:56px;margin-bottom:20px;">&#x1F4BB;</div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<div class="glass-card" style="padding:56px 52px;max-width:700px;">
+          <div style="font-size:56px;margin-bottom:20px;">&#x1F4BB;
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:3px;color:#C9A84C;margin-bottom:16px;">PLATAFORMA PRÓPRIA DE VAGAS</h1>
           <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;line-height:1.5;">Você acessa oportunidades reais de empregadores certificados. Nada de intermediários duvidosos.</p>
         </div>
       </div>
-    </div>
-    <!-- S3: Suporte durante estadia -->
-    <div class="slide bg-navy-dark pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">3 / 6</div>
-      <div class="content-safe" style="text-align:center;">
-        <div class="glass-card" style="padding:56px 52px;max-width:700px;">
-          <div style="font-size:56px;margin-bottom:20px;">&#x1F91D;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<div class="glass-card" style="padding:56px 52px;max-width:700px;">
+          <div style="font-size:56px;margin-bottom:20px;">&#x1F91D;
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:3px;color:#C9A84C;margin-bottom:16px;">SUPORTE DURANTE A ESTADIA NOS EUA</h1>
           <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;line-height:1.5;">Você não está sozinho depois que chega. Continuamos com você durante todo o contrato.</p>
         </div>
       </div>
-    </div>
-    <!-- S4: Garantia RED -->
-    <div class="slide bg-red-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">4 / 6</div>
-      <div class="content-safe" style="text-align:center;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:140px;line-height:1;color:#BF0A30;">6 MESES</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-red-accent pattern-dots">
+        <div class="content-safe">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:140px;line-height:1;color:#BF0A30;">6 MESES
         <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:3px;color:#F5F5F0;margin-top:8px;">EXTRAS GRÁTIS</div>
         <div class="divider" style="background:#BF0A30;"></div>
         <p style="font-family:'Satoshi',sans-serif;font-size:24px;font-weight:500;color:#F5F5F0;">Garantia de suporte estendido sem custo adicional.</p>
       </div>
-    </div>
-    <!-- S5: Empregadores certificados -->
-    <div class="slide bg-gold-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">5 / 6</div>
-      <div class="content-safe" style="text-align:center;">
-        <div class="glass-card" style="padding:56px 52px;max-width:700px;">
-          <div style="font-size:56px;margin-bottom:20px;">&#x2705;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<div class="glass-card" style="padding:56px 52px;max-width:700px;">
+          <div style="font-size:56px;margin-bottom:20px;">&#x2705;
           <h1 style="font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:3px;color:#C9A84C;margin-bottom:16px;">EMPREGADORES CERTIFICADOS</h1>
           <p style="font-family:'Satoshi',sans-serif;font-size:22px;font-weight:300;color:#94A3B8;line-height:1.5;">Trabalhamos apenas com empresas aprovadas pelo Departamento de Trabalho dos EUA. Segurança e legalidade em primeiro lugar.</p>
         </div>
       </div>
-    </div>
-    <!-- S6: CTA -->
-    <div class="slide bg-navy pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">6 / 6</div>
-      <div class="content-safe" style="text-align:center;">
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:1;color:#F5F5F0;max-width:750px;">NÃO É<br>PROMESSA. É<br>RESULTADO.</h1>
-        <div class="cta-btn">MANDA DM</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<h1 style="font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:1;color:#F5F5F0;max-width:750px;">NÃO É<br>PROMESSA. É<br>RESULTADO.</h1>
+        <div class="cta-btn">MANDA DM
+      </div>
+        </div>
       </div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-6',-1)">&#8249;</button>
-  <button class="nav-btn next" onclick="navigate('post-6',1)">&#8250;</button>
-  <div class="dots" id="post-6-dots"></div>
 </div>
 
-<!-- Navigation JS -->
 <script>
-function navigate(postId, dir) {
-  const slides = document.querySelectorAll('#' + postId + '-slides .slide');
-  const dotsContainer = document.getElementById(postId + '-dots');
-  let current = 0;
-
-  for (let i = 0; i < slides.length; i++) {
-    if (slides[i].classList.contains('active')) { current = i; break; }
-  }
-
-  let next = current + dir;
-  if (next < 0) next = slides.length - 1;
-  if (next >= slides.length) next = 0;
-
-  slides[current].classList.remove('active');
-  slides[next].classList.add('active');
-
-  updateDots(postId, next, slides.length);
-}
-
-function initCarousel(postId) {
-  const slides = document.querySelectorAll('#' + postId + '-slides .slide');
-  const dotsContainer = document.getElementById(postId + '-dots');
-  let activeIndex = 0;
-
-  for (let i = 0; i < slides.length; i++) {
-    if (slides[i].classList.contains('active')) { activeIndex = i; break; }
-  }
-
-  for (let i = 0; i < slides.length; i++) {
-    const dot = document.createElement('span');
-    dot.className = 'dot' + (i === activeIndex ? ' active' : '');
-    dot.addEventListener('click', (function(idx) {
-      return function() { goToSlide(postId, idx); };
-    })(i));
-    dotsContainer.appendChild(dot);
-  }
-
-  updateSlideNum(postId, activeIndex, slides.length);
-
-  var prevBtn = document.querySelector('#' + postId + ' .prev');
-  var nextBtn = document.querySelector('#' + postId + ' .next');
-
-  if (prevBtn) {
-    if (!prevBtn.hasAttribute('data-initialized')) {
-      prevBtn.setAttribute('data-initialized', '1');
-    }
-  }
-  if (nextBtn) {
-    if (!nextBtn.hasAttribute('data-initialized')) {
-      nextBtn.setAttribute('data-initialized', '1');
-    }
-  }
-}
-
-function goToSlide(postId, idx) {
-  const slides = document.querySelectorAll('#' + postId + '-slides .slide');
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].classList.toggle('active', i === idx);
-  }
-  updateDots(postId, idx, slides.length);
-  updateSlideNum(postId, idx, slides.length);
-}
-
-function updateDots(postId, activeIdx, total) {
-  const dots = document.querySelectorAll('#' + postId + '-dots .dot');
-  for (let i = 0; i < dots.length; i++) {
-    dots[i].classList.toggle('active', i === activeIdx);
-  }
-}
-
-function updateSlideNum(postId, activeIdx, total) {
-  const slidesContainer = document.getElementById(postId + '-slides');
-  const allSlides = slidesContainer.querySelectorAll('.slide');
-  const slideNums = slidesContainer.querySelectorAll('.slide-num');
-
-  for (let i = 0; i < slideNums.length; i++) {
-    const parentSlide = slideNums[i].closest('.slide');
-    if (parentSlide) {
-      const idx = Array.from(allSlides).indexOf(parentSlide);
-      slideNums[i].textContent = (idx + 1) + ' / ' + total;
-    }
-  }
-}
-
-initCarousel('post-1');
-initCarousel('post-2');
-initCarousel('post-3');
-initCarousel('post-4');
-initCarousel('post-5');
-initCarousel('post-6');
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.swiper').forEach(function(el) {
+    new Swiper(el, {
+      slidesPerView: 1, spaceBetween: 0, speed: 300, touchRatio: 1.2,
+      pagination: { el: el.querySelector('.swiper-pagination'), clickable: true }
+    });
+  });
+});
 </script>
-
 </body>
 </html>

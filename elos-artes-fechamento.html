@@ -2,10 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elos Connections - Artes Fechamento (Dias 29-30)</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Elos - Fechamento</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <style>
 :root {
   --navy: #0A1628;
@@ -22,38 +23,6 @@
   --safe: 54px;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var(--cream); display:flex; flex-direction:column; align-items:center; padding:40px 20px; }
-.week-title { font-family:'Bebas Neue',sans-serif; font-size:42px; font-weight:400; margin:60px 0 10px; color:var(--gold); letter-spacing:3px; text-align:center; }
-.week-title:first-child { margin-top:0; }
-.week-sub { font-size:16px; color:var(--slate); text-align:center; margin-bottom:30px; font-weight:400; }
-
-.carousel-wrap { position:relative; width:var(--slide-w); height:var(--slide-h); margin-bottom:80px; border-radius:20px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05); }
-.carousel-wrap .slides { position:relative; width:100%; height:100%; }
-.carousel-wrap .slide { position:absolute; inset:0; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:var(--safe); opacity:0; transition:opacity 0.4s ease; pointer-events:none; }
-.carousel-wrap .slide.active { opacity:1; pointer-events:auto; }
-
-/* Typography */
-.carousel-wrap .slide .display-font { font-family:'Bebas Neue',sans-serif; font-weight:400; }
-.carousel-wrap .slide .body-font { font-family:'Satoshi',sans-serif; }
-
-/* Slide components */
-.carousel-wrap .slide .slide-num { position:absolute; top:30px; right:40px; font-size:16px; color:var(--slate); font-weight:500; letter-spacing:2px; font-family:'Satoshi',sans-serif; }
-.carousel-wrap .slide .logo-mark { position:absolute; top:var(--safe); left:var(--safe); display:flex; align-items:center; gap:8px; font-family:'Bebas Neue',sans-serif; font-size:18px; font-weight:400; color:var(--gold); letter-spacing:3px; text-transform:uppercase; }
-.carousel-wrap .slide .logo-mark::before { content:''; display:block; width:20px; height:20px; background:var(--red); border-radius:3px; }
-.carousel-wrap .slide .slide-icon { font-size:56px; margin-bottom:24px; }
-.carousel-wrap .slide .slide-title { font-family:'Bebas Neue',sans-serif; font-size:58px; font-weight:400; line-height:1.1; margin-bottom:16px; max-width:800px; letter-spacing:1.5px; }
-.carousel-wrap .slide .slide-sub { font-family:'Satoshi',sans-serif; font-size:26px; font-weight:300; color:var(--slate); max-width:650px; line-height:1.5; }
-.carousel-wrap .slide .tag { display:inline-block; background:var(--red); color:#fff; font-family:'Satoshi',sans-serif; font-size:15px; font-weight:700; padding:8px 20px; border-radius:4px; margin-bottom:20px; letter-spacing:2px; text-transform:uppercase; }
-.carousel-wrap .slide .cta-btn { display:inline-block; background:var(--gold); color:var(--navy); font-family:'Bebas Neue',sans-serif; font-size:26px; font-weight:400; padding:16px 48px; border-radius:8px; margin-top:32px; letter-spacing:2px; cursor:pointer; transition:transform 0.2s, box-shadow 0.2s; }
-.carousel-wrap .slide .cta-btn:hover { transform:scale(1.05); box-shadow:0 8px 30px rgba(201,168,76,0.3); }
-.carousel-wrap .slide .slide-list { text-align:left; font-size:24px; line-height:2; color:rgba(245,245,240,0.85); max-width:700px; list-style:none; padding:0; }
-.carousel-wrap .slide .slide-list li { padding:4px 0; padding-left:12px; font-family:'Satoshi',sans-serif; }
-.carousel-wrap .slide .slide-list li::marker { color:var(--gold); }
-.carousel-wrap .slide .slide-list li .check { color:var(--gold-light); font-size:22px; margin-right:8px; }
-.carousel-wrap .slide .slide-highlight { color:var(--gold); font-weight:700; }
-.carousel-wrap .slide .slide-stat { font-family:'Bebas Neue',sans-serif; font-size:100px; font-weight:400; color:var(--gold); line-height:1; margin-bottom:8px; letter-spacing:2px; }
-.carousel-wrap .slide .slide-stat-label { font-family:'Satoshi',sans-serif; font-size:24px; color:var(--slate); font-weight:400; }
-
 /* Gold gradient text */
 .text-gold-grad {
   background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 30%, #F0D878 60%, var(--gold-light) 100%);
@@ -61,7 +30,6 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
   -webkit-text-fill-color:transparent;
   background-clip:text;
 }
-
 /* Glass card */
 .glass-card {
   background:rgba(255,255,255,0.06);
@@ -71,73 +39,52 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
   border-radius:20px;
   padding:40px 48px;
 }
-
 /* backgrounds */
 .bg-navy { background:linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 60%, var(--navy-mid) 100%); }
 .bg-navy-dark { background:linear-gradient(160deg, #060F1E 0%, var(--navy) 50%, #0E1F36 100%); }
 .bg-red-accent { background:linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 50%, rgba(191,10,48,0.15) 100%); }
 .bg-gold-accent { background:linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 50%, rgba(201,168,76,0.1) 100%); }
 .bg-gradient-hero { background:linear-gradient(160deg, #0A1628 0%, #132238 30%, #1A3050 60%, #0E1F36 100%); }
-
 /* Pattern dots */
 .pattern-dots {
   background-image:radial-gradient(circle, rgba(245,245,240,0.06) 1px, transparent 1px);
   background-size:24px 24px;
 }
-
 /* Pattern dots - white variant */
 .pattern-dots-light {
   background-image:radial-gradient(circle, rgba(245,245,240,0.12) 1px, transparent 1px);
   background-size:24px 24px;
 }
-
 /* Slate muted slide */
 .slide-muted { color:var(--slate); }
 .slide-muted .slide-stat { color:var(--slate); opacity:0.5; }
 .slide-muted .slide-stat-label { color:#5A6A7A; }
-
 /* Divider */
 .divider { width:60px; height:3px; background:var(--gold); margin:20px auto; border-radius:2px; }
-
 /* Flag stripe */
 .flag-stripe { position:absolute; bottom:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--red) 0%, var(--red) 50%, var(--gold) 50%, var(--gold) 100%); }
-
-/* nav */
-.nav-btn { position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:var(--cream); font-size:28px; cursor:pointer; z-index:10; display:flex; align-items:center; justify-content:center; transition:all 0.2s; backdrop-filter:blur(4px); }
-.nav-btn:hover { background:rgba(255,255,255,0.2); }
-.nav-btn.prev { left:12px; }
-.nav-btn.next { right:12px; }
-.dots { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:10; }
-.dots .dot { width:8px; height:8px; border-radius:50%; background:rgba(245,245,240,0.25); cursor:pointer; transition:all 0.3s; }
-.dots .dot.active { background:var(--gold); width:24px; border-radius:4px; }
-
 .post-label { color:var(--slate); font-size:16px; font-weight:500; letter-spacing:2px; margin-bottom:60px; text-transform:uppercase; text-align:center; font-family:'Satoshi',sans-serif; }
-
 /* BR flag colors utility */
 .br-green { color:#009739; }
 .br-yellow { color:#FEDD00; }
 .br-blue { color:#002776; }
-
 /* USA colors */
 .usa-red { color:#BF0A30; }
 .usa-blue { color:#002868; }
-
 /* Muted number styling for underwhelming effect */
 .muted-number { font-family:'Bebas Neue',sans-serif; font-size:52px; font-weight:400; color:#4A5568; letter-spacing:1px; opacity:0.6; line-height:1; }
 .muted-small { font-family:'Satoshi',sans-serif; font-size:18px; font-weight:300; color:#526070; }
-
 /* Gold glow effect (for post 26) */
 @keyframes pulse-glow {
   0%, 100% { text-shadow:0 0 20px rgba(201,168,76,0.3), 0 0 40px rgba(201,168,76,0.15), 0 0 80px rgba(201,168,76,0.05); }
-  50% { text-shadow:0 0 30px rgba(201,168,76,0.5), 0 0 60px rgba(201,168,76,0.3), 0 0 100px rgba(201,168,76,0.1), 0 0 140px rgba(201,168,76,0.05); }
+50% { text-shadow:0 0 30px rgba(201,168,76,0.5), 0 0 60px rgba(201,168,76,0.3), 0 0 100px rgba(201,168,76,0.1), 0 0 140px rgba(201,168,76,0.05); }
 }
 @keyframes pulse-border {
   0%, 100% { border-color:rgba(201,168,76,0.15); box-shadow:0 0 20px rgba(201,168,76,0.1); }
-  50% { border-color:rgba(201,168,76,0.4); box-shadow:0 0 40px rgba(201,168,76,0.2), inset 0 0 40px rgba(201,168,76,0.05); }
+50% { border-color:rgba(201,168,76,0.4); box-shadow:0 0 40px rgba(201,168,76,0.2), inset 0 0 40px rgba(201,168,76,0.05); }
 }
 .pulse-glow { animation:pulse-glow 2.5s ease-in-out infinite; }
 .pulse-border { animation:pulse-border 2.5s ease-in-out infinite; }
-
 /* Post 26 deep background */
 .bg-deep-glow {
   background:
@@ -145,41 +92,49 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
     radial-gradient(ellipse 40% 30% at 30% 50%, rgba(191,10,48,0.04) 0%, transparent 60%),
     linear-gradient(180deg, #040A14 0%, #0A1628 40%, #0E1F36 100%);
 }
-
 /* Checkmark row */
 .check-row { display:flex; align-items:center; gap:12px; font-family:'Satoshi',sans-serif; font-size:28px; color:var(--cream); padding:8px 0; }
 .check-row .check-icon { color:var(--gold-light); font-size:24px; flex-shrink:0; }
-
 /* Stat huge for reveal */
 .stat-huge { font-family:'Bebas Neue',sans-serif; font-size:140px; font-weight:400; color:var(--gold); line-height:1; letter-spacing:3px; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { background: #0A1628; color: #F5F5F0; font-family: 'Satoshi', sans-serif; min-height: 100vh; overflow-x: hidden; }
+.header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180deg, #0A1628 60%, transparent); padding: 12px 16px 20px; text-align: center; }
+.header h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(22px, 5.5vw, 36px); color: #C9A84C; letter-spacing: 3px; }
+.header p { font-size: clamp(11px, 2.8vw, 15px); color: #94A3B8; margin-top: 2px; }
+.post-card { margin: 0 0 12px; overflow: hidden; position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.post-card .post-label { font-family: 'Bebas Neue', sans-serif; font-size: clamp(13px, 3.2vw, 18px); letter-spacing: 3px; color: #94A3B8; text-transform: uppercase; padding: 14px 16px 0; text-align: center; }
+.swiper { width: 100%; max-width: 412px; margin: 0 auto; aspect-ratio: 9 / 16; }
+.swiper-slide { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(28px, 5vw, 48px) clamp(20px, 4vw, 36px); text-align: center; position: relative; overflow: hidden; }
+.swiper-slide.left { align-items: flex-start; text-align: left; }
+.content-safe { width: 100%; max-width: 380px; z-index: 2; position: relative; }
+.swiper-pagination-bullet { background: rgba(255,255,255,0.25); opacity: 1; }
+.swiper-pagination-bullet-active { background: #C9A84C; }
+.swiper-pagination { position: relative; bottom: 8px !important; }
+
 </style>
 </head>
 <body>
-
-<h1 class="week-title" style="font-size:48px; margin-top:20px; letter-spacing:4px;">ELOS CONNECTIONS</h1>
-<p style="color:var(--slate); margin-bottom:60px; font-size:16px; letter-spacing:3px; font-family:'Satoshi',sans-serif;">ARTES PARA REDES SOCIAIS — CONTAS QUE NÃO MENTEM</p>
-
-<!-- ==================== POST 25 - DIA 29 (SEGUNDA) ==================== -->
-<div class="post-label">DIA 29 — SEGUNDA-FEIRA</div>
-<div class="carousel-wrap" id="post-25">
-  <div class="slides">
-
-    <!-- Slide 1: Capa -->
-    <div class="slide active bg-gradient-hero pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">1 / 6</div>
-      <div class="tag">A CONTA</div>
+<div class="header">
+  <h1>ELOS CONNECTIONS</h1>
+  <p>Dias 29-30 - Aquecimento</p>
+</div>
+<div class="post-card">
+  <div class="post-label">DIA 29 — SEGUNDA-FEIRA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-gradient-hero pattern-dots">
+        <div class="content-safe">
+<div class="tag">A CONTA</div>
       <div class="slide-title" style="font-size:46px; line-height:1.2; max-width:860px;">SEU SALÁRIO ATUAL<br>EM 1 ANO<br><span class="text-gold-grad">VS 1 TEMPORADA<br>NOS EUA</span></div>
       <div class="divider" style="margin-top:28px;"></div>
       <div class="slide-sub" style="margin-top:12px; font-size:20px; color:var(--slate);">Arraste para o lado. O resultado vai te surpreender.</div>
-      <div class="flag-stripe"></div>
-    </div>
-
-    <!-- Slide 2: 1 Ano no Brasil — MUTED / UNDERWHELMING -->
-    <div class="slide bg-navy-dark pattern-dots" style="opacity:0.6;">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">2 / 6</div>
-      <div style="margin-bottom:28px; font-family:'Satoshi',sans-serif; font-size:16px; font-weight:500; color:#4A5568; letter-spacing:3px; text-transform:uppercase;">1 ANO NO BRASIL</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<div style="margin-bottom:28px; font-family:'Satoshi',sans-serif; font-size:16px; font-weight:500; color:#4A5568; letter-spacing:3px; text-transform:uppercase;">1 ANO NO BRASIL</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:28px; font-weight:300; color:#525E6E; margin-bottom:12px;">Salário-mínimo atual</div>
       <div class="muted-number" style="font-size:56px;">R$2.500</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:18px; font-weight:300; color:#4A5568; margin-bottom:32px;">por mês</div>
@@ -188,13 +143,11 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
       <div class="muted-number" style="font-size:48px; margin-top:8px;">R$30.000</div>
       <div class="muted-small" style="margin-top:6px;">em um ano inteiro de trabalho</div>
       <div style="margin-top:24px; font-family:'Satoshi',sans-serif; font-size:16px; color:#3D4A5C; font-weight:300;">...</div>
-    </div>
-
-    <!-- Slide 3: 6 Meses nos EUA — VIBRANT GOLD -->
-    <div class="slide bg-gold-accent pattern-dots-light">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">3 / 6</div>
-      <div style="margin-bottom:20px; font-family:'Satoshi',sans-serif; font-size:18px; font-weight:700; color:var(--gold-light); letter-spacing:3px; text-transform:uppercase;">6 MESES NOS EUA</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent">
+        <div class="content-safe">
+<div style="margin-bottom:20px; font-family:'Satoshi',sans-serif; font-size:18px; font-weight:700; color:var(--gold-light); letter-spacing:3px; text-transform:uppercase;">6 MESES NOS EUA</div>
       <div class="slide-stat" style="font-size:76px; color:var(--gold-light); line-height:1; margin-bottom:4px;">US$3.500</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:18px; font-weight:500; color:var(--gold);">por mês</div>
       <div class="divider" style="width:80px; margin:24px auto;"></div>
@@ -202,26 +155,22 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
       <div class="slide-stat" style="font-size:72px; color:var(--gold-light); margin-top:4px;">US$21.000</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:22px; font-weight:300; color:var(--slate); margin-top:4px;">≈ R$120.000</div>
       <div style="margin-top:18px; font-family:'Satoshi',sans-serif; font-size:16px; color:var(--gold); font-weight:500;">Em apenas metade de um ano.</div>
-    </div>
-
-    <!-- Slide 4: DRAMATIC REVEAL -->
-    <div class="slide bg-navy-dark pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">4 / 6</div>
-      <div style="font-family:'Satoshi',sans-serif; font-size:20px; font-weight:500; color:var(--slate); letter-spacing:2px; margin-bottom:12px;">6 MESES NOS EUA =</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<div style="font-family:'Satoshi',sans-serif; font-size:20px; font-weight:500; color:var(--slate); letter-spacing:2px; margin-bottom:12px;">6 MESES NOS EUA =</div>
       <div class="stat-huge" style="margin-bottom:4px;">4 ANOS</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:24px; font-weight:400; color:var(--slate);">NO BRASIL</div>
       <div class="divider" style="margin:28px auto; width:100px;"></div>
       <div class="glass-card" style="margin-top:4px; max-width:650px;">
         <div style="font-family:'Satoshi',sans-serif; font-size:22px; font-weight:500; color:var(--cream); line-height:1.6;">O que você ganha em <span class="slide-highlight" style="font-weight:700;">1 temporada de 6 meses</span> nos EUA equivale a <span class="slide-highlight" style="font-weight:700;">4 anos</span> de trabalho no Brasil.</div>
       </div>
-    </div>
-
-    <!-- Slide 5: Benefits -->
-    <div class="slide bg-red-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">5 / 6</div>
-      <div class="slide-title" style="font-size:36px; margin-bottom:28px;">E AINDA COM:</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-red-accent pattern-dots">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:36px; margin-bottom:28px;">E AINDA COM:</div>
       <div style="display:flex; flex-direction:column; gap:18px; align-items:flex-start; max-width:600px;">
         <div class="check-row">
           <span class="check-icon">✓</span>
@@ -245,38 +194,33 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
         </div>
       </div>
       <div style="margin-top:28px; font-family:'Satoshi',sans-serif; font-size:18px; font-weight:400; color:var(--cream);">Tudo isso <span style="color:var(--gold-light); font-weight:700;">sem gastar</span> seu salário.</div>
-    </div>
-
-    <!-- Slide 6: CTA -->
-    <div class="slide bg-gold-accent pattern-dots">
-      <div class="logo-mark">ELOS</div>
-      <div class="slide-num">6 / 6</div>
-      <div class="slide-title" style="font-size:38px;">Essa conta<br><span class="text-gold-grad">não mente.</span></div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent pattern-dots">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:38px;">Essa conta<br><span class="text-gold-grad">não mente.</span></div>
       <div class="divider"></div>
       <div class="slide-sub" style="margin-top:8px; font-size:26px; color:var(--cream); font-weight:400;">Manda uma DM e comece<br>sua jornada agora.</div>
       <div class="cta-btn">MANDA DM</div>
+        </div>
+      </div>
     </div>
-
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-25',-1)">&#9664;</button>
-  <button class="nav-btn next" onclick="navigate('post-25',1)">&#9654;</button>
-  <div class="dots" id="post-25-dots"></div>
 </div>
-
-<!-- ==================== POST 26 - DIA 30 (TERÇA) ==================== -->
-<div class="post-label">DIA 30 — TERÇA-FEIRA</div>
-<div class="carousel-wrap" id="post-26">
-  <div class="slides">
-
-    <!-- Slide 1: Tease Campanha — Single Slide -->
-    <div class="slide active bg-deep-glow pattern-dots-light" style="position:relative;">
-      <!-- Gold glow orb behind text -->
+<div class="post-card">
+  <div class="post-label">DIA 30 — TERÇA-FEIRA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-deep-glow">
+        <div class="content-safe">
+<!-- Gold glow orb behind text -->
       <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:500px; height:500px; border-radius:50%; background:radial-gradient(circle, rgba(201,168,76,0.06) 0%, rgba(201,168,76,0.03) 30%, transparent 70%); pointer-events:none;"></div>
 
       <!-- Larger glow orb -->
       <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:700px; height:700px; border-radius:50%; background:radial-gradient(circle, rgba(201,168,76,0.03) 0%, transparent 60%); pointer-events:none;"></div>
 
-      <div class="logo-mark">ELOS</div>
+      
 
       <!-- Pulsing border frame -->
       <div class="pulse-border" style="position:absolute; top:var(--safe); left:var(--safe); right:var(--safe); bottom:var(--safe); border:1px solid rgba(201,168,76,0.15); border-radius:12px; pointer-events:none;"></div>
@@ -313,51 +257,22 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
       <div style="position:absolute; top:calc(var(--safe) + 8px); right:calc(var(--safe) + 8px); width:20px; height:20px; border-top:2px solid rgba(201,168,76,0.3); border-right:2px solid rgba(201,168,76,0.3); pointer-events:none;"></div>
       <div style="position:absolute; bottom:calc(var(--safe) + 8px); left:calc(var(--safe) + 8px); width:20px; height:20px; border-bottom:2px solid rgba(201,168,76,0.3); border-left:2px solid rgba(201,168,76,0.3); pointer-events:none;"></div>
       <div style="position:absolute; bottom:calc(var(--safe) + 8px); right:calc(var(--safe) + 8px); width:20px; height:20px; border-bottom:2px solid rgba(201,168,76,0.3); border-right:2px solid rgba(201,168,76,0.3); pointer-events:none;"></div>
-
-      <div class="flag-stripe"></div>
+        </div>
+      </div>
     </div>
-
+    <div class="swiper-pagination"></div>
   </div>
-  <!-- No navigation buttons for single-slide post -->
-  <div class="dots" id="post-26-dots"></div>
 </div>
 
 <script>
-function navigate(postId, dir) {
-  const carousel = document.getElementById(postId);
-  const slides = carousel.querySelectorAll('.slide');
-  const current = carousel.querySelector('.slide.active');
-  let idx = Array.from(slides).indexOf(current);
-  slides[idx].classList.remove('active');
-  idx = (idx + dir + slides.length) % slides.length;
-  slides[idx].classList.add('active');
-  updateDots(postId, idx);
-}
-
-function updateDots(postId, activeIdx) {
-  const dotsContainer = document.getElementById(postId + '-dots');
-  if (!dotsContainer) return;
-  const carousel = document.getElementById(postId);
-  const slides = carousel.querySelectorAll('.slide');
-  dotsContainer.innerHTML = '';
-  slides.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'dot' + (i === activeIdx ? ' active' : '');
-    dot.onclick = () => {
-      const allSlides = carousel.querySelectorAll('.slide');
-      const current = carousel.querySelector('.slide.active');
-      allSlides[Array.from(allSlides).indexOf(current)].classList.remove('active');
-      allSlides[i].classList.add('active');
-      updateDots(postId, i);
-    };
-    dotsContainer.appendChild(dot);
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.swiper').forEach(function(el) {
+    new Swiper(el, {
+      slidesPerView: 1, spaceBetween: 0, speed: 300, touchRatio: 1.2,
+      pagination: { el: el.querySelector('.swiper-pagination'), clickable: true }
+    });
   });
-}
-
-document.querySelectorAll('.carousel-wrap').forEach(carousel => {
-  updateDots(carousel.id, 0);
 });
 </script>
-
 </body>
 </html>

@@ -2,10 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elos Connections - Artes Semana 2</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Elos - Artes Semana 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <style>
 :root {
   --navy: #0A1628;
@@ -22,275 +23,209 @@
   --slide-h: 1080px;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var(--cream); display:flex; flex-direction:column; align-items:center; padding:40px 20px; }
-.week-title { font-size:28px; font-weight:700; margin:60px 0 20px; color:var(--gold); letter-spacing:0.5px; text-align:center; }
-.week-title:first-child { margin-top:0; }
-.week-sub { font-size:16px; color:var(--slate); text-align:center; margin-bottom:30px; font-weight:400; }
-
-.carousel-wrap { position:relative; width:var(--slide-w); height:var(--slide-h); margin-bottom:80px; border-radius:20px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05); }
-.carousel-wrap .slides { position:relative; width:100%; height:100%; }
-.carousel-wrap .slide { position:absolute; inset:0; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:var(--safe) 64px; opacity:0; transition:opacity 0.4s ease; pointer-events:none; }
-.carousel-wrap .slide.active { opacity:1; pointer-events:auto; }
-.carousel-wrap .slide .slide-num { position:absolute; top:var(--safe); right:var(--safe); font-size:16px; color:var(--slate); font-weight:500; letter-spacing:2px; font-family:'Satoshi',sans-serif; }
-.carousel-wrap .slide .logo-area { position:absolute; top:var(--safe); left:var(--safe); display:flex; align-items:center; gap:8px; font-size:16px; font-weight:600; color:var(--gold); letter-spacing:1px; text-transform:uppercase; font-family:'Satoshi',sans-serif; }
-.carousel-wrap .slide .slide-icon { font-size:56px; margin-bottom:24px; }
-.carousel-wrap .slide .slide-title { font-family:'Bebas Neue',sans-serif; font-size:62px; font-weight:400; line-height:1.1; margin-bottom:16px; max-width:840px; letter-spacing:1px; }
-.carousel-wrap .slide .slide-sub { font-family:'Satoshi',sans-serif; font-size:26px; font-weight:300; color:var(--slate); max-width:650px; line-height:1.5; }
-.carousel-wrap .slide .slide-tag { display:inline-block; background:var(--red); color:#fff; font-family:'Bebas Neue',sans-serif; font-size:18px; font-weight:400; padding:8px 22px; border-radius:4px; margin-bottom:20px; letter-spacing:3px; }
-.carousel-wrap .slide .slide-cta { display:inline-block; background:var(--gold); color:var(--navy); font-family:'Bebas Neue',sans-serif; font-size:24px; font-weight:400; padding:16px 48px; border-radius:8px; margin-top:32px; letter-spacing:1px; }
-.carousel-wrap .slide .slide-list { text-align:left; font-family:'Satoshi',sans-serif; font-size:24px; line-height:2; color:rgba(245,245,240,0.85); max-width:700px; }
-.carousel-wrap .slide .slide-list li { padding-left:12px; }
-.carousel-wrap .slide .slide-list li::marker { color:var(--gold); }
-.carousel-wrap .slide .slide-highlight { color:var(--gold); font-weight:700; }
-.carousel-wrap .slide .slide-highlight-red { color:#F87171; font-weight:600; }
-.carousel-wrap .slide .slide-badge { display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); padding:12px 24px; border-radius:50px; font-family:'Satoshi',sans-serif; font-size:16px; margin-bottom:24px; }
-.carousel-wrap .slide .slide-badge .check { color:var(--gold-light); font-size:26px; }
-.carousel-wrap .slide .slide-stat { font-family:'Bebas Neue',sans-serif; font-size:100px; font-weight:400; color:var(--gold); line-height:1; margin-bottom:8px; letter-spacing:2px; }
-.carousel-wrap .slide .slide-stat-label { font-family:'Satoshi',sans-serif; font-size:24px; color:var(--slate); font-weight:400; }
-.carousel-wrap .slide .slide-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; width:100%; max-width:850px; margin-top:16px; }
-.carousel-wrap .slide .slide-grid-3 .grid-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:36px 28px; text-align:center; }
-.carousel-wrap .slide .slide-grid-3 .grid-card .card-icon { font-size:36px; margin-bottom:12px; }
-.carousel-wrap .slide .slide-grid-3 .grid-card .card-title { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:1px; margin-bottom:6px; }
-.carousel-wrap .slide .slide-grid-3 .grid-card .card-sub { font-family:'Satoshi',sans-serif; font-size:16px; color:var(--slate); line-height:1.4; }
-
 /* Glass card */
 .glass-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-radius:20px; padding:44px 48px; width:100%; max-width:760px; }
 .glass-card .glass-title { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:1px; margin-bottom:12px; color:var(--cream); }
 .glass-card .glass-text { font-family:'Satoshi',sans-serif; font-size:22px; font-weight:300; color:var(--slate); line-height:1.6; }
-
 /* Text gradient */
 .text-gold-grad { background:linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-
 /* Left-aligned slide */
 .slide-left { align-items:flex-start !important; text-align:left !important; }
 .slide-left .slide-title { text-align:left; }
 .slide-left .slide-sub { text-align:left; max-width:700px; }
-
 /* Right-aligned slide */
 .slide-right { align-items:flex-end !important; text-align:right !important; }
 .slide-right .slide-title { text-align:right; }
 .slide-right .slide-sub { text-align:right; max-width:700px; }
-
 /* Quote slide */
 .slide-quote .quote-text { font-family:'Satoshi',sans-serif; font-size:38px; font-weight:500; font-style:italic; line-height:1.35; max-width:720px; color:var(--cream); }
 .slide-quote .quote-author { font-family:'Satoshi',sans-serif; font-size:22px; color:var(--slate); font-weight:400; margin-top:20px; }
-
 /* Muted text variant */
 .slide-muted { color:var(--slate); }
 .slide-vibrant { color:var(--cream); }
-
 /* backgrounds */
 .bg-navy { background:linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 60%, var(--navy-mid) 100%); }
 .bg-navy-dark { background:linear-gradient(160deg, #060F1E 0%, var(--navy) 50%, #0E1F36 100%); }
 .bg-red-accent { background:linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 50%, rgba(191,10,48,0.15) 100%); }
 .bg-gold-accent { background:linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 50%, rgba(201,168,76,0.1) 100%); }
 .bg-gradient-hero { background:linear-gradient(160deg, #0A1628 0%, #132238 30%, #1A3050 60%, #0E1F36 100%); }
-
 /* Pattern dots */
 .pattern-dots { background-image:radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px); background-size:24px 24px; }
 .bg-stars { background-image:radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.3), transparent), radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,0.2), transparent), radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.15), transparent), radial-gradient(1.5px 1.5px at 85% 60%, rgba(255,255,255,0.25), transparent), radial-gradient(1px 1px at 10% 65%, rgba(255,255,255,0.2), transparent); }
-
 /* stripe accent */
 .stripe-accent { position:absolute; top:0; left:0; width:6px; height:100%; background:linear-gradient(180deg, var(--red), var(--gold)); border-radius:0 4px 4px 0; }
 .border-accent { border-left:4px solid var(--red); padding-left:28px; }
-
 /* photo placeholder */
 .photo-placeholder { width:200px; height:200px; border-radius:50%; background:linear-gradient(135deg, var(--navy-mid), var(--navy-light)); display:flex; align-items:center; justify-content:center; font-size:64px; margin-bottom:24px; border:3px solid var(--gold); }
 .photo-placeholder-sm { width:120px; height:120px; font-size:40px; }
-
-/* nav */
-.nav-btn { position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:var(--cream); font-size:28px; cursor:pointer; z-index:10; display:flex; align-items:center; justify-content:center; transition:all 0.2s; backdrop-filter:blur(4px); font-family:'Satoshi',sans-serif; }
-.nav-btn:hover { background:rgba(255,255,255,0.2); }
-.nav-btn.prev { left:12px; }
-.nav-btn.next { right:12px; }
-.dots { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:10; }
-.dots .dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.25); cursor:pointer; transition:all 0.3s; }
-.dots .dot.active { background:var(--gold); width:24px; border-radius:4px; }
-
 .post-label { color:var(--slate); font-family:'Satoshi',sans-serif; font-size:16px; font-weight:500; letter-spacing:3px; margin-bottom:60px; text-transform:uppercase; text-align:center; }
-
 /* Divider */
 .slide-divider { width:60px; height:3px; background:var(--gold); margin:20px auto; border-radius:2px; }
-
 /* Flag stripe */
 .flag-stripe { position:absolute; bottom:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--red) 0%, var(--red) 50%, var(--gold) 50%, var(--gold) 100%); }
-
 /* Section header */
 .section-header { width:100%; max-width:var(--slide-w); text-align:center; padding:40px 0 20px; border-top:1px solid rgba(255,255,255,0.05); margin-top:20px; }
 .section-header h2 { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--gold); font-weight:400; letter-spacing:2px; }
 .section-header p { font-family:'Satoshi',sans-serif; font-size:17px; color:var(--slate); margin-top:4px; }
-
 /* Process steps */
 .process-steps { display:flex; gap:16px; width:100%; max-width:800px; margin-top:16px; }
 .process-steps .step { flex:1; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:28px 20px; text-align:center; }
 .process-steps .step .step-num { font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--gold); letter-spacing:2px; margin-bottom:8px; }
 .process-steps .step .step-label { font-family:'Satoshi',sans-serif; font-size:18px; color:var(--cream); font-weight:500; }
 .process-steps .step .step-sub { font-family:'Satoshi',sans-serif; font-size:14px; color:var(--slate); margin-top:4px; font-weight:300; }
-
 /* Muted vs Vibrant sections */
 .muted-text { color:var(--slate); font-family:'Satoshi',sans-serif; font-weight:300; }
 .vibrant-text { color:var(--cream); font-family:'Satoshi',sans-serif; font-weight:500; }
-
 /* Big label for before/after */
 .big-label { font-family:'Bebas Neue',sans-serif; font-size:48px; letter-spacing:3px; margin-bottom:8px; }
 .big-label.muted { color:rgba(148,163,184,0.4); }
 .big-label.vibrant { color:var(--gold); }
-
 /* Comparison side-by-side */
 .compare-split { display:grid; grid-template-columns:1fr 1fr; gap:40px; width:100%; max-width:800px; }
 .compare-split .compare-side { padding:32px; border-radius:16px; text-align:left; }
 .compare-split .compare-side.muted-side { background:rgba(148,163,184,0.06); border:1px solid rgba(148,163,184,0.12); }
 .compare-split .compare-side.vibrant-side { background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); }
-
 /* Card mosaic for post 12 */
 .mosaic-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:40px 44px; width:100%; max-width:780px; text-align:left; }
 .mosaic-card .mosaic-icon { font-size:28px; margin-bottom:12px; }
 .mosaic-card .mosaic-name { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:1px; color:var(--cream); }
 .mosaic-card .mosaic-detail { font-family:'Satoshi',sans-serif; font-size:18px; font-weight:300; color:var(--slate); line-height:1.5; margin-top:6px; }
-
 /* Subtle inset line */
 .inset-line { position:absolute; top:0; left:var(--safe); right:var(--safe); height:1px; background:rgba(255,255,255,0.06); }
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { background: #0A1628; color: #F5F5F0; font-family: 'Satoshi', sans-serif; min-height: 100vh; overflow-x: hidden; }
+.header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180deg, #0A1628 60%, transparent); padding: 12px 16px 20px; text-align: center; }
+.header h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(22px, 5.5vw, 36px); color: #C9A84C; letter-spacing: 3px; }
+.header p { font-size: clamp(11px, 2.8vw, 15px); color: #94A3B8; margin-top: 2px; }
+.post-card { margin: 0 0 12px; overflow: hidden; position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.post-card .post-label { font-family: 'Bebas Neue', sans-serif; font-size: clamp(13px, 3.2vw, 18px); letter-spacing: 3px; color: #94A3B8; text-transform: uppercase; padding: 14px 16px 0; text-align: center; }
+.swiper { width: 100%; max-width: 412px; margin: 0 auto; aspect-ratio: 9 / 16; }
+.swiper-slide { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(28px, 5vw, 48px) clamp(20px, 4vw, 36px); text-align: center; position: relative; overflow: hidden; }
+.swiper-slide.left { align-items: flex-start; text-align: left; }
+.content-safe { width: 100%; max-width: 380px; z-index: 2; position: relative; }
+.swiper-pagination-bullet { background: rgba(255,255,255,0.25); opacity: 1; }
+.swiper-pagination-bullet-active { background: #C9A84C; }
+.swiper-pagination { position: relative; bottom: 8px !important; }
+
 </style>
 </head>
 <body>
-
-<h1 class="week-title" style="font-size:36px; margin-top:20px;">ELOS CONNECTIONS</h1>
-<p style="color:var(--slate); margin-bottom:60px; font-family:'Satoshi',sans-serif; font-size:16px; letter-spacing:2px;">ARTES PARA REDES SOCIAIS — SEMANA 2: PROVA SOCIAL</p>
-
-<!-- ==================== POST 7 — DIA 8 (SEGUNDA): GUSTAVO ==================== -->
-<div class="post-label">DIA 8 — SEGUNDA-FEIRA</div>
-<div class="carousel-wrap" id="post-7">
-  <div class="stripe-accent"></div>
-  <div class="slides">
-    <!-- Slide 7.1 — Capa -->
-    <div class="slide active bg-gradient-hero bg-stars pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">1 / 5</div>
-      <div class="slide-tag">HISTÓRIA REAL</div>
+<div class="header">
+  <h1>ELOS CONNECTIONS</h1>
+  <p>Semana 2 - Prova Social</p>
+</div>
+<div class="post-card">
+  <div class="post-label">DIA 8 — SEGUNDA-FEIRA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-gradient-hero bg-stars pattern-dots">
+        <div class="content-safe">
+<div class="slide-tag">HISTÓRIA REAL</div>
       <div class="slide-title">+100<br><span class="text-gold-grad">CURRÍCULOS</span></div>
       <div class="slide-divider"></div>
       <div class="slide-sub">1 resposta.</div>
-      <div class="flag-stripe"></div>
-    </div>
-    <!-- Slide 7.2 — Frustração -->
-    <div class="slide slide-left bg-navy pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">2 / 5</div>
-      <div class="slide-title" style="font-size:28px; max-width:640px;">Quando a <span class="text-gold-grad">resposta</span> não chega</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots slide-left">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:28px; max-width:640px;">Quando a <span class="text-gold-grad">resposta</span> não chega</div>
       <div class="slide-sub" style="font-size:28px; line-height:1.6; color:rgba(245,245,240,0.8);">8 meses mandando currículo sozinho.<br><span class="text-gold-grad" style="font-size:32px;">100+ enviados.</span><br>1 única resposta — e foi negativa.</div>
       <div style="margin-top:24px; font-family:'Satoshi',sans-serif; font-size:18px; color:var(--slate); font-weight:300; max-width:640px;">— Gustavo, Assis/SP</div>
-    </div>
-    <!-- Slide 7.3 — Glass card: Reclame Aqui -->
-    <div class="slide bg-navy-dark pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">3 / 5</div>
-      <div class="slide-title" style="font-size:26px;">Empresas de recrutamento</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:26px;">Empresas de recrutamento</div>
       <div class="glass-card" style="margin-top:16px; text-align:center;">
         <div style="font-size:40px; margin-bottom:12px;">&#9888;&#65039;</div>
         <div class="glass-text" style="font-weight:400; color:rgba(245,245,240,0.7);">Reclamações no Reclame Aqui.<br>Promessas vazias. Dinheiro perdido.<br><span style="color:var(--slate); font-weight:300;">Gustavo quase desistiu de tudo.</span></div>
       </div>
-    </div>
-    <!-- Slide 7.4 — STAT: 20 DIAS -->
-    <div class="slide bg-navy-dark bg-stars">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">4 / 5</div>
-      <div class="slide-stat" style="font-size:140px; line-height:0.9;">20 DIAS</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark bg-stars">
+        <div class="content-safe">
+<div class="slide-stat" style="font-size:140px; line-height:0.9;">20 DIAS</div>
       <div class="slide-stat-label" style="margin-top:16px;">DEPOIS DE ENTRAR NA MENTORIA ELOS</div>
       <div class="slide-divider"></div>
       <div class="slide-sub" style="margin-top:12px; font-size:28px; font-weight:500; color:var(--cream);">CONTRATADO como<br><span class="text-gold-grad">motorista e operador de máquinas</span></div>
-    </div>
-    <!-- Slide 7.5 — CTA -->
-    <div class="slide bg-gold-accent">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">5 / 5</div>
-      <div class="slide-title" style="font-size:44px; max-width:700px;">Não desiste.<br><span class="text-gold-grad">Manda uma DM.</span></div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:44px; max-width:700px;">Não desiste.<br><span class="text-gold-grad">Manda uma DM.</span></div>
       <div class="slide-divider"></div>
       <div class="slide-sub">O Gustavo quase desistiu. 20 dias<br>depois estava contratado. A sua<br>história pode começar hoje.</div>
       <div class="slide-cta">MANDA DM</div>
+        </div>
+      </div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-7',-1)">&#9664;</button>
-  <button class="nav-btn next" onclick="navigate('post-7',1)">&#9654;</button>
-  <div class="dots" id="post-7-dots"></div>
 </div>
-
-<!-- ==================== POST 8 — DIA 9 (TERÇA): AVNER ==================== -->
-<div class="post-label">DIA 9 — TERÇA-FEIRA</div>
-<div class="carousel-wrap" id="post-8">
-  <div class="slides">
-    <!-- Slide 8.1 — Capa -->
-    <div class="slide active bg-gradient-hero bg-stars pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">1 / 5</div>
-      <div class="slide-tag">DEPOIMENTO REAL</div>
+<div class="post-card">
+  <div class="post-label">DIA 9 — TERÇA-FEIRA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-gradient-hero bg-stars pattern-dots">
+        <div class="content-safe">
+<div class="slide-tag">DEPOIMENTO REAL</div>
       <div class="slide-title">HOJE ESTOU<br><span class="text-gold-grad">CONTRATADO</span></div>
       <div class="slide-divider"></div>
       <div class="slide-sub">E pronto para uma nova fase</div>
-      <div class="flag-stripe"></div>
-      <div class="stripe-accent"></div>
-    </div>
-    <!-- Slide 8.2 — Avner Card -->
-    <div class="slide slide-left bg-navy pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">2 / 5</div>
-      <div class="photo-placeholder" style="width:100px; height:100px; font-size:36px; align-self:flex-start;">&#128100;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots slide-left">
+        <div class="content-safe">
+<div class="photo-placeholder" style="width:100px; height:100px; font-size:36px; align-self:flex-start;">&#128100;</div>
       <div style="font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:2px; color:var(--cream); align-self:flex-start;">AVNER</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:22px; font-weight:300; color:var(--gold); align-self:flex-start; margin-bottom:16px;">Ponta Grossa/PR</div>
       <div class="slide-divider" style="margin-left:0;"></div>
       <div class="slide-sub" style="font-size:28px; line-height:1.6; color:rgba(245,245,240,0.75); max-width:640px;">Meses de dedicação.<br>Aulas de inglês.<br>Preparação intensa para entrevistas.<br><span class="slide-highlight">Agora ele está lá.</span></div>
-    </div>
-    <!-- Slide 8.3 — Quote -->
-    <div class="slide slide-quote bg-navy-dark bg-stars">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">3 / 5</div>
-      <div style="font-size:80px; color:var(--gold); margin-bottom:16px; font-family:serif; line-height:1;">&ldquo;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark bg-stars">
+        <div class="content-safe">
+<div style="font-size:80px; color:var(--gold); margin-bottom:16px; font-family:serif; line-height:1;">&ldquo;</div>
       <div class="quote-text">Deu certo para mim,<br>e vai dar certo<br>para você também</div>
       <div style="font-size:80px; color:var(--gold); margin-top:16px; font-family:serif; line-height:1;">&rdquo;</div>
-    </div>
-    <!-- Slide 8.4 — Attribution -->
-    <div class="slide bg-navy-dark pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">4 / 5</div>
-      <div class="photo-placeholder-sm" style="align-self:center;">&#128100;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<div class="photo-placeholder-sm" style="align-self:center;">&#128100;</div>
       <div class="slide-title" style="font-size:36px;">&mdash; Avner</div>
       <div class="slide-divider" style="width:30px;"></div>
       <div class="slide-sub" style="font-size:24px; color:var(--slate);">Ponta Grossa/PR</div>
-    </div>
-    <!-- Slide 8.5 — CTA -->
-    <div class="slide bg-gold-accent">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">5 / 5</div>
-      <div class="slide-title" style="font-size:40px; max-width:700px;">Sua história pode ser<br><span class="text-gold-grad">a próxima.</span></div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:40px; max-width:700px;">Sua história pode ser<br><span class="text-gold-grad">a próxima.</span></div>
       <div class="slide-divider"></div>
       <div class="slide-sub">Não é sorte. É método. É preparação.<br>Vem conversar com a gente.</div>
       <div class="slide-cta">MANDA DM</div>
+        </div>
+      </div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-8',-1)">&#9664;</button>
-  <button class="nav-btn next" onclick="navigate('post-8',1)">&#9654;</button>
-  <div class="dots" id="post-8-dots"></div>
 </div>
-
-<!-- ==================== POST 9 — DIA 10 (QUARTA): MATHEUS ==================== -->
-<div class="post-label">DIA 10 — QUARTA-FEIRA</div>
-<div class="carousel-wrap" id="post-9">
-  <div class="slides">
-    <!-- Slide 9.1 — Capa -->
-    <div class="slide active bg-gradient-hero bg-stars pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">1 / 5</div>
-      <div class="slide-tag">ANTES E DEPOIS</div>
+<div class="post-card">
+  <div class="post-label">DIA 10 — QUARTA-FEIRA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-gradient-hero bg-stars pattern-dots">
+        <div class="content-safe">
+<div class="slide-tag">ANTES E DEPOIS</div>
       <div class="slide-title">DE MECÂNICO<br>EM GOIÂNIA</div>
       <div class="slide-divider"></div>
       <div class="slide-sub">Aos Estados Unidos</div>
-      <div class="flag-stripe"></div>
-      <div class="stripe-accent"></div>
-    </div>
-    <!-- Slide 9.2 — ANTES (muted) -->
-    <div class="slide slide-left bg-navy pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">2 / 5</div>
-      <div class="big-label muted">ANTES</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots slide-left">
+        <div class="content-safe">
+<div class="big-label muted">ANTES</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:26px; font-weight:300; color:rgba(148,163,184,0.6); line-height:1.7; max-width:640px; text-align:left;">
         Mecânico em Goiânia<br>
         Rotina pesada, dia após dia<br>
@@ -301,12 +236,11 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
         <div style="width:100%; height:2px; background:rgba(148,163,184,0.15);"></div>
         <div style="width:30%; height:2px; background:rgba(148,163,184,0.3); margin-top:-2px;"></div>
       </div>
-    </div>
-    <!-- Slide 9.3 — O PROCESSO -->
-    <div class="slide bg-navy-dark pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">3 / 5</div>
-      <div class="slide-title" style="font-size:28px;">O processo</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:28px;">O processo</div>
       <div class="process-steps">
         <div class="step">
           <div class="step-num">01</div>
@@ -329,12 +263,11 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
           <div class="step-sub">Vaga garantida<br>nos Estados Unidos</div>
         </div>
       </div>
-    </div>
-    <!-- Slide 9.4 — DEPOIS (vibrant) -->
-    <div class="slide slide-right bg-navy-dark bg-stars">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">4 / 5</div>
-      <div class="big-label vibrant">DEPOIS</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark bg-stars">
+        <div class="content-safe">
+<div class="big-label vibrant">DEPOIS</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:26px; font-weight:500; color:var(--cream); line-height:1.7; max-width:640px; text-align:right;">
         Trabalhando legalmente<br>
         Salário em <span class="text-gold-grad" style="font-size:30px; font-weight:700;">dólar</span><br>
@@ -345,48 +278,40 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
         <div style="width:100%; height:2px; background:rgba(201,168,76,0.2); margin-left:auto;"></div>
         <div style="width:70%; height:2px; background:var(--gold); margin-top:-2px; margin-left:auto;"></div>
       </div>
-    </div>
-    <!-- Slide 9.5 — CTA -->
-    <div class="slide bg-gold-accent">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">5 / 5</div>
-      <div class="slide-title" style="font-size:38px; max-width:750px;">Sua profissão também<br>pode te levar pros <span class="text-gold-grad">EUA.</span></div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:38px; max-width:750px;">Sua profissão também<br>pode te levar pros <span class="text-gold-grad">EUA.</span></div>
       <div class="slide-divider"></div>
       <div class="slide-sub">Mecânico, agricultor, motorista,<br>pedreiro, operador de máquinas.<br>Seu ofício tem valor lá fora.</div>
       <div class="slide-cta">MANDA DM</div>
+        </div>
+      </div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-9',-1)">&#9664;</button>
-  <button class="nav-btn next" onclick="navigate('post-9',1)">&#9654;</button>
-  <div class="dots" id="post-9-dots"></div>
 </div>
-
-<!-- ==================== POST 10 — DIA 11 (QUINTA): JAIRO ==================== -->
-<div class="post-label">DIA 11 — QUINTA-FEIRA</div>
-<div class="carousel-wrap" id="post-10">
-  <div class="slides">
-    <!-- Slide 10.1 — Capa -->
-    <div class="slide active bg-gradient-hero bg-stars pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">1 / 5</div>
-      <div class="slide-tag">RESULTADO REAL</div>
+<div class="post-card">
+  <div class="post-label">DIA 11 — QUINTA-FEIRA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-gradient-hero bg-stars pattern-dots">
+        <div class="content-safe">
+<div class="slide-tag">RESULTADO REAL</div>
       <div class="slide-title">O VALOR QUE<br>GANHA É <span class="text-gold-grad">MUITO BOM</span></div>
-      <div class="flag-stripe"></div>
-      <div class="stripe-accent"></div>
-    </div>
-    <!-- Slide 10.2 — Tentou sozinho -->
-    <div class="slide slide-left bg-navy pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">2 / 5</div>
-      <div style="font-family:'Satoshi',sans-serif; font-size:72px; color:var(--red); font-weight:700; align-self:flex-start; line-height:1;">&#10007;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots slide-left">
+        <div class="content-safe">
+<div style="font-family:'Satoshi',sans-serif; font-size:72px; color:var(--red); font-weight:700; align-self:flex-start; line-height:1;">&#10007;</div>
       <div class="slide-title" style="font-size:36px; margin-top:8px;">Tentou sozinho.</div>
       <div class="slide-sub" style="font-size:24px; color:rgba(245,245,240,0.6); line-height:1.6; max-width:600px;">Sem direcionamento.<br>Sem preparação.<br>Sem resultado.<br><span style="color:var(--slate); font-weight:300;">Não foi.</span></div>
-    </div>
-    <!-- Slide 10.3 — Glass card: capacitação -->
-    <div class="slide bg-navy-dark pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">3 / 5</div>
-      <div class="slide-title" style="font-size:26px;">Com a <span class="text-gold-grad">capacitação</span></div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:26px;">Com a <span class="text-gold-grad">capacitação</span></div>
       <div class="glass-card" style="text-align:center;">
         <div style="font-size:44px; margin-bottom:12px;">&#9989;</div>
         <div class="glass-text" style="font-weight:400; color:rgba(245,245,240,0.8); font-size:24px;">
@@ -395,49 +320,41 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
           <span class="text-gold-grad" style="font-size:28px; font-weight:700;">Vaga garantida</span>
         </div>
       </div>
-    </div>
-    <!-- Slide 10.4 — Quote -->
-    <div class="slide slide-quote bg-navy-dark bg-stars">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">4 / 5</div>
-      <div style="font-size:72px; color:var(--gold); margin-bottom:12px; font-family:serif; line-height:1;">&ldquo;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark bg-stars">
+        <div class="content-safe">
+<div style="font-size:72px; color:var(--gold); margin-bottom:12px; font-family:serif; line-height:1;">&ldquo;</div>
       <div class="quote-text" style="max-width:680px;">Sem a ajuda da capacitação<br>não teria conseguido. Além do dinheiro,<br>toda a experiência vale a pena.</div>
       <div style="font-size:72px; color:var(--gold); margin-top:12px; font-family:serif; line-height:1;">&rdquo;</div>
       <div class="quote-author">&mdash; Jairo</div>
-    </div>
-    <!-- Slide 10.5 — CTA -->
-    <div class="slide bg-red-accent">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">5 / 5</div>
-      <div class="slide-title" style="font-size:40px; max-width:700px;">Não repita o erro<br>de tentar <span style="color:var(--cream);">sozinho.</span></div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-red-accent">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:40px; max-width:700px;">Não repita o erro<br>de tentar <span style="color:var(--cream);">sozinho.</span></div>
       <div class="slide-divider"></div>
       <div class="slide-sub" style="color:rgba(245,245,240,0.7);">O caminho existe. A gente conhece.<br>Deixa a gente te guiar.</div>
       <div class="slide-cta">MANDA DM</div>
+        </div>
+      </div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-10',-1)">&#9664;</button>
-  <button class="nav-btn next" onclick="navigate('post-10',1)">&#9654;</button>
-  <div class="dots" id="post-10-dots"></div>
 </div>
-
-<!-- ==================== POST 11 — DIA 12 (SEXTA): ROBERTO ==================== -->
-<div class="post-label">DIA 12 — SEXTA-FEIRA</div>
-<div class="carousel-wrap" id="post-11">
-  <div class="slides">
-    <!-- Slide 11.1 — Capa -->
-    <div class="slide active bg-gradient-hero bg-stars pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">1 / 5</div>
-      <div class="slide-tag">EFEITO MULTIPLICADOR</div>
+<div class="post-card">
+  <div class="post-label">DIA 12 — SEXTA-FEIRA</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-gradient-hero bg-stars pattern-dots">
+        <div class="content-safe">
+<div class="slide-tag">EFEITO MULTIPLICADOR</div>
       <div class="slide-title">ELE FOI,<br>VOLTOU E FOI<br><span class="text-gold-grad">DE NOVO</span></div>
-      <div class="flag-stripe"></div>
-      <div class="stripe-accent"></div>
-    </div>
-    <!-- Slide 11.2 — 1ª temporada -->
-    <div class="slide bg-navy pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">2 / 5</div>
-      <div style="font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--gold); letter-spacing:4px; margin-bottom:4px;">1&#170; TEMPORADA</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots">
+        <div class="content-safe">
+<div style="font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--gold); letter-spacing:4px; margin-bottom:4px;">1&#170; TEMPORADA</div>
       <div class="glass-card" style="text-align:center;">
         <div style="font-size:40px; margin-bottom:10px;">&#127758;</div>
         <div class="glass-text" style="font-weight:400; color:rgba(245,245,240,0.8); font-size:24px;">
@@ -446,12 +363,11 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
           <span style="color:var(--slate); font-size:20px; font-weight:300;">Contrato concluído com sucesso</span>
         </div>
       </div>
-    </div>
-    <!-- Slide 11.3 — 2ª temporada -->
-    <div class="slide bg-navy-dark pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">3 / 5</div>
-      <div style="font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--gold-light); letter-spacing:4px; margin-bottom:4px;">2&#170; TEMPORADA</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots">
+        <div class="content-safe">
+<div style="font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--gold-light); letter-spacing:4px; margin-bottom:4px;">2&#170; TEMPORADA</div>
       <div class="glass-card" style="text-align:center; border-color:rgba(201,168,76,0.25);">
         <div style="font-size:40px; margin-bottom:10px;">&#11088;</div>
         <div class="glass-text" style="font-weight:400; color:rgba(245,245,240,0.8); font-size:24px;">
@@ -460,139 +376,99 @@ body { background:#0D1117; font-family:'Satoshi',system-ui,sans-serif; color:var
           <span style="color:var(--slate); font-size:20px; font-weight:300;">Quando você é bom, eles te querem de novo</span>
         </div>
       </div>
-    </div>
-    <!-- Slide 11.4 — STAT: +6 BRASILEIROS -->
-    <div class="slide bg-navy-dark bg-stars">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">4 / 5</div>
-      <div class="slide-stat" style="font-size:120px; line-height:0.9;">+6</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark bg-stars">
+        <div class="content-safe">
+<div class="slide-stat" style="font-size:120px; line-height:0.9;">+6</div>
       <div class="slide-stat-label" style="font-size:22px; color:var(--cream);">BRASILEIROS</div>
       <div class="slide-divider"></div>
       <div class="slide-sub" style="margin-top:12px; font-size:28px; font-weight:400; color:var(--cream); max-width:700px;">Na segunda vez, Roberto indicou<br>o caminho para mais <span class="text-gold-grad">6 brasileiros</span><br>irem juntos.</div>
       <div style="margin-top:16px; font-family:'Satoshi',sans-serif; font-size:18px; color:var(--slate); font-weight:300;">O sucesso de um abre portas para muitos.</div>
-    </div>
-    <!-- Slide 11.5 — CTA -->
-    <div class="slide bg-gold-accent">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">5 / 5</div>
-      <div class="slide-title" style="font-size:36px; max-width:700px;">O primeiro passo<br>é o mais difícil.</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:36px; max-width:700px;">O primeiro passo<br>é o mais difícil.</div>
       <div class="slide-divider"></div>
       <div class="slide-sub">Depois, o caminho se abre.<br>Para você e para quem vem com você.</div>
       <div class="slide-cta">MANDA DM</div>
+        </div>
+      </div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-11',-1)">&#9664;</button>
-  <button class="nav-btn next" onclick="navigate('post-11',1)">&#9654;</button>
-  <div class="dots" id="post-11-dots"></div>
 </div>
-
-<!-- ==================== POST 12 — DIA 13 (SÁBADO): MOSAICO +100 VIDAS ==================== -->
-<div class="post-label">DIA 13 — SÁBADO</div>
-<div class="carousel-wrap" id="post-12">
-  <div class="slides">
-    <!-- Slide 12.1 — Capa -->
-    <div class="slide active bg-gradient-hero bg-stars pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">1 / 6</div>
-      <div class="slide-tag">+100 VIDAS</div>
+<div class="post-card">
+  <div class="post-label">DIA 13 — SÁBADO</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-gradient-hero bg-stars pattern-dots">
+        <div class="content-safe">
+<div class="slide-tag">+100 VIDAS</div>
       <div class="slide-title">+100 BRASILEIROS<br><span class="text-gold-grad">CONTRATADOS</span></div>
       <div class="slide-divider"></div>
       <div class="slide-sub">A próxima pode ser a sua.</div>
-      <div class="flag-stripe"></div>
-      <div class="stripe-accent"></div>
-    </div>
-    <!-- Slide 12.2 — Gustavo -->
-    <div class="slide slide-left bg-navy pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">2 / 6</div>
-      <div class="photo-placeholder" style="width:90px; height:90px; font-size:30px; align-self:flex-start;">&#128104;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots slide-left">
+        <div class="content-safe">
+<div class="photo-placeholder" style="width:90px; height:90px; font-size:30px; align-self:flex-start;">&#128104;</div>
       <div class="mosaic-name" style="align-self:flex-start;">GUSTAVO</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:20px; font-weight:300; color:var(--gold); align-self:flex-start;">Motorista e Operador de Máquinas</div>
       <div class="slide-divider" style="margin-left:0;"></div>
       <div class="slide-sub" style="color:rgba(245,245,240,0.7); line-height:1.6; max-width:620px;">De Assis/SP aos Estados Unidos.<br>8 meses tentando sozinho, 100+ currículos.<br><span class="slide-highlight">20 dias na mentoria Elos: contratado.</span></div>
-    </div>
-    <!-- Slide 12.3 — Avner -->
-    <div class="slide slide-left bg-navy-dark pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">3 / 6</div>
-      <div class="photo-placeholder" style="width:90px; height:90px; font-size:30px; align-self:flex-start;">&#128104;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots slide-left">
+        <div class="content-safe">
+<div class="photo-placeholder" style="width:90px; height:90px; font-size:30px; align-self:flex-start;">&#128104;</div>
       <div class="mosaic-name" style="align-self:flex-start;">AVNER</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:20px; font-weight:300; color:var(--gold); align-self:flex-start;">Ponta Grossa/PR</div>
       <div class="slide-divider" style="margin-left:0;"></div>
       <div class="slide-sub" style="color:rgba(245,245,240,0.7); line-height:1.6; max-width:620px;">Meses de dedicação, aulas de inglês<br>e preparação intensa.<br><span class="slide-highlight">Contratado e realizado.</span></div>
-    </div>
-    <!-- Slide 12.4 — Matheus -->
-    <div class="slide slide-left bg-navy pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">4 / 6</div>
-      <div class="photo-placeholder" style="width:90px; height:90px; font-size:30px; align-self:flex-start;">&#128104;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy pattern-dots slide-left">
+        <div class="content-safe">
+<div class="photo-placeholder" style="width:90px; height:90px; font-size:30px; align-self:flex-start;">&#128104;</div>
       <div class="mosaic-name" style="align-self:flex-start;">MATHEUS</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:20px; font-weight:300; color:var(--gold); align-self:flex-start;">De mecânico em Goiânia aos EUA</div>
       <div class="slide-divider" style="margin-left:0;"></div>
       <div class="slide-sub" style="color:rgba(245,245,240,0.7); line-height:1.6; max-width:620px;">Capacitação, perfil, inglês, entrevistas.<br>De rotina pesada com salário em real<br><span class="slide-highlight">a salário em dólar, moradia e transporte pagos.</span></div>
-    </div>
-    <!-- Slide 12.5 — Roberto -->
-    <div class="slide slide-left bg-navy-dark pattern-dots">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">5 / 6</div>
-      <div class="photo-placeholder" style="width:90px; height:90px; font-size:30px; align-self:flex-start;">&#128104;</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-navy-dark pattern-dots slide-left">
+        <div class="content-safe">
+<div class="photo-placeholder" style="width:90px; height:90px; font-size:30px; align-self:flex-start;">&#128104;</div>
       <div class="mosaic-name" style="align-self:flex-start;">ROBERTO</div>
       <div style="font-family:'Satoshi',sans-serif; font-size:20px; font-weight:300; color:var(--gold); align-self:flex-start;">2 temporadas + indicou +6 brasileiros</div>
       <div class="slide-divider" style="margin-left:0;"></div>
       <div class="slide-sub" style="color:rgba(245,245,240,0.7); line-height:1.6; max-width:620px;">O empregador convidou de volta.<br>Na segunda temporada, abriu caminho<br><span class="slide-highlight">para mais 6 brasileiros irem juntos.</span></div>
-    </div>
-    <!-- Slide 12.6 — CTA -->
-    <div class="slide bg-gold-accent">
-      <div class="logo-area">ELOS CONNECTIONS</div>
-      <div class="slide-num">6 / 6</div>
-      <div class="slide-title" style="font-size:34px; max-width:750px;">Essas pessoas<br>não são diferentes de você.</div>
+        </div>
+      </div>
+      <div class="swiper-slide bg-gold-accent">
+        <div class="content-safe">
+<div class="slide-title" style="font-size:34px; max-width:750px;">Essas pessoas<br>não são diferentes de você.</div>
       <div class="slide-divider"></div>
       <div class="slide-sub">Manda DM. A próxima história<br>pode ser a sua.</div>
       <div class="slide-cta">MANDA DM</div>
+        </div>
+      </div>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <button class="nav-btn prev" onclick="navigate('post-12',-1)">&#9664;</button>
-  <button class="nav-btn next" onclick="navigate('post-12',1)">&#9654;</button>
-  <div class="dots" id="post-12-dots"></div>
 </div>
 
 <script>
-function navigate(postId, dir) {
-  const carousel = document.getElementById(postId);
-  const slides = carousel.querySelectorAll('.slide');
-  const current = carousel.querySelector('.slide.active');
-  let idx = Array.from(slides).indexOf(current);
-  slides[idx].classList.remove('active');
-  idx = (idx + dir + slides.length) % slides.length;
-  slides[idx].classList.add('active');
-  updateDots(postId, idx);
-}
-
-function updateDots(postId, activeIdx) {
-  const dotsContainer = document.getElementById(postId + '-dots');
-  if (!dotsContainer) return;
-  const carousel = document.getElementById(postId);
-  const slides = carousel.querySelectorAll('.slide');
-  dotsContainer.innerHTML = '';
-  slides.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'dot' + (i === activeIdx ? ' active' : '');
-    dot.onclick = () => {
-      const allSlides = carousel.querySelectorAll('.slide');
-      const current = carousel.querySelector('.slide.active');
-      allSlides[Array.from(allSlides).indexOf(current)].classList.remove('active');
-      allSlides[i].classList.add('active');
-      updateDots(postId, i);
-    };
-    dotsContainer.appendChild(dot);
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.swiper').forEach(function(el) {
+    new Swiper(el, {
+      slidesPerView: 1, spaceBetween: 0, speed: 300, touchRatio: 1.2,
+      pagination: { el: el.querySelector('.swiper-pagination'), clickable: true }
+    });
   });
-}
-
-// Init all carousels
-document.querySelectorAll('.carousel-wrap').forEach(carousel => {
-  updateDots(carousel.id, 0);
 });
 </script>
-
 </body>
 </html>
