@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Elos — Teste de Inglês | Mobile</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --navy: #0A1628;
+  --navy2: #132238;
+  --navy3: #1A3050;
+  --gold: #C9A84C;
+  --gold-light: #E8D07A;
+  --red: #BF0A30;
+  --cream: #F5F5F0;
+  --slate: #94A3B8;
+  --green: #4CAF50;
+}
+
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: 'Satoshi', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Header ── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(180deg, #0A1628 60%, transparent);
+  padding: 12px 16px 20px;
+  text-align: center;
+}
+.header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(24px, 6vw, 40px);
+  color: var(--gold);
+  letter-spacing: 3px;
+}
+.header p {
+  font-size: clamp(12px, 3vw, 16px);
+  color: var(--slate);
+  margin-top: 2px;
+}
+.header .badge {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: clamp(10px, 2.5vw, 13px);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* ── Post Card ── */
+.post-card {
+  margin: 12px 12px 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  position: relative;
+  background: linear-gradient(160deg, var(--navy), var(--navy2), var(--navy3));
+}
+.post-card.green {
+  background: linear-gradient(160deg, var(--navy), var(--navy2), rgba(46,125,50,0.18));
+}
+.post-card .post-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(14px, 3.5vw, 20px);
+  letter-spacing: 3px;
+  color: var(--slate);
+  text-transform: uppercase;
+  padding: 14px 16px 0;
+  text-align: center;
+}
+
+/* ── Swiper Overrides ── */
+.swiper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 100vw;
+}
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.swiper-slide.left { align-items: flex-start; text-align: left; }
+.swiper-slide.left .content-safe { align-items: flex-start; }
+
+.content-safe {
+  width: 100%;
+  max-width: 400px;
+  z-index: 2;
+  position: relative;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255,255,255,0.25);
+  opacity: 1;
+}
+.swiper-pagination-bullet-active {
+  background: var(--gold);
+}
+.swiper-button-next, .swiper-button-prev {
+  color: var(--cream);
+  background: rgba(255,255,255,0.08);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* ── Typography ── */
+h2, h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 8vw, 56px);
+  color: var(--gold);
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+.section-title.white { color: var(--cream); }
+
+.subtitle {
+  font-size: clamp(14px, 3.5vw, 20px);
+  color: var(--slate);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* ── Elements ── */
+.tag {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  padding: 6px 18px;
+  border-radius: 6px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(16px, 4vw, 22px);
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: clamp(16px, 4vw, 22px);
+  padding: 14px 32px;
+  border-radius: 12px;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  width: auto;
+}
+.cta-btn:active {
+  transform: scale(0.97);
+}
+
+.english-phrase {
+  background: rgba(201,168,76,0.1);
+  border-left: 4px solid var(--gold);
+  padding: clamp(12px, 3vw, 20px) clamp(14px, 3.5vw, 24px);
+  border-radius: 0 12px 12px 0;
+  margin-bottom: 12px;
+  font-size: clamp(16px, 4vw, 22px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+.english-phrase .pt {
+  font-size: clamp(13px, 3vw, 17px);
+  color: var(--slate);
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.translation-hint {
+  font-size: clamp(12px, 3vw, 15px);
+  color: var(--slate);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.level-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: clamp(11px, 2.5vw, 14px);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.level-easy { background: rgba(76,175,80,0.2); color: #81C784; }
+.level-medium { background: rgba(255,193,7,0.2); color: #FFD54F; }
+.level-hard { background: rgba(244,67,54,0.2); color: #E57373; }
+
+.option-row {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0;
+  flex-wrap: wrap;
+}
+.option {
+  flex: 1;
+  min-width: 120px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: clamp(10px, 2.5vw, 14px) clamp(12px, 3vw, 18px);
+  text-align: center;
+  font-size: clamp(13px, 3.2vw, 17px);
+  line-height: 1.3;
+  transition: all 0.2s;
+}
+.option.correct { border-color: var(--gold); background: rgba(201,168,76,0.12); }
+
+.q-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(22px, 5vw, 32px);
+  color: var(--gold);
+  opacity: 0.5;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin: clamp(12px, 3vw, 20px) auto;
+  border-radius: 2px;
+}
+.divider.left { margin-left: 0; }
+.divider.right { margin-right: 0; }
+
+.icon-big {
+  font-size: clamp(40px, 10vw, 64px);
+  margin-bottom: 8px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: clamp(14px, 3.2vw, 18px);
+  font-weight: 400;
+  line-height: 1.3;
+}
+.check-item::before {
+  content: '\2713';
+  color: var(--gold);
+  font-size: clamp(16px, 4vw, 22px);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.stat-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 12vw, 80px);
+  line-height: 1;
+  color: var(--gold);
+}
+
+.text-slate { color: var(--slate); }
+.text-gold { color: var(--gold); }
+.text-red { color: var(--red); }
+.text-green { color: var(--green); }
+
+/* ── Logo Mark ── */
+.logo-mark {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(18px, 4vw, 26px);
+  color: var(--gold);
+  letter-spacing: 3px;
+  opacity: 0.8;
+  z-index: 10;
+}
+
+/* ── Dots BG ── */
+.pattern-dots::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(245,245,240,0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>ELOS CONNECTIONS</h1>
+  <p>Teste de Inglês &middot; H2A Agrícola</p>
+  <div class="badge">R$ 20 mil a R$ 40 mil/mês</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- POST 1: EVERYDAY BASIC -->
+<!-- ============================================================ -->
+<div class="post-card pattern-dots">
+  <div class="post-label">Teste de Inglês &middot; Dia a Dia</div>
+  <div class="swiper" id="swiper1">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <div class="level-badge level-easy">Nível Básico</div>
+        <div class="icon-big">🇺🇸</div>
+        <div class="section-title">TESTE SEU INGLÊS</div>
+        <div class="subtitle">Você entende o básico do dia a dia?</div>
+        <div class="divider"></div>
+        <div class="subtitle">5 perguntas simples</div>
+        <div class="cta-btn">VAMOS LÁ →</div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">PERGUNTA 1</div>
+          <div class="section-title" style="font-size:clamp(24px,6vw,40px);">What time do you wake up?</div>
+          <div class="translation-hint">Que horas você acorda?</div>
+          <div class="option-row">
+            <div class="option correct">A) I wake up at 6 AM</div>
+            <div class="option">B) I sleep at 10 PM</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) I eat at noon</div>
+            <div class="option">D) I go to work</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-easy">Fácil</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">PERGUNTA 2</div>
+          <div class="section-title" style="font-size:clamp(24px,6vw,40px);">How do you say "obrigado"?</div>
+          <div class="translation-hint">Como se diz "obrigado"?</div>
+          <div class="option-row">
+            <div class="option">A) Please</div>
+            <div class="option correct">B) Thank you</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Sorry</div>
+            <div class="option">D) Excuse me</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-easy">Fácil</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">PERGUNTA 3</div>
+          <div class="section-title" style="font-size:clamp(24px,6vw,40px);">Where is the bathroom?</div>
+          <div class="translation-hint">Onde fica o banheiro?</div>
+          <div class="option-row">
+            <div class="option">A) It's delicious</div>
+            <div class="option correct">B) It's down the hall</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) It's expensive</div>
+            <div class="option">D) It's beautiful</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-easy">Fácil</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">PERGUNTA 4</div>
+          <div class="section-title" style="font-size:clamp(24px,6vw,36px);">What does "I'm tired" mean?</div>
+          <div class="translation-hint">O que significa "I'm tired"?</div>
+          <div class="option-row">
+            <div class="option">A) Estou com fome</div>
+            <div class="option correct">B) Estou cansado</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Estou feliz</div>
+            <div class="option">D) Estou com sono</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-easy">Fácil</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">PERGUNTA 5</div>
+          <div class="section-title" style="font-size:clamp(24px,6vw,40px);">How much is this?</div>
+          <div class="translation-hint">Quanto custa isso?</div>
+          <div class="option-row">
+            <div class="option correct">A) It's ten dollars</div>
+            <div class="option">B) It's very good</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) It's too far</div>
+            <div class="option">D) It's mine</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-easy">Fácil</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="icon-big">📊</div>
+        <div class="section-title white">SEU RESULTADO</div>
+        <div class="divider"></div>
+        <div class="subtitle">5 perguntas do dia a dia<br>Conseguiu responder tudo?</div>
+        <div class="english-phrase" style="text-align:left;">
+          "O inglês básico já abre portas nos EUA.<br>
+          Com o curso incluso na capacitação Elos,<br>
+          você aprende na prática antes de viajar."
+        </div>
+        <div class="cta-btn">COMENTA "TESTE"</div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- POST 2: EVERYDAY INTERMEDIATE -->
+<!-- ============================================================ -->
+<div class="post-card pattern-dots">
+  <div class="post-label">Teste de Inglês &middot; Intermediário</div>
+  <div class="swiper" id="swiper2">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <div class="level-badge level-medium">Nível Intermediário</div>
+        <div class="icon-big">🗣️</div>
+        <div class="section-title">INGLÊS DO DIA A DIA</div>
+        <div class="subtitle">Você se viraria nos EUA?</div>
+        <div class="divider"></div>
+        <div class="subtitle">5 situações reais</div>
+        <div class="cta-btn">VAMOS TESTAR →</div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">SITUAÇÃO 1</div>
+          <div class="section-title" style="font-size:clamp(18px,4.5vw,34px);">"Can you help me fill out this form?"</div>
+          <div class="translation-hint">Você pode me ajudar a preencher este formulário?</div>
+          <div class="option-row">
+            <div class="option correct">A) Sure, let me take a look</div>
+            <div class="option">B) I like pizza</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) See you later</div>
+            <div class="option">D) It's raining</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-medium">Intermediário</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">SITUAÇÃO 2</div>
+          <div class="section-title" style="font-size:clamp(18px,4.5vw,34px);">"I need to call my family back home."</div>
+          <div class="translation-hint">Preciso ligar para minha família no Brasil.</div>
+          <div class="option-row">
+            <div class="option">A) That's too bad</div>
+            <div class="option correct">B) You can use my phone</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) I don't know</div>
+            <div class="option">D) Close the door</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-medium">Intermediário</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">SITUAÇÃO 3</div>
+          <div class="section-title" style="font-size:clamp(18px,4.5vw,34px);">"I don't understand. Can you speak slower?"</div>
+          <div class="translation-hint">Não entendi. Pode falar mais devagar?</div>
+          <div class="option-row">
+            <div class="option">A) No problem</div>
+            <div class="option correct">B) Sure. I said: meet me at 5 PM</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Go away</div>
+            <div class="option">D) Wait here</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-medium">Intermediário</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">SITUAÇÃO 4</div>
+          <div class="section-title" style="font-size:clamp(18px,4.5vw,34px);">"How long have you been working here?"</div>
+          <div class="translation-hint">Há quanto tempo você trabalha aqui?</div>
+          <div class="option-row">
+            <div class="option correct">A) About three months</div>
+            <div class="option">B) About three miles</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) About three dollars</div>
+            <div class="option">D) About three o'clock</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-medium">Intermediário</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">SITUAÇÃO 5</div>
+          <div class="section-title" style="font-size:clamp(18px,4.5vw,34px);">"I'm looking for the grocery store."</div>
+          <div class="translation-hint">Estou procurando o mercado.</div>
+          <div class="option-row">
+            <div class="option">A) It's closed today</div>
+            <div class="option correct">B) It's two blocks away, on the left</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) It's expensive</div>
+            <div class="option">D) It's broken</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-medium">Intermediário</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="icon-big">🎯</div>
+        <div class="section-title white">SEU RESULTADO</div>
+        <div class="divider"></div>
+        <div class="subtitle">Situações reais que você vai viver nos EUA<br>Seu inglês está pronto para o H2A?</div>
+        <div class="english-phrase" style="text-align:left;">
+          "Na Elos, você treina inglês para o dia a dia<br>
+          e para o trabalho no campo. Curso incluso."
+        </div>
+        <div class="cta-btn">COMENTA "INGLÊS"</div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- POST 3: AGRO -->
+<!-- ============================================================ -->
+<div class="post-card green pattern-dots">
+  <div class="post-label">Teste de Inglês &middot; Agropecuária</div>
+  <div class="swiper" id="swiper3">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <div class="level-badge level-medium">Inglês do Campo</div>
+        <div class="icon-big">🚜</div>
+        <div class="section-title">INGLÊS PARA O AGRO</div>
+        <div class="subtitle">Você entende as ordens na fazenda?</div>
+        <div class="divider"></div>
+        <div class="subtitle">Frases reais do trabalho agrícola</div>
+        <div class="cta-btn">TESTAR AGORA →</div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">FRASE 1</div>
+          <div class="english-phrase">
+            "Go get the cattle feed from the barn."
+            <div class="pt">— Vá buscar a ração para o gado no celeiro.</div>
+          </div>
+          <div style="font-size:clamp(14px,3.5vw,18px);font-weight:500;margin-bottom:10px;">O que você deve fazer?</div>
+          <div class="option-row">
+            <div class="option correct">A) Buscar ração no celeiro</div>
+            <div class="option">B) Alimentar as galinhas</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Limpar o celeiro</div>
+            <div class="option">D) Fechar o portão</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-medium">Agro</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">FRASE 2</div>
+          <div class="english-phrase">
+            "Open the south gate and let the cows in."
+            <div class="pt">— Abra o portão sul e deixe as vacas entrarem.</div>
+          </div>
+          <div style="font-size:clamp(14px,3.5vw,18px);font-weight:500;margin-bottom:10px;">O que você deve fazer?</div>
+          <div class="option-row">
+            <div class="option">A) Fechar todos os portões</div>
+            <div class="option correct">B) Abrir o portão sul para as vacas</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Levar as vacas para o norte</div>
+            <div class="option">D) Contar as vacas</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-medium">Agro</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">FRASE 3</div>
+          <div class="english-phrase">
+            "Operate the harvester in the north field today."
+            <div class="pt">— Opere a colheitadeira no campo norte hoje.</div>
+          </div>
+          <div style="font-size:clamp(14px,3.5vw,18px);font-weight:500;margin-bottom:10px;">O que você deve fazer?</div>
+          <div class="option-row">
+            <div class="option correct">A) Operar a colheitadeira no campo norte</div>
+            <div class="option">B) Plantar no campo sul</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Lavar a colheitadeira</div>
+            <div class="option">D) Colher no campo leste</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-medium">Agro</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">FRASE 4</div>
+          <div class="english-phrase">
+            "The tractor needs diesel. Fill it up."
+            <div class="pt">— O trator precisa de diesel. Abasteça ele.</div>
+          </div>
+          <div style="font-size:clamp(14px,3.5vw,18px);font-weight:500;margin-bottom:10px;">O que você deve fazer?</div>
+          <div class="option-row">
+            <div class="option">A) Lavar o trator</div>
+            <div class="option correct">B) Abastecer o trator com diesel</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Trocar o pneu do trator</div>
+            <div class="option">D) Estacionar o trator</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-medium">Agro</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">FRASE 5</div>
+          <div class="english-phrase">
+            "Pick the tomatoes that are ripe, not the green ones."
+            <div class="pt">— Colha os tomates que estão maduros, não os verdes.</div>
+          </div>
+          <div style="font-size:clamp(14px,3.5vw,18px);font-weight:500;margin-bottom:10px;">O que você deve fazer?</div>
+          <div class="option-row">
+            <div class="option correct">A) Colher só os tomates maduros</div>
+            <div class="option">B) Colher todos os tomates</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Jogar os tomates verdes fora</div>
+            <div class="option">D) Plantar mais tomates</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-medium">Agro</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">FRASE 6</div>
+          <div class="english-phrase">
+            "We need to fix the fence before the cows get out."
+            <div class="pt">— Precisamos consertar a cerca antes das vacas saírem.</div>
+          </div>
+          <div style="font-size:clamp(14px,3.5vw,18px);font-weight:500;margin-bottom:10px;">O que você deve fazer?</div>
+          <div class="option-row">
+            <div class="option">A) Alimentar as vacas</div>
+            <div class="option correct">B) Consertar a cerca</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Buscar as vacas</div>
+            <div class="option">D) Fechar o portão</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-medium">Agro</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="icon-big">🌾</div>
+        <div class="section-title white">ENTENDEU TUDO?</div>
+        <div class="divider"></div>
+        <div class="subtitle">Essas frases são usadas TODO DIA nas fazendas dos EUA<br>Quer treinar mais antes de viajar?</div>
+        <div class="english-phrase" style="text-align:left;">
+          "Curso de inglês incluso nos planos Elos.<br>
+          Do básico ao vocabulário agrícola.<br>
+          Você chega nos EUA já sabendo se comunicar."
+        </div>
+        <div class="cta-btn">COMENTA "AGRO"</div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- POST 4: MACHINERY -->
+<!-- ============================================================ -->
+<div class="post-card green pattern-dots">
+  <div class="post-label">Teste de Inglês &middot; Máquinas Agrícolas</div>
+  <div class="swiper" id="swiper4">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <div class="level-badge level-hard">Máquinas & Equipamentos</div>
+        <div class="icon-big">⚙️</div>
+        <div class="section-title">INGLÊS DE MÁQUINAS</div>
+        <div class="subtitle">Você sabe operar e entender as máquinas?</div>
+        <div class="divider"></div>
+        <div class="subtitle">Frases reais de tratores, colheitadeiras e implementos</div>
+        <div class="cta-btn">VAMOS TESTAR →</div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">FRASE 1</div>
+          <div class="english-phrase">
+            "Lower the combine header before you start harvesting."
+            <div class="pt">— Abaixe a plataforma da colheitadeira antes de começar a colheita.</div>
+          </div>
+          <div style="font-size:clamp(14px,3.5vw,18px);font-weight:500;margin-bottom:10px;">O que fazer?</div>
+          <div class="option-row">
+            <div class="option correct">A) Abaixar a plataforma da colheitadeira</div>
+            <div class="option">B) Acelerar a colheitadeira</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Levantar a plataforma</div>
+            <div class="option">D) Desligar a colheitadeira</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-hard">Máquinas</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">FRASE 2</div>
+          <div class="english-phrase">
+            "Check the oil level on the tractor before you start."
+            <div class="pt">— Verifique o nível de óleo do trator antes de ligar.</div>
+          </div>
+          <div style="font-size:clamp(14px,3.5vw,18px);font-weight:500;margin-bottom:10px;">O que fazer?</div>
+          <div class="option-row">
+            <div class="option">A) Abastecer com diesel</div>
+            <div class="option correct">B) Verificar o óleo do trator</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Lavar o trator</div>
+            <div class="option">D) Trocar o filtro</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-hard">Máquinas</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">FRASE 3</div>
+          <div class="english-phrase">
+            "Use the front-end loader to move the hay bales."
+            <div class="pt">— Use a pá carregadeira para mover os fardos de feno.</div>
+          </div>
+          <div style="font-size:clamp(14px,3.5vw,18px);font-weight:500;margin-bottom:10px;">O que fazer?</div>
+          <div class="option-row">
+            <div class="option correct">A) Mover os fardos com a pá carregadeira</div>
+            <div class="option">B) Plantar feno novo</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Alimentar os animais</div>
+            <div class="option">D) Limpar o celeiro</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-hard">Máquinas</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">FRASE 4</div>
+          <div class="english-phrase">
+            "The irrigation system is broken. Turn off the water pump."
+            <div class="pt">— O sistema de irrigação quebrou. Desligue a bomba d'água.</div>
+          </div>
+          <div style="font-size:clamp(14px,3.5vw,18px);font-weight:500;margin-bottom:10px;">O que fazer?</div>
+          <div class="option-row">
+            <div class="option">A) Ligar a irrigação</div>
+            <div class="option correct">B) Desligar a bomba d'água</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Consertar o sistema</div>
+            <div class="option">D) Chamar o técnico</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-hard">Máquinas</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">FRASE 5</div>
+          <div class="english-phrase">
+            "Drive the tractor to the east field and start plowing."
+            <div class="pt">— Leve o trator para o campo leste e comece a arar.</div>
+          </div>
+          <div style="font-size:clamp(14px,3.5vw,18px);font-weight:500;margin-bottom:10px;">O que fazer?</div>
+          <div class="option-row">
+            <div class="option correct">A) Arar o campo leste com o trator</div>
+            <div class="option">B) Plantar no campo norte</div>
+          </div>
+          <div class="option-row">
+            <div class="option">C) Colher no campo leste</div>
+            <div class="option">D) Levar o trator para o oeste</div>
+          </div>
+          <div style="text-align:center;margin-top:12px;"><span class="level-badge level-hard">Máquinas</span></div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="icon-big">🏆</div>
+        <div class="section-title white">VOCÊ É O OPERADOR?</div>
+        <div class="divider"></div>
+        <div class="subtitle">Se você entendeu essas frases,<br>seu inglês para máquinas agrícolas está no caminho certo!</div>
+        <div class="english-phrase" style="text-align:left;">
+          "H2A é o visto para quem trabalha no campo.<br>
+          Salário de R$20 mil a R$40 mil/mês.<br>
+          Treine seu inglês conosco e venha trabalhar nos EUA."
+        </div>
+        <div class="cta-btn">COMENTA "MÁQUINAS"</div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- POST 5: HERO H2A -->
+<!-- ============================================================ -->
+<div class="post-card pattern-dots">
+  <div class="post-label">Herói H2A &middot; R$20 A R$40 MIL/MÊS</div>
+  <div class="swiper" id="swiper5">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <div class="icon-big">🇺🇸</div>
+        <div class="section-title">VENHA TRABALHAR<br>NOS EUA</div>
+        <div class="stat-number" style="font-size:clamp(32px,8vw,48px);color:var(--gold);margin:8px 0;">
+          R$ 20 mil a R$ 40 mil/mês
+        </div>
+        <div class="divider"></div>
+        <div class="subtitle">Visto H2A — Trabalho Agrícola Legal</div>
+        <div class="cta-btn">QUERO SABER MAIS →</div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">H2A AGRÍCOLA</div>
+          <div class="section-title white" style="font-size:clamp(24px,6vw,40px);">O QUE O EMPREGADOR PAGA?</div>
+          <div style="margin-top:12px;">
+            <div class="check-item">Passagem aérea de ida e volta</div>
+            <div class="check-item">Moradia gratuita (obrigatório por lei)</div>
+            <div class="check-item">Alimentação ou cozinha equipada</div>
+            <div class="check-item">Transporte local</div>
+            <div class="check-item">Busca no aeroporto</div>
+          </div>
+          <div style="margin-top:12px;font-size:clamp(12px,3vw,16px);color:var(--gold);font-weight:700;">
+            Seu salário é todo SEU. Sem descontos de moradia.
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">ÁREAS H2A</div>
+          <div class="section-title white" style="font-size:clamp(24px,6vw,40px);">QUEM ESTAMOS PROCURANDO</div>
+          <div style="margin-top:12px;">
+            <div class="check-item">Trabalhadores rurais — colheita, plantio</div>
+            <div class="check-item">Operadores de máquinas agrícolas</div>
+            <div class="check-item">Pecuária — gado, leite, aves</div>
+            <div class="check-item">Tratoristas e colheitadeiras</div>
+            <div class="check-item">Serviços gerais em fazendas</div>
+          </div>
+          <div style="margin-top:12px;font-size:clamp(12px,3vw,15px);color:var(--slate);">
+            Experiência ajuda, mas não é obrigatória.<br>Nós preparamos você.
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide left">
+        <div class="content-safe">
+          <div class="q-number">REQUISITOS</div>
+          <div class="section-title white" style="font-size:clamp(24px,6vw,40px);">O QUE VOCÊ PRECISA</div>
+          <div style="margin-top:12px;">
+            <div class="check-item">Passaporte válido (nós ajudamos)</div>
+            <div class="check-item">Disposição para trabalhar no campo</div>
+            <div class="check-item">Vontade de aprender inglês (curso incluso)</div>
+            <div class="check-item">Determinação de mudar de vida</div>
+          </div>
+          <div style="margin-top:12px;font-size:clamp(12px,3vw,16px);color:var(--gold);font-weight:700;">
+            Não precisa de inglês fluente. Não precisa de visto pronto.<br>
+            Nós te guiamos em cada etapa.
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="icon-big">💵</div>
+        <div class="section-title white">A CONTA É SIMPLES</div>
+        <div class="divider"></div>
+        <div class="subtitle">1 temporada (6 meses) nos EUA</div>
+        <div class="stat-number">R$ 120 A R$ 240 MIL</div>
+        <div class="subtitle" style="margin-top:8px;">
+          Enquanto isso, moradia, alimentação e transporte<br>
+          são pagos pelo empregador.
+        </div>
+        <div class="cta-btn">COMENTA "H2A"</div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const carousels = ['swiper1', 'swiper2', 'swiper3', 'swiper4', 'swiper5'];
+  carousels.forEach(function(id) {
+    new Swiper('#' + id, {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      speed: 300,
+      touchRatio: 1.2,
+      pagination: {
+        el: '#' + id + ' .swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '#' + id + ' .swiper-button-next',
+        prevEl: '#' + id + ' .swiper-button-prev'
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

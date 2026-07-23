@@ -1,0 +1,598 @@
+{
+  "estrategia_30_dias": {
+    "objetivo": "Carregar as redes com conteúdo de autoridade. 80% educacional/prova social, 20% vendas soft. CTA suave em todos os posts para DM tirar dúvidas.",
+    "redes": ["Instagram", "Facebook"],
+    "formato_prioritario": "Carrossel (maior retenção e alcance orgânico no Instagram)",
+    "frequencia": {
+      "instagram_feed": "Segunda a Sábado (6x semana)",
+      "instagram_stories": "Diário (2-4 stories/dia)",
+      "facebook": "Mesmo conteúdo do feed adaptado (Seg a Sáb)"
+    },
+    "regras_cta": [
+      "Todo post termina com chamada para DM: 'Comenta EUA que eu te explico' ou 'Manda uma DM com sua dúvida'",
+      "Nunca vender direto no post. A venda acontece na DM ou no link da bio",
+      "Link da bio sempre atualizado com WhatsApp ou página de captura"
+    ]
+  },
+
+  "calendario_semana_1": {
+    "tema": "Autoridade - Quem somos e como funciona",
+    "dias": [
+      {
+        "dia": "Segunda - Dia 1",
+        "post": {
+          "titulo": "Trabalhar legalmente nos EUA é possível. E a gente prova.",
+          "formato": "carrossel",
+          "slides": 6,
+          "conteudo_slides": [
+            "Capa: Foto bandeira EUA + headline impactante",
+            "+100 brasileiros já contratados pela nossa capacitação",
+            "Salário de US$3.000 a US$5.500/mês com moradia e transporte pagos",
+            "Fotos reais de alunos trabalhando nos EUA",
+            "Não é agência de intercâmbio. É capacitação profissional completa.",
+            "CTA: 'Comenta EUA que eu te mostro o caminho'"
+          ],
+          "caption": "Muita gente acha que trabalhar nos EUA é impossível. Que só consegue quem tem parente lá. Que é tudo golpe.\n\nA realidade é diferente.\n\nMais de 100 brasileiros comuns — mecânicos, agricultores, caminhoneiros, trabalhadores da construção — já estão legalmente empregados nos Estados Unidos depois de passar pela nossa capacitação.\n\nCom salário em dólar, moradia paga, transporte pago e passagem de ida e volta bancada pelo empregador.\n\nNão é milagre. É método.\n\nComenta 'EUA' aqui que eu te explico como funciona."
+        }
+      },
+      {
+        "dia": "Terça - Dia 2",
+        "post": {
+          "titulo": "Visto H2A e H2B: a porta de entrada legal para trabalhar nos EUA",
+          "formato": "carrossel",
+          "slides": 7,
+          "conteudo_slides": [
+            "Capa: 'A porta legal para os EUA: vistos H2A e H2B'",
+            "O que são: vistos de trabalho TEMPORÁRIO criados pelo governo americano",
+            "Por que existem: falta de mão de obra em setores específicos nos EUA",
+            "H2A: setor agrícola — fazendas, plantações, colheitas, máquinas",
+            "H2B: setor não-agrícola — construção, hotéis, paisagismo, transporte",
+            "Empregadores são fiscalizados e certificados pelo Departamento de Trabalho dos EUA",
+            "CTA: 'Ficou curioso? Manda DM com sua profissão'"
+          ],
+          "caption": "Você sabia que o próprio governo americano criou vistos específicos para contratar trabalhadores estrangeiros?\n\nSim. Eles existem porque faltam profissionais em setores essenciais como agricultura, construção e hotelaria.\n\nOs vistos H2A (agrícola) e H2B (não-agrícola) são a porta de entrada LEGAL para brasileiros que querem trabalhar nos EUA.\n\nNada de atravessar fronteira. Nada de visto de turista. É tudo dentro da lei, com contrato assinado e direitos garantidos.\n\nQuer saber se sua área se encaixa? Manda uma DM com sua profissão."
+        }
+      },
+      {
+        "dia": "Quarta - Dia 3",
+        "post": {
+          "titulo": "H2A e H2B: entenda de uma vez os vistos de trabalho temporário",
+          "formato": "carrossel",
+          "slides": 8,
+          "conteudo_slides": [
+            "Capa: 'H2A vs H2B: Qual o seu visto?'",
+            "H2A = Trabalho AGRÍCOLA. Colheita, plantio, máquinas, pecuária.",
+            "H2B = Trabalho NÃO-AGRÍCOLA. Construção, hotelaria, limpeza, transporte.",
+            "Duração: 3 a 10 meses, podendo renovar.",
+            "O empregador paga: passagem aérea ida e volta + moradia + transporte local.",
+            "Salário médio: US$3.000 a US$5.500 por mês.",
+            "Tabela comparativa lado a lado H2A vs H2B.",
+            "CTA: 'Tem dúvida sobre qual visto combina com você? Manda uma DM'"
+          ],
+          "caption": "H2A ou H2B? Essa é a dúvida número 1 de quem quer trabalhar nos EUA.\n\nResumo rápido:\n\nH2A = trabalho agrícola (fazendas, colheita, máquinas)\nH2B = trabalho não-agrícola (construção, hotéis, limpeza, transporte)\n\nNos dois casos:\n- Contrato de 3 a 10 meses (renovável)\n- Empregador paga passagem, moradia e transporte\n- Salário de US$3.000 a US$5.500/mês\n- Trabalho 100% legal\n\nNão sabe qual é o seu? Manda uma DM com a sua área de experiência que eu te oriento."
+        }
+      },
+      {
+        "dia": "Quinta - Dia 4",
+        "post": {
+          "titulo": "Quem está por trás da Elos Connections?",
+          "formato": "carrossel",
+          "slides": 5,
+          "conteudo_slides": [
+            "Capa: 'Conheça quem vai te guiar até os EUA'",
+            "André: experiência prática com ensino de inglês, recrutamento e processos seletivos nos EUA",
+            "Ozeas: pastor e agente de recrutamento, formação em Teologia, Neurociências e Planejamento Estratégico",
+            "A motivação: convivência com imigrantes ilegais e o desejo de criar um caminho legal e seguro",
+            "CTA: 'Quer conversar com a gente? Manda uma DM'"
+          ],
+          "caption": "Por trás de cada contratação tem gente de verdade que se importa.\n\nAndré atuou dentro do mercado americano, com vivência real em ensino de inglês, recrutamento e processos seletivos nos Estados Unidos.\n\nOzeas é pastor e agente de recrutamento com formação multidisciplinar — Teologia, Neurociências, Hipnoterapia Clínica e Planejamento Estratégico.\n\nJuntos, eles identificaram os principais motivos que levam à reprovação da maioria dos candidatos e criaram um método próprio, validado e focado em resultados reais.\n\nMais de 100 famílias impactadas. E a sua pode ser a próxima.\n\nManda uma DM e vem conversar com a gente."
+        }
+      },
+      {
+        "dia": "Sexta - Dia 5",
+        "post": {
+          "titulo": "As 7 fases do nosso método de capacitação",
+          "formato": "carrossel",
+          "slides": 9,
+          "conteudo_slides": [
+            "Capa: 'O caminho completo até os EUA'",
+            "Fase 1 - Despertar: autoconhecimento e preparo mental",
+            "Fase 2 - Construção do Perfil: currículo americano, carta, vídeo, inglês",
+            "Fase 3 - Posicionamento: marketing pessoal e mercado americano",
+            "Fase 4 - Visto e Entrevistas: DS-160, simulações, preparação",
+            "Fase 5 - Planejamento: finanças, checklist de viagem",
+            "Fase 6 - Suporte na Viagem: orientação cultural, suporte remoto",
+            "Fase 7 - Retorno ou Continuidade: aplicar conhecimento no Brasil ou renovar visto",
+            "CTA: 'Quer ver esse caminho em detalhes? Comenta FASES'"
+          ],
+          "caption": "Não existe atalho. Existe método.\n\nDividimos nossa capacitação em 7 fases que vão desde o 'eu quero' até o 'estou trabalhando nos EUA':\n\n1. Despertar - Preparo mental e propósito\n2. Perfil Profissional - Currículo, carta, vídeo e inglês\n3. Posicionamento - Marketing pessoal internacional\n4. Visto e Entrevistas - Toda a parte burocrática\n5. Planejamento - Financeiro e logístico\n6. Suporte na Viagem - Acompanhamento remoto nos EUA\n7. Continuidade - Renovação ou retorno com planejamento\n\nMais de 100 brasileiros já passaram por essas fases.\n\nComenta 'FASES' que eu te mostro como funciona cada uma."
+        }
+      },
+      {
+        "dia": "Sábado - Dia 6",
+        "post": {
+          "titulo": "Por que a Elos é diferente de tudo que você já viu?",
+          "formato": "carrossel",
+          "slides": 6,
+          "conteudo_slides": [
+            "Capa: 'O que nos diferencia?'",
+            "Plataforma própria de disparo automático do seu perfil para vagas certas",
+            "Suporte do início ao fim — incluindo durante sua estadia nos EUA",
+            "Garantia: 6 meses extras grátis se não for contratado em 12 meses cumprindo 90% das atividades",
+            "Trabalhamos só com empregadores certificados pelo governo americano",
+            "CTA: 'Quer saber mais? Manda DM'"
+          ],
+          "caption": "Existem muitas empresas falando sobre trabalho nos EUA. Mas a maioria só vende curso e some.\n\nA Elos Connections é diferente:\n\n- Temos plataforma própria que dispara seu perfil automaticamente para as vagas certas\n- Acompanhamos você até durante a estadia nos EUA\n- Garantimos: se não contratar em 12 meses, te damos mais 6 meses grátis\n- Só trabalhamos com empregadores certificados pelo governo americano\n\nNão é promessa vazia. São mais de 100 brasileiros contratados.\n\nQuer entender como funciona na prática? Manda uma DM."
+        }
+      }
+    ],
+    "stories_semana": [
+      "Bastidor diário: foto da equipe ou do André/Ozeas",
+      "Enquetes: 'Você conhece alguém que já trabalhou nos EUA?', 'Qual área combina mais com você?'",
+      "Caixinha de perguntas nos dias 2, 4 e 6",
+      "Compartilhar cada post do feed com sticker 'Novo post'",
+      "Dica rápida de visto ou inglês 1x por dia útil"
+    ]
+  },
+
+  "calendario_semana_2": {
+    "tema": "Prova Social - Histórias reais de quem foi",
+    "dias": [
+      {
+        "dia": "Segunda - Dia 8",
+        "post": {
+          "titulo": "Ele mandou +100 currículos e só teve 1 resposta. Até nos conhecer.",
+          "formato": "carrossel",
+          "slides": 5,
+          "conteudo_slides": [
+            "Capa: Foto do Gustavo (ou imagem representativa) + headline",
+            "A frustração: 100 currículos enviados, 1 resposta dizendo que a vaga já estava preenchida",
+            "Empresas de recrutamento com reclamações no Reclame Aqui",
+            "20 dias depois de entrar na mentoria Elos: contratado como motorista e operador de máquinas",
+            "CTA: 'Não desiste. Manda uma DM que a gente conversa'"
+          ],
+          "caption": "O Gustavo é de Assis/SP. Passou 8 meses mandando currículo sozinho para vagas nos EUA.\n\n+100 currículos enviados.\n1 resposta: 'já preenchemos a vaga'.\n\nProcurou empresas de recrutamento. Viu reclamações no Reclame Aqui. Quase desistiu.\n\nAté que conheceu o André e a equipe Elos pelo YouTube.\n\n10 dias depois entrou na mentoria.\n20 dias depois: CONTRATADO.\n\nHoje trabalha como motorista de caminhão e operador de máquinas agrícolas nos EUA.\n\nA diferença? Método. Direcionamento. Plataforma certa.\n\nSe você está cansado de mandar currículo sem resposta, manda uma DM."
+        }
+      },
+      {
+        "dia": "Terça - Dia 9",
+        "post": {
+          "titulo": "Hoje estou contratado e pronto para uma nova fase da minha vida",
+          "formato": "carrossel",
+          "slides": 5,
+          "conteudo_slides": [
+            "Capa: 'A história do Avner - Ponta Grossa/PR'",
+            "Meses de dedicação: aulas de inglês, preparação para entrevistas, conversação",
+            "Construção de currículo e busca por empregadores compatíveis com as habilidades dele",
+            "Depoimento real: 'Deu certo para mim, e vai dar certo para você também'",
+            "CTA: 'Sua história pode ser a próxima. Manda DM'"
+          ],
+          "caption": "O Avner é de Ponta Grossa, Paraná.\n\nEle entrou na mentoria da Elos com o André e sua equipe com um sonho: trabalhar legalmente nos Estados Unidos.\n\nForam meses de dedicação. Aulas de inglês. Preparação para entrevistas. Construção de currículo. Busca por empregadores compatíveis.\n\nResultado? Contratado. Pronto para iniciar uma nova fase com melhores oportunidades e qualidade de vida.\n\nNas palavras dele: 'Profissionais competentes, comprometidos e que realmente sabem o que fazem. Deu certo para mim, e vai dar certo para você também.'\n\nQuer ser o próximo? Manda uma DM."
+        }
+      },
+      {
+        "dia": "Quarta - Dia 10",
+        "post": {
+          "titulo": "De mecânico em Goiânia aos Estados Unidos: a virada do Matheus",
+          "formato": "carrossel",
+          "slides": 5,
+          "conteudo_slides": [
+            "Capa: Antes e depois conceitual (Brasil > EUA) + 'A história do Matheus'",
+            "Antes: mecânico em Goiânia, rotina pesada, salário em real",
+            "O processo: capacitação, preparação de perfil, inglês, entrevistas",
+            "Depois: trabalhando legalmente nos EUA, salário em dólar, moradia e transporte pagos",
+            "CTA: 'Sua profissão também pode te levar pros EUA. Descubra como na DM'"
+          ],
+          "caption": "Matheus era mecânico em Goiânia.\n\nRotina cansativa, salário que não sobrava no fim do mês, sensação de estar estagnado.\n\nEle nunca imaginou que a profissão dele poderia abrir portas nos Estados Unidos.\n\nDepois de passar pela capacitação, ele trocou o salário em real pelo salário em dólar. Com moradia paga. Com transporte pago. Com contrato legal.\n\nA história dele é a prova de que você não precisa ser rico, ter parente nos EUA ou falar inglês fluente.\n\nPrecisa de método. E de alguém que conheça o caminho.\n\nQuer saber se sua profissão tem demanda nos EUA? Manda uma DM com sua área."
+        }
+      },
+      {
+        "dia": "Quinta - Dia 11",
+        "post": {
+          "titulo": "O valor que ganha é muito bom! Sem a capacitação não teria conseguido",
+          "formato": "carrossel",
+          "slides": 5,
+          "conteudo_slides": [
+            "Capa: 'A história do Jairo'",
+            "Ele tentou sozinho. Não foi.",
+            "Com a capacitação: direcionamento certo, preparação completa, vaga garantida",
+            "O que mais impressionou: o valor do salário e a experiência de vida",
+            "CTA: 'Não cometa o mesmo erro de tentar sozinho. Manda DM'"
+          ],
+          "caption": "O Jairo foi direto: 'O valor que ganha é muito bom. Sem a ajuda da capacitação não teria conseguido.'\n\nEle tentou o caminho solo. Não funcionou.\n\nCom a capacitação da Elos, ele teve:\n- Direcionamento certo de quais vagas buscar\n- Preparação completa do perfil\n- Treinamento para entrevistas\n- Plataforma de disparo automático\n\nO resultado? Contratado. Ganhando em dólar. Com uma experiência que, nas palavras dele, 'vale muito a pena'.\n\nNão repita o erro de tentar sozinho. Manda DM e vem com quem já fez o caminho."
+        }
+      },
+      {
+        "dia": "Sexta - Dia 12",
+        "post": {
+          "titulo": "Ele foi, voltou e foi de novo. E dessa vez levou mais 6 brasileiros.",
+          "formato": "carrossel",
+          "slides": 5,
+          "conteudo_slides": [
+            "Capa: Foto conceitual de grupo + 'O efeito multiplicador'",
+            "Roberto conseguiu a vaga, trabalhou uma temporada inteira",
+            "O empregador gostou tanto que convidou ele para voltar",
+            "Na segunda vez, Roberto indicou o caminho para mais 6 brasileiros irem juntos",
+            "CTA: 'O primeiro passo é o mais difícil. Depois, o caminho se abre. Vem de DM'"
+          ],
+          "caption": "A história do Roberto é diferente.\n\nEle não só foi — ele foi, voltou e foi DE NOVO.\n\nNa primeira temporada, fez um trabalho tão bom que o empregador americano fez questão de convidá-lo para voltar.\n\nNa segunda vez, Roberto não foi sozinho: levou mais 6 brasileiros com ele. Todos com vaga garantida.\n\nIsso acontece porque quando o empregador confia no trabalhador, ele quer mais gente do mesmo lugar. E isso abre portas.\n\nA primeira contratação é sempre a mais difícil. Depois que você prova seu valor, as oportunidades se multiplicam.\n\nQuer ser o próximo? Manda uma DM."
+        }
+      },
+      {
+        "dia": "Sábado - Dia 13",
+        "post": {
+          "titulo": "+100 vidas transformadas. A próxima pode ser a sua.",
+          "formato": "carrossel",
+          "slides": 6,
+          "conteudo_slides": [
+            "Capa: '+100 brasileiros contratados' com mosaico de fotos",
+            "Gustavo - motorista e operador de máquinas",
+            "Roberto - 2 temporadas, levou +6 brasileiros",
+            "Matheus - de mecânico em Goiânia aos EUA",
+            "Avner - Ponta Grossa/PR, contratado e realizado",
+            "CTA: 'Essas pessoas não são diferentes de você. Manda DM'"
+          ],
+          "caption": "Gustavo. Roberto. Matheus. Avner. Jairo.\n\nO que eles têm em comum?\n\nNenhum deles era rico.\nNenhum deles falava inglês fluente.\nNenhum deles tinha parente nos EUA.\n\nEram brasileiros comuns, com profissões comuns, que decidiram dar o primeiro passo.\n\nHoje, mais de 100 brasileiros já passaram pela nossa capacitação e estão legalmente empregados nos Estados Unidos.\n\nEssas pessoas não são diferentes de você. Elas só decidiram começar.\n\nManda uma DM. A próxima história pode ser a sua."
+        }
+      }
+    ],
+    "stories_semana": [
+      "Print de depoimentos reais dos alunos a cada 2 dias",
+      "Enquetes: 'Você já tentou vaga no exterior?', 'O que mais te impede?'",
+      "Mini antes e depois: foto do Brasil vs foto nos EUA dos alunos",
+      "Caixinha: 'Manda sua maior insegurança sobre trabalhar fora'",
+      "Frase de aluno contratado 1x por dia"
+    ]
+  },
+
+  "calendario_semana_3": {
+    "tema": "Educacional - Dúvidas que todo mundo tem",
+    "dias": [
+      {
+        "dia": "Segunda - Dia 15",
+        "post": {
+          "titulo": "5 documentos que você PRECISA para tirar o visto americano",
+          "formato": "carrossel",
+          "slides": 7,
+          "conteudo_slides": [
+            "Capa: 'Checklist do visto: 5 documentos essenciais'",
+            "1. Passaporte brasileiro válido (mínimo 6 meses de validade além da estadia)",
+            "2. Formulário DS-160 preenchido (sem erros!)",
+            "3. Foto 5x5cm fundo branco (padrão americano)",
+            "4. Carta-convite do empregador americano (fornecemos orientação)",
+            "5. Comprovantes de vínculo com o Brasil",
+            "CTA: 'Tem dúvida sobre algum documento? Manda DM'"
+          ],
+          "caption": "Se tem uma coisa que trava muita gente é a papelada do visto.\n\nMas a verdade é que não é nenhum bicho de sete cabeças se você souber exatamente o que precisa.\n\nOs 5 documentos principais:\n\n1. Passaporte válido (pelo menos 6 meses além da data de retorno)\n2. DS-160 preenchido corretamente (um erro aqui pode custar seu visto)\n3. Foto 5x5cm padrão americano\n4. Carta do empregador comprovando a vaga\n5. Comprovantes de vínculo com o Brasil\n\nDentro da nossa capacitação, a gente orienta o preenchimento de cada um.\n\nTem dúvida sobre documentação? Manda uma DM que eu te ajudo."
+        }
+      },
+      {
+        "dia": "Terça - Dia 16",
+        "post": {
+          "titulo": "DS-160: o formulário que mais reprova brasileiros (e como preencher sem erros)",
+          "formato": "carrossel",
+          "slides": 7,
+          "conteudo_slides": [
+            "Capa: 'DS-160: o vilão dos vistos americanos'",
+            "O que é: formulário online obrigatório para todo solicitante de visto",
+            "Erro 1: dados pessoais divergentes do passaporte",
+            "Erro 2: informações inconsistentes sobre histórico de trabalho",
+            "Erro 3: omitir informações de viagens anteriores",
+            "Erro 4: mentir sobre intenção de imigração",
+            "CTA: 'Não arrisque seu visto por um erro no formulário. Manda DM'"
+          ],
+          "caption": "O formulário DS-160 é o principal motivo de reprovação de vistos americanos.\n\nE a maioria das reprovações acontece por erros simples e evitáveis.\n\nOs 4 erros mais comuns:\n1. Dados pessoais que não batem com o passaporte\n2. Histórico de trabalho inconsistente ou incompleto\n3. Não declarar viagens anteriores (sim, os EUA sabem!)\n4. Mentir sobre intenção de imigração\n\nNa nossa capacitação, orientamos o preenchimento de cada campo. Com segurança.\n\nNão arrisque. Manda uma DM que a gente te explica como funciona o suporte ao DS-160."
+        }
+      },
+      {
+        "dia": "Quarta - Dia 17",
+        "post": {
+          "titulo": "Quanto custa REALMENTE trabalhar nos EUA?",
+          "formato": "carrossel",
+          "slides": 7,
+          "conteudo_slides": [
+            "Capa: 'Quanto custa? A resposta vai te surpreender'",
+            "O que o empregador paga: passagem aérea ida e volta, moradia, transporte local, busca no aeroporto",
+            "O que você paga: visto (taxa consular ~US$190), passaporte, exames médicos",
+            "Seu custo total estimado: R$2.000 a R$4.000 (dependendo do caso)",
+            "Seu primeiro salário: US$3.000 a US$5.500 (R$15.000 a R$30.000)",
+            "Ou seja: o investimento se paga NO PRIMEIRO MÊS de trabalho",
+            "CTA: 'Quer fazer as contas do seu caso? Manda DM'"
+          ],
+          "caption": "Muita gente acha que trabalhar nos EUA custa uma fortuna.\n\nA verdade:\n\nO EMPREGADOR paga:\n- Passagem aérea de ida e volta\n- Moradia durante todo o contrato\n- Transporte local\n- Até te busca no aeroporto\n\nVOCÊ paga basicamente:\n- Taxa do visto (~US$190)\n- Emissão do passaporte (se não tiver)\n- Exames médicos\n\nTotal do seu investimento: entre R$2.000 e R$4.000\n\nSeu PRIMEIRO SALÁRIO: US$3.000 a US$5.500\n\nOu seja: o investimento se paga em menos de 1 mês de trabalho.\n\nQuer fazer as contas para a sua área? Manda uma DM."
+        }
+      },
+      {
+        "dia": "Quinta - Dia 18",
+        "post": {
+          "titulo": "3 erros que te reprovam na entrevista do visto (e como evitar)",
+          "formato": "carrossel",
+          "slides": 6,
+          "conteudo_slides": [
+            "Capa: 'Entrevista do visto: 3 erros fatais'",
+            "Erro 1: Nervosismo extremo e respostas decoradas — o entrevistador percebe",
+            "Erro 2: Dar respostas longas demais ou curtas demais — o equilíbrio é tudo",
+            "Erro 3: Não comprovar vínculo com o Brasil — casa, família, emprego, bens",
+            "Dica bônus: Na nossa capacitação você faz SIMULAÇÕES REAIS de entrevista",
+            "CTA: 'Quer treinar antes da entrevista real? Manda DM'"
+          ],
+          "caption": "A entrevista no consulado dura em média 2 a 3 minutos.\n\nMas esses 3 minutos definem tudo.\n\nOs 3 erros que mais reprovam:\n\n1. Nervosismo e respostas decoradas — parece robô, e o cônsul sabe\n2. Falar demais ou de menos — tem que ser direto, mas completo\n3. Não comprovar vínculo com o Brasil — se o cônsul achar que você não vai voltar, acabou\n\nNa nossa capacitação a gente faz simulações reais de entrevista, com feedback real.\n\nQuando você chegar na entrevista de verdade, já vai ter passado por ela antes.\n\nManda DM e vem treinar com a gente."
+        }
+      },
+      {
+        "dia": "Sexta - Dia 19",
+        "post": {
+          "titulo": "Não falo inglês. Ainda consigo trabalhar nos EUA?",
+          "formato": "carrossel",
+          "slides": 6,
+          "conteudo_slides": [
+            "Capa: 'Inglês é obrigatório?'",
+            "Resposta curta: NÃO é obrigatório para H2A/H2B",
+            "Muitos empregadores têm equipes bilíngues ou supervisores que falam português",
+            "MAS o inglês básico aumenta MUITO suas chances e seu salário",
+            "Nosso curso de inglês já está incluso em todos os planos (do básico à conversação)",
+            "CTA: 'Não deixa o inglês te travar. Vem de DM que eu explico'"
+          ],
+          "caption": "Essa é a pergunta mais frequente que a gente recebe.\n\nE a resposta é: NÃO, inglês fluente não é obrigatório para os vistos H2A e H2B.\n\nMuitos empregadores americanos já têm equipes bilíngues, supervisores que falam português ou espanhol, e o trabalho em grupo facilita a comunicação.\n\nMas também é verdade que quem tem inglês básico:\n- É contratado mais rápido\n- Consegue cargos melhores\n- Ganha salários maiores\n\nPor isso nosso curso de inglês JÁ ESTÁ INCLUSO em todos os planos. Do básico à conversação para o ambiente de trabalho.\n\nNão deixa a barreira do idioma te travar. Manda uma DM."
+        }
+      },
+      {
+        "dia": "Sábado - Dia 20",
+        "post": {
+          "titulo": "Qual a melhor época para se candidatar? Calendário das temporadas",
+          "formato": "carrossel",
+          "slides": 7,
+          "conteudo_slides": [
+            "Capa: 'Calendário: quando se candidatar para os EUA?'",
+            "Jan-Fev: alta demanda H2B (hotelaria e turismo de inverno)",
+            "Mar-Mai: pico H2A (plantio de primavera) e construção civil",
+            "Jun-Ago: alta temporada H2B (turismo, parques, hospitalidade)",
+            "Set-Out: colheitas de outono H2A e preparação fim de ano",
+            "Nov-Dez: demanda H2B (varejo, logística) e planejamento próxima temporada",
+            "CTA: 'Quer saber a janela ideal para sua área? Manda DM'"
+          ],
+          "caption": "Existe época certa para se candidatar. E se você perder a janela, pode esperar meses até a próxima.\n\nResumo do calendário:\n\nJaneiro-Fevereiro: alta procura por hotelaria e turismo de inverno\nMarço-Maio: pico de agricultura (plantio) e construção civil\nJunho-Agosto: temporada de turismo, parques e hospitalidade\nSetembro-Outubro: colheitas de outono e preparação para fim de ano\nNovembro-Dezembro: varejo, logística e planejamento da safra seguinte\n\nCada área tem sua janela. E a preparação começa MESES ANTES.\n\nQuer saber a janela ideal para sua área? Manda DM com sua profissão."
+        }
+      }
+    ],
+    "stories_semana": [
+      "Checklist visual de documentos (1 story por documento)",
+      "Quiz rápido: 'Quanto tempo vale o passaporte para visto?' com alternativas",
+      "Enquetes diárias sobre nível de inglês, se tem passaporte, etc.",
+      "Mini dica de inglês por dia: 1 palavra nova com pronúncia",
+      "Caixinha: 'Qual sua maior dúvida sobre o processo?'"
+    ]
+  },
+
+  "calendario_semana_4": {
+    "tema": "Profissões + Oferta Soft - Oportunidades e como começar",
+    "dias": [
+      {
+        "dia": "Segunda - Dia 22",
+        "post": {
+          "titulo": "As 5 profissões com MAIS vagas H2B nos EUA em 2026",
+          "formato": "carrossel",
+          "slides": 7,
+          "conteudo_slides": [
+            "Capa: 'Top 5 profissões com mais vagas nos EUA'",
+            "1. Construção civil (pedreiros, carpinteiros, ajudantes) - salário médio US$3.500",
+            "2. Hotelaria (camareiras, auxiliares de limpeza, manutenção) - salário médio US$3.000",
+            "3. Paisagismo e jardinagem - salário médio US$3.200",
+            "4. Transporte (motoristas de caminhão e ônibus) - salário médio US$4.500",
+            "5. Serviços gerais e limpeza - salário médio US$3.000",
+            "CTA: 'Sua profissão está na lista? Manda DM que eu vejo as vagas disponíveis'"
+          ],
+          "caption": "O mercado de trabalho temporário nos EUA está aquecido em 2026.\n\nAs 5 áreas com mais vagas abertas para brasileiros:\n\n1. Construção civil - US$3.500/mês\n2. Hotelaria - US$3.000/mês\n3. Paisagismo - US$3.200/mês\n4. Transporte - US$4.500/mês\n5. Serviços gerais - US$3.000/mês\n\nTodos com moradia e transporte pagos. Contrato de 3 a 10 meses.\n\nSua profissão está nessa lista? Ou você tem experiência em outra área?\n\nManda uma DM com sua profissão que eu verifico se temos vagas compatíveis."
+        }
+      },
+      {
+        "dia": "Terça - Dia 23",
+        "post": {
+          "titulo": "H2A: o setor agrícola dos EUA está chamando brasileiros",
+          "formato": "carrossel",
+          "slides": 7,
+          "conteudo_slides": [
+            "Capa: 'Trabalho agrícola nos EUA: o que ninguém te conta'",
+            "Os EUA têm escassez crônica de mão de obra rural. Brasileiros são muito valorizados.",
+            "Funções: colheita, plantio, operação de máquinas, tratores, pecuária, manutenção",
+            "Salário: US$3.000 a US$4.500/mês + horas extras",
+            "Benefícios exclusivos H2A: moradia GRATUITA garantida por lei + alimentação subsidiada",
+            "Experiência não é obrigatória, mas conta pontos",
+            "CTA: 'Tem experiência rural? Manda DM e veja as vagas abertas'"
+          ],
+          "caption": "O visto H2A é específico para trabalho agrícola. E os Estados Unidos têm uma crise de falta de mão de obra no campo.\n\nBrasileiros são altamente valorizados pelos empregadores americanos. Nossa reputação no agro é excelente.\n\nFunções com mais vagas:\n- Colheita e plantio\n- Operação de máquinas agrícolas\n- Tratoristas\n- Pecuária\n- Manutenção de fazendas\n\nSalário: US$3.000 a US$4.500/mês.\nMoradia: GRATUITA (garantida por lei no H2A).\nAlimentação: subsidiada.\n\nVocê não precisa ter experiência rural para todas as vagas. Mas se tiver, suas chances disparam.\n\nManda DM com sua experiência e eu verifico as vagas abertas."
+        }
+      },
+      {
+        "dia": "Quarta - Dia 24",
+        "post": {
+          "titulo": "Caminhoneiro nos EUA: salário de R$25.000 a R$35.000 por mês",
+          "formato": "carrossel",
+          "slides": 6,
+          "conteudo_slides": [
+            "Capa: Foto de caminhão americano + 'Motorista nos EUA: até R$35 mil/mês'",
+            "Salário médio: US$4.500 a US$6.000/mês como motorista de caminhão",
+            "Requisitos: CNH brasileira categorias D ou E, experiência comprovada",
+            "O empregador paga: moradia, visto, passagem. Você só precisa dirigir.",
+            "Demanda ALTÍSSIMA. Falta motoristas nos EUA.",
+            "CTA: 'Tem CNH D ou E? Manda DM AGORA'"
+          ],
+          "caption": "Se você é caminhoneiro no Brasil, precisa ler isso.\n\nMotoristas de caminhão são uma das categorias mais demandadas nos EUA para visto H2B.\n\nSalário: US$4.500 a US$6.000 por mês (R$25.000 a R$35.000)\nMoradia: paga pelo empregador\nTransporte: pago pelo empregador\nPassagem: ida e volta pagas\n\nFalta motorista nos EUA. E empregador americano está buscando brasileiros.\n\nSe você tem CNH D ou E e experiência, manda uma DM AGORA. Essa é uma das vagas que mais saem."
+        }
+      },
+      {
+        "dia": "Quinta - Dia 25",
+        "post": {
+          "titulo": "Construção civil nos EUA: a área que mais contrata brasileiros",
+          "formato": "carrossel",
+          "slides": 7,
+          "conteudo_slides": [
+            "Capa: 'Construção Civil: a porta de entrada para os EUA'",
+            "Por que a construção é a área número 1 de contratação?",
+            "Funções: pedreiro, carpinteiro, eletricista, pintor, ajudante geral",
+            "Salário: US$3.200 a US$4.800/mês com horas extras",
+            "Não precisa de diploma. Precisa de experiência prática e vontade.",
+            "A construção americana valoriza MUITO o profissional brasileiro",
+            "CTA: 'Trabalha com construção? Manda DM e veja se tem vaga para você'"
+          ],
+          "caption": "A construção civil é disparada a área que mais contrata brasileiros com visto H2B.\n\nMotivo? Profissional brasileiro tem fama de trabalhador, caprichoso e dedicado nos EUA.\n\nFunções com mais vagas:\n- Pedreiro\n- Carpinteiro\n- Eletricista\n- Pintor\n- Ajudante geral\n\nSalário: US$3.200 a US$4.800/mês com horas extras.\nMoradia e transporte: pagos pelo empregador.\n\nVocê não precisa de diploma. Precisa de experiência prática e vontade de trabalhar.\n\nSe você trabalha ou já trabalhou com construção, manda DM agora. Essa área sai vaga toda semana."
+        }
+      },
+      {
+        "dia": "Sexta - Dia 26",
+        "post": {
+          "titulo": "O que está incluso na capacitação da Elos Connections?",
+          "formato": "carrossel",
+          "slides": 8,
+          "conteudo_slides": [
+            "Capa: 'Tudo que você recebe na capacitação Elos'",
+            "Diagnóstico de perfil profissional com especialista",
+            "Currículo em inglês + Carta de apresentação + Vídeo de apresentação editado",
+            "Curso de inglês completo (básico à conversação)",
+            "Plataforma própria de busca automática de vagas",
+            "Preparação para entrevistas com empregador e consulado",
+            "Suporte remoto durante TODA sua estadia nos EUA",
+            "CTA: 'Quer ver os planos completos? Manda DM ou acessa o link na bio'"
+          ],
+          "caption": "A gente sempre fala dos resultados. Mas o que exatamente está incluso?\n\n- Análise do seu perfil profissional\n- Currículo no padrão americano\n- Carta de apresentação personalizada\n- Vídeo de apresentação editado\n- Curso de inglês (do básico à conversação)\n- Plataforma própria que dispara seu perfil para vagas compatíveis\n- Treinamento para entrevistas\n- Suporte remoto nos EUA\n\nIsso tudo se fosse comprado separadamente passaria de R$10.000.\n\nQuer ver os planos e valores? Manda uma DM ou clica no link da bio."
+        }
+      },
+      {
+        "dia": "Sábado - Dia 27",
+        "post": {
+          "titulo": "O que +100 brasileiros contratados têm em comum?",
+          "formato": "carrossel",
+          "slides": 6,
+          "conteudo_slides": [
+            "Capa: 'O segredo dos 100+ contratados'",
+            "1. Não esperaram o momento perfeito. Começaram.",
+            "2. Confiaram em um método já validado.",
+            "3. Tiveram acompanhamento profissional do início ao fim.",
+            "4. Não desistiram na primeira dificuldade.",
+            "CTA: 'Semana que vem tem novidade. Fica de olho. Enquanto isso, manda DM'"
+          ],
+          "caption": "Mais de 100 brasileiros já foram contratados depois de passar pela nossa capacitação.\n\nO que todos eles têm em comum?\n\n- Não esperaram as condições perfeitas\n- Confiaram em um processo que funciona\n- Aceitaram ser guiados por quem conhece o caminho\n- Persistiram\n\nNenhum deles tinha inglês fluente quando começou. Nenhum deles tinha garantia de que daria certo. Mas todos deram o primeiro passo.\n\nSemana que vem tem novidade por aqui.\n\nEnquanto isso, se quiser adiantar sua jornada, manda uma DM."
+        }
+      }
+    ],
+    "stories_semana": [
+      "Enquetes segmentadas: 'Qual sua área?' (Construção/Agricultura/Transporte/Hotelaria/Outra)",
+      "Print de vaga real disponível com blur no empregador (1-2x na semana)",
+      "Bastidor: tela da plataforma de busca de vagas (sem dados sensíveis)",
+      "Caixinha: 'Qual área você quer ver mais conteúdo?'",
+      "Teaser da campanha: 'Semana que vem tem novidade...' a partir de quinta",
+      "Contagem regressiva nos stories a partir de sexta"
+    ]
+  },
+
+  "dias_28_a_30": {
+    "tema": "Fechamento do mês - Aquecimento máximo para campanha",
+    "dias": [
+      {
+        "dia": "Segunda - Dia 29",
+        "post": {
+          "titulo": "Seu salário atual em 1 ano vs 1 temporada nos EUA",
+          "formato": "carrossel",
+          "slides": 6,
+          "conteudo_slides": [
+            "Capa: 'A conta que vai te fazer repensar tudo'",
+            "Salário médio no Brasil: R$2.500/mês x 12 = R$30.000/ano",
+            "1 temporada nos EUA (6 meses): US$3.500/mês x 6 = US$21.000 (~R$120.000)",
+            "Ou seja: 6 meses nos EUA = 4 anos de trabalho no Brasil",
+            "E ainda com moradia, transporte e passagem PAGOS",
+            "CTA: 'Essa conta não mente. Manda DM e comece a sua jornada'"
+          ],
+          "caption": "Vamos fazer uma conta simples.\n\nSalário médio no Brasil: R$2.500 por mês.\nEm 1 ano: R$30.000.\n\n1 temporada de 6 meses nos EUA:\nUS$3.500 x 6 = US$21.000 = aproximadamente R$120.000\n\n6 meses nos EUA equivale a 4 ANOS de trabalho no Brasil.\n\nE isso com moradia paga. Transporte pago. Passagem paga.\n\nA conta não mente. O que está faltando é o primeiro passo.\n\nEssa semana tem novidade chegando. Fica de olho.\n\nEnquanto isso, manda uma DM."
+        }
+      },
+      {
+        "dia": "Terça - Dia 30",
+        "post": {
+          "titulo": "Amanhã começa algo novo por aqui. Você está pronto?",
+          "formato": "post_statico",
+          "slides": 1,
+          "conteudo_slides": [
+            "Imagem de impacto com texto: 'Amanhã. Não perde.' + logo Elos"
+          ],
+          "caption": "30 dias de conteúdo. 24 posts. Muitas histórias reais.\n\nE amanhã começa uma fase nova.\n\nSe você está cansado de só assistir e quer AGIR, fica ligado aqui amanhã.\n\nAtiva o sininho. Salva esse post. E prepara a DM."
+        }
+      }
+    ],
+    "stories_fechamento": [
+      "Contagem regressiva 24h: stories com cronômetro a cada 6h",
+      "Caixinha: 'O que você espera da novidade?'",
+      "Enquete: 'Você está pronto para dar o primeiro passo?' (Sim/Não/Ainda tenho dúvidas)",
+      "Último tease: foto do André/Ozeas segurando papel com '???'"
+    ]
+  },
+
+  "stories_diarios_padrao": {
+    "rotina_sugerida": [
+      {
+        "tipo": "Bom dia",
+        "conteudo": "Frase motivacional ou pergunta do dia",
+        "frequencia": "Todo dia"
+      },
+      {
+        "tipo": "Educativo rápido",
+        "conteudo": "1 dica sobre visto, inglês, currículo ou vida nos EUA",
+        "frequencia": "Dias de semana"
+      },
+      {
+        "tipo": "Prova social",
+        "conteudo": "Print de conversa de aluno, foto de contratado, depoimento curto",
+        "frequencia": "2-3x por semana"
+      },
+      {
+        "tipo": "Interativo",
+        "conteudo": "Enquete, quiz, caixinha de perguntas, termômetro",
+        "frequencia": "1-2x por dia"
+      },
+      {
+        "tipo": "Bastidores",
+        "conteudo": "Rotina dos mentores, preparação de conteúdo, reuniões",
+        "frequencia": "1-2x por semana"
+      }
+    ]
+  },
+
+  "resumo_metricas": {
+    "total_posts_30_dias": 26,
+    "distribuicao_pilares": {
+      "autoridade_quem_somos": "6 posts (Dias 1-6)",
+      "prova_social": "6 posts (Dias 8-13)",
+      "educacional": "6 posts (Dias 15-20)",
+      "profissoes_oferta": "6 posts (Dias 22-27)",
+      "aquecimento_campanha": "2 posts (Dias 29-30)"
+    },
+    "formato_dos_posts": {
+      "carrossel": "25 posts",
+      "post_statico": "1 post (Dia 30 - tease)"
+    },
+    "dias_sem_post": ["Domingos (Dias 7, 14, 21, 28)"]
+  },
+
+  "bio_instagram_sugerida": {
+    "linha1": "Venha trabalhar nos EUA",
+    "linha2": "R$20 mil a R$40 mil por mês | Visto H2A",
+    "linha3": "+100 brasileiros contratados",
+    "linha4": "Moradia GRÁTIS | Salário em dólar",
+    "linha5": "Fale com a gente pelo WhatsApp",
+    "link": "Link do WhatsApp ou página de captura"
+  },
+
+  "checklist_pre_lancamento": {
+    "antes_de_comecar": [
+      "Criar/customizar perfil do Instagram (@elosconnections) com foto de perfil profissional",
+      "Criar página no Facebook com mesma identidade visual",
+      "Configurar link da bio (Linktree ou similar) com WhatsApp, site e página de vendas",
+      "Preparar os 26 posts em ferramenta de design (Canva, Photoshop)",
+      "Gravar stories iniciais para a primeira semana",
+      "Definir identidade visual: paleta de cores (azul marinho, vermelho bandeira EUA, branco)",
+      "Criar templates de carrossel padronizados (marca d'água, fontes, cores)",
+      "Separar fotos reais de alunos contratados (pedir para André/Ozeas)",
+      "Preparar respostas prontas para DMs mais frequentes",
+      "Configurar respostas automáticas no Instagram e Facebook"
+    ]
+  }
+}

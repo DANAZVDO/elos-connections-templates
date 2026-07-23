@@ -1,0 +1,458 @@
+{
+  "empresa": {
+    "nome": "Elos Connections",
+    "site_antigo": "rumoaodolar.online",
+    "site_novo": "elosconnections.com.br",
+    "email": "suporte@elosconnections.com",
+    "segmento": "Capacitação para trabalho temporário agrícola nos EUA (Visto H2A)",
+    "metodo": "Rumo ao Dólar",
+    "fundadores": ["André", "Ozeas Silva"],
+    "resultados": "+100 trabalhadores contratados",
+    "diferenciais": [
+      "Plataforma própria de disparo automático de perfil para vagas",
+      "Suporte via WhatsApp",
+      "Garantia de extensão gratuita de 6 meses",
+      "Curso de inglês incluso (intermediário)",
+      "Aulas ao vivo com professores brasileiros e americanos",
+      "Suporte remoto durante estadia nos EUA",
+      "Parceria com empregadores certificados pelo governo americano"
+    ],
+    "fases_metodo": [
+      {"fase": 1, "nome": "Despertar", "descricao": "Autoconhecimento, propósito e preparo mental"},
+      {"fase": 2, "nome": "Construção do Perfil Profissional", "descricao": "Currículo em inglês, carta de apresentação, vídeo de apresentação, curso de inglês"},
+      {"fase": 3, "nome": "Posicionamento Internacional", "descricao": "Marketing pessoal, mercado de trabalho nos EUA, soft skills"},
+      {"fase": 4, "nome": "Visto e Entrevistas", "descricao": "Vistos H2A/H2B, formulário DS-160, simulação de entrevistas"},
+      {"fase": 5, "nome": "Planejamento Pessoal e Financeiro", "descricao": "Educação financeira, checklist de viagem"},
+      {"fase": 6, "nome": "Suporte na Viagem e Estadia", "descricao": "Orientação cultural, atendimento emergencial remoto"},
+      {"fase": 7, "nome": "Retorno ou Continuidade", "descricao": "Aplicação de capital no Brasil, novo ciclo de visto, imigração definitiva via EB-3"}
+    ],
+    "planos": [
+      {
+        "nome": "Análise + CV",
+        "preco": 397,
+        "parcelas": null,
+        "inclui": ["Análise de perfil profissional", "Currículo modelo americano", "Carta de apresentação", "Texto com gatilhos mentais para e-mail"]
+      },
+      {
+        "nome": "Plano Essencial",
+        "preco": 1997,
+        "parcelas": "5x R$457",
+        "inclui": ["Aulas gravadas de inglês", "4 aulas ao vivo de inglês em grupo/semana", "Aulas de capacitação gravadas", "Mentorias ao vivo em grupo", "1 atendimento análise de perfil", "12 meses de acesso", "Plataforma ELOS de busca de vagas", "Indicação para vagas", "Suporte formulário DS-160"]
+      },
+      {
+        "nome": "Plano VIP",
+        "preco": 4997,
+        "parcelas": "6x R$875",
+        "inclui": ["3 aulas ao vivo com professores brasileiros", "2 aulas ao vivo com professores americanos", "1 mentoria semanal de 2h em grupo", "6 atendimentos particulares com experts", "Currículo modelo americano", "Carta de apresentação", "Edição de vídeo de apresentação", "Curso de imigração com família", "12 meses de acesso", "Hospedagem gratuita em Swainsboro/GA em caso de necessidade"]
+      }
+    ],
+    "vistos": {
+      "H2A": {
+        "tipo": "Trabalho temporário agrícola",
+        "areas": ["Colheita de frutas", "Plantio", "Pecuária", "Fazendas de leite", "Viveiros", "Produção de vegetais", "Operação de máquinas agrícolas"],
+        "duracao": "3 a 10 meses (renovável)",
+        "limite_anual": "NÃO há limite anual de vistos (sem cap). Se todos os requisitos forem cumpridos, não há teto que impeça novas aprovações.",
+        "moradia": "OBRIGATÓRIA e GRATUITA. O empregador deve fornecer moradia que atenda aos padrões legais, sem custo para o trabalhador.",
+        "alimentacao": "O empregador deve fornecer refeições OU disponibilizar instalações adequadas para cozinhar.",
+        "salario": "Baseado na taxa agrícola aplicável (AEWR, quando exigida).",
+        "observacao_transporte": "Transporte dentro das fazendas é permitido. Para dirigir caminhões em estradas públicas nos EUA é necessário CDL (carteira de motorista comercial americana), disponível apenas para residentes permanentes ou cidadãos americanos, além de inglês fluente."
+      },
+      "H2B": {
+        "tipo": "Trabalho temporário não-agrícola",
+        "areas": ["Hotéis", "Limpeza", "Construção", "Paisagismo", "Restaurantes", "Resorts", "Manutenção de parques", "Serviços de temporada", "Processamento de frutos do mar"],
+        "duracao": "3 a 10 meses (renovável)",
+        "limite_anual": "Sim, há limite anual de vistos (cap). A procura costuma ser maior que a oferta e as vagas podem se esgotar rapidamente.",
+        "moradia": "NÃO é obrigatória por lei federal. Alguns empregadores oferecem, outros cobram aluguel, outros apenas auxiliam a encontrar.",
+        "alimentacao": "O trabalhador é responsável pela própria alimentação.",
+        "salario": "Baseado no salário prevalecente (Prevailing Wage) da ocupação e região.",
+        "observacao_transporte": "ATENÇÃO: Não inclui transporte rodoviário/caminhoneiro. Caminhoneiros em estradas nos EUA precisam de CDL (carteira de motorista comercial americana), que só pode ser obtida por residentes permanentes ou cidadãos americanos, além de inglês fluente."
+      }
+    },
+    "faixa_salarial": {
+      "min_usd": 3500,
+      "max_usd": 7200,
+      "min_brl": 20000,
+      "max_brl": 40000,
+      "observacao": "Dependendo do estado, função e horas extras — foco H2A agrícola"
+    },
+    "beneficios_trabalhador": {
+      "H2A": [
+        "Passagem aérea de ida e volta paga pelo empregador",
+        "Moradia OBRIGATÓRIA e GRATUITA fornecida pelo empregador",
+        "Transporte local com regras específicas de reembolso",
+        "Alimentação fornecida ou instalações para cozinhar",
+        "Busca no aeroporto",
+        "Sem limite anual de vistos — maior disponibilidade"
+      ],
+      "H2B": [
+        "Passagem aérea de ida e volta com obrigações de transporte em determinadas condições",
+        "Moradia NÃO é obrigatória por lei (alguns empregadores oferecem, outros não)",
+        "Grande variedade de setores (hotéis, construção, paisagismo, restaurantes, resorts)",
+        "Possibilidade de salário mais alto em algumas ocupações",
+        "Sujeito a limite anual de vistos — concorrência maior"
+      ]
+    },
+    "publico_alvo": [
+      "Trabalhadores rurais com experiência em agricultura, máquinas ou pecuária",
+      "Operadores de máquinas agrícolas (tratores, colheitadeiras, plantadeiras)",
+      "Trabalhadores de pecuária e fazendas de leite",
+      "Profissionais de viveiros e produção de vegetais",
+      "Pessoas com experiência em colheita de frutas, plantio e cultivo",
+      "Trabalhadores de serviços gerais com disposição para trabalho rural",
+      "Pessoas cansadas da falta de oportunidades no Brasil e que buscam um caminho seguro para o exterior",
+      "Quem busca trabalho legal e seguro nos EUA com salário de R$20 a R$40 mil/mês"
+    ]
+  },
+  "historias_sucesso": [
+    {
+      "nome": "Roberto",
+      "historia": "Saiu do Brasil com mais 6 brasileiros, vaga garantida, voltou para segunda temporada a convite do empregador"
+    },
+    {
+      "nome": "Matheus",
+      "historia": "Mecânico em Goiânia que transformou sua realidade com trabalho legal e salário em dólar nos EUA"
+    },
+    {
+      "nome": "Avner",
+      "cidade": "Ponta Grossa/PR",
+      "historia": "Meses de dedicação com aulas de inglês, preparação para entrevistas, construção de currículo. Hoje contratado e pronto para nova fase"
+    },
+    {
+      "nome": "Jairo",
+      "historia": "Relata que sem a capacitação não teria conseguido. Valor financeiro considerável e experiência que vale a pena"
+    },
+    {
+      "nome": "Gustavo",
+      "cidade": "Assis/SP",
+      "historia": "Mandou +100 currículos sem sucesso. Conheceu André/ELOS pelo YouTube, em 20 dias foi contratado como motorista de caminhão e operador de máquinas agrícolas"
+    }
+  ],
+  "conteudo_calendario": {
+    "frequencia_sugerida": {
+      "instagram_feed": "4-5x por semana",
+      "instagram_stories": "Diário (3-5 stories/dia)",
+      "instagram_reels": "2-3x por semana",
+      "facebook": "3-4x por semana",
+      "youtube_shorts": "2-3x por semana",
+      "tiktok": "3-4x por semana",
+      "whatsapp_status": "Diário",
+      "youtube": "1-2x por semana (vídeos longos)"
+    },
+    "pilares_conteudo": [
+      {
+        "pilar": "Educacional",
+        "peso": "40%",
+        "descricao": "Explicar vistos H2A/H2B, processo seletivo, documentação, inglês, mercado de trabalho americano"
+      },
+      {
+        "pilar": "Prova Social",
+        "peso": "30%",
+        "descricao": "Depoimentos, cases de sucesso, antes e depois, alunos contratados, prints de aprovações"
+      },
+      {
+        "pilar": "Vendas/Oferta",
+        "peso": "15%",
+        "descricao": "Planos, preços, condições, bônus, garantia, chamadas para ação"
+      },
+      {
+        "pilar": "Conexão/Autoridade",
+        "peso": "15%",
+        "descricao": "Bastidores, rotina dos mentores, dicas pessoais, lifestyle nos EUA, visão de futuro"
+      }
+    ]
+  },
+  "ideias_posts": {
+    "educacional": [
+      {
+        "titulo": "H2A vs H2B: Qual o visto certo para você?",
+        "formato": "carrossel",
+        "descricao": "Comparativo lado a lado entre os dois vistos: áreas de trabalho, duração, requisitos, salários médios"
+      },
+      {
+        "titulo": "5 documentos essenciais para tirar o visto americano",
+        "formato": "carrossel",
+        "descricao": "Lista visual dos documentos: passaporte, DS-160, comprovantes, fotos, carta do empregador"
+      },
+      {
+        "titulo": "Quanto realmente custa trabalhar nos EUA?",
+        "formato": "reels",
+        "descricao": "Breakdown dos custos vs. o que o empregador cobre: passagem, moradia, transporte, alimentação"
+      },
+      {
+        "titulo": "O que é o formulário DS-160 e como preencher sem erros",
+        "formato": "carrossel",
+        "descricao": "Passo a passo do formulário mais temido, com dicas para evitar reprovação"
+      },
+      {
+        "titulo": "Inglês para o trabalho: 10 frases que você vai usar todo dia",
+        "formato": "reels",
+        "descricao": "Frases práticas em inglês para o dia a dia no trabalho nos EUA"
+      },
+      {
+        "titulo": "As 7 fases do método Rumo ao Dólar",
+        "formato": "carrossel",
+        "descricao": "Cada fase do método explicada visualmente com seus benefícios"
+      },
+      {
+        "titulo": "Salário mínimo nos EUA vs Brasil: comparação real",
+        "formato": "carrossel",
+        "descricao": "Infográfico comparando poder de compra, salário mínimo e custo de vida"
+      },
+      {
+        "titulo": "3 erros que reprovam na entrevista do visto",
+        "formato": "reels",
+        "descricao": "Os erros mais comuns e como evitá-los na entrevista consular"
+      },
+      {
+        "titulo": "Como funciona a temporada de trabalho agrícola nos EUA",
+        "formato": "video_curto",
+        "descricao": "Explicação do ciclo das estações, colheitas, tipos de cultivo e demanda por mão de obra"
+      },
+      {
+        "titulo": "EB-3 Unskilled: o caminho para o Green Card",
+        "formato": "carrossel",
+        "descricao": "Explicação do visto EB-3 como alternativa de imigração definitiva"
+      }
+    ],
+    "prova_social": [
+      {
+        "titulo": "De mecânico em Goiânia aos EUA: a história do Matheus",
+        "formato": "reels_depoimento",
+        "descricao": "Depoimento completo com fotos do antes e depois"
+      },
+      {
+        "titulo": "Ele foi com +6 brasileiros e foi convidado a voltar",
+        "formato": "reels_depoimento",
+        "descricao": "História do Roberto que fez duas temporadas"
+      },
+      {
+        "titulo": "+100 vidas transformadas: o impacto real da Elos",
+        "formato": "carrossel",
+        "descricao": "Mosaico com fotos de alunos contratados em diferentes estados dos EUA"
+      },
+      {
+        "titulo": "Em 20 dias contratado: Gustavo de Assis/SP",
+        "formato": "reels_depoimento",
+        "descricao": "Jornada de Gustavo que mandou +100 currículos sem sucesso até conhecer a Elos"
+      },
+      {
+        "titulo": "Print da semana: mais um aluno aprovado",
+        "formato": "stories_fixo",
+        "descricao": "Publicar prints de mensagens de alunos com resultado positivo periodicamente"
+      },
+      {
+        "titulo": "O dia que o visto chegou: reações reais",
+        "formato": "reels_compilacao",
+        "descricao": "Compilação de vídeos de alunos mostrando o passaporte com visto aprovado"
+      },
+      {
+        "titulo": "Como a Elos mudou minha vida - Avner de Ponta Grossa",
+        "formato": "video_depoimento",
+        "descricao": "Depoimento completo com detalhes da jornada de preparação até a contratação"
+      }
+    ],
+    "vendas_oferta": [
+      {
+        "titulo": "Quanto custa NÃO investir na sua carreira internacional?",
+        "formato": "reels",
+        "descricao": "Cálculo de quanto a pessoa deixa de ganhar por mês adiando a decisão"
+      },
+      {
+        "titulo": "Planos Elos Connections: qual o ideal para você?",
+        "formato": "carrossel",
+        "descricao": "Comparativo visual dos 3 planos com preços e benefícios"
+      },
+      {
+        "titulo": "Garantia Elos: 6 meses extras se não for contratado",
+        "formato": "post_statico",
+        "descricao": "Explicar a garantia, condições, cases de quem usou e conseguiu depois"
+      },
+      {
+        "titulo": "Bônus exclusivos por tempo limitado",
+        "formato": "stories_reels",
+        "descricao": "Criar urgência com bônus que expiram, mostrando o valor agregado"
+      },
+      {
+        "titulo": "De R$10.000 em serviços por apenas R$1.397",
+        "formato": "carrossel",
+        "descricao": "Mostrar tudo que está incluso e o valor real se comprado separadamente"
+      }
+    ],
+    "conexao_autoridade": [
+      {
+        "titulo": "A história de Ozeas: de pastor a especialista em imigração",
+        "formato": "video_longo",
+        "descricao": "Storytelling da trajetória pessoal do mentor"
+      },
+      {
+        "titulo": "Bastidores Elos: preparando a próxima turma",
+        "formato": "stories_reels",
+        "descricao": "Mostrar rotina de trabalho, preparação de aulas, reuniões com empregadores"
+      },
+      {
+        "titulo": "Dia a dia de um brasileiro trabalhando nos EUA",
+        "formato": "reels",
+        "descricao": "Aluno mostra rotina de trabalho, moradia, alimentação, lazer nos EUA"
+      },
+      {
+        "titulo": "André responde: as 5 maiores dúvidas sobre o H2B",
+        "formato": "video_curto",
+        "descricao": "Formato de pergunta e resposta rápida com o mentor"
+      },
+      {
+        "titulo": "Por que criamos a Elos Connections",
+        "formato": "video_longo",
+        "descricao": "História de fundação, propósito, missão e visão da empresa"
+      },
+      {
+        "titulo": "Live semanal: tire suas dúvidas ao vivo",
+        "formato": "live",
+        "descricao": "Transmissão semanal respondendo perguntas sobre vistos, trabalho e vida nos EUA"
+      }
+    ]
+  },
+  "ideias_campanhas": [
+    {
+      "campanha": "Campanha de Lançamento Elos Connections",
+      "duracao": "30 dias",
+      "estrutura": [
+        {"fase": "Aquecimento (dias 1-7)", "conteudo": "Posts contando a história, propósito e diferencial da Elos. Bastidores e apresentação dos mentores"},
+        {"fase": "Conteúdo de valor (dias 8-14)", "conteudo": "Posts educacionais sobre H2A/H2B, cases de sucesso, dúvidas frequentes. Sem venda ainda"},
+        {"fase": "Abertura de matrículas (dias 15-21)", "conteudo": "Apresentação dos planos, bônus, depoimentos. Oferta de lançamento com condição especial"},
+        {"fase": "Fechamento (dias 22-30)", "conteudo": "Últimos dias, urgência, provas sociais, tira-dúvidas ao vivo, contagem regressiva"}
+      ]
+    },
+    {
+      "campanha": "Desafio 7 Dias Rumo ao Dólar",
+      "duracao": "7 dias",
+      "estrutura": [
+        {"dia": 1, "tema": "Autoconhecimento: descubra seu perfil profissional internacional"},
+        {"dia": 2, "tema": "Currículo: como adaptar seu CV para o padrão americano"},
+        {"dia": 3, "tema": "Inglês: 10 frases essenciais para entrevistas"},
+        {"dia": 4, "tema": "Vistos: H2A ou H2B - qual o caminho certo para você?"},
+        {"dia": 5, "tema": "Busca de vagas: onde e como encontrar empregadores"},
+        {"dia": 6, "tema": "Entrevista: simulação e preparação"},
+        {"dia": 7, "tema": "Plano de ação: seu cronograma para os EUA + oferta especial"}
+      ]
+    },
+    {
+      "campanha": "Maratona de Depoimentos - Toda Hora um Contratado",
+      "duracao": "1 dia (evento)",
+      "estrutura": [
+        {"horario": "A cada 1 hora", "conteudo": "Novo depoimento em vídeo de um aluno contratado, com oferta especial ao final do dia"}
+      ]
+    },
+    {
+      "campanha": "Operação Safra EUA",
+      "duracao": "14 dias",
+      "estrutura": [
+        {"descricao": "Campanha sazonal focada em trabalhadores rurais alinhada com o calendário de colheitas americanas. Vagas específicas, depoimentos do setor agrícola"}
+      ]
+    },
+    {
+      "campanha": "Black Friday da Imigração Legal",
+      "duracao": "5 dias",
+      "estrutura": [
+        {"descricao": "Condição especial com desconto nos planos, bônus extras, vagas limitadas. Contagem regressiva, prova social, lives diárias"}
+      ]
+    },
+    {
+      "campanha": "Heróis da Construção nos EUA",
+      "duracao": "10 dias",
+      "estrutura": [
+        {"descricao": "Segmentada para profissionais de construção civil: pedreiros, carpinteiros, eletricistas. Salários, demanda do mercado americano, caminho do visto H2B"}
+      ]
+    }
+  ],
+  "hashtags": {
+    "principais": [
+      "#ElosConnections",
+      "#RumoAoDolar",
+      "#TrabalharNosEUA",
+      "#VistoAmericano",
+      "#H2A",
+      "#H2B",
+      "#VistoDeTrabalho",
+      "#TrabalhoNosEUA",
+      "#ImigracaoLegal"
+    ],
+    "engajamento": [
+      "#BrasileirosNosEUA",
+      "#VidaNosEUA",
+      "#TrabalhoNoExterior",
+      "#SalarioEmDolar",
+      "#EstadosUnidos",
+      "#BrasilParaEUA",
+      "#SonhoAmericano",
+      "#OportunidadeDeTrabalho"
+    ],
+    "especificos": [
+      "#TrabalhadorRural",
+      "#AgriculturaEUA",
+      "#ConstrucaoCivilEUA",
+      "#HotelariaEUA",
+      "#PaisagismoEUA",
+      "#GreenCard",
+      "#VistoEB3",
+      "#TemporadaNosEUA"
+    ]
+  },
+  "faq_conteudo": [
+    {"pergunta": "Preciso falar inglês para trabalhar com H2A ou H2B?", "resposta": "Não é obrigatório. O curso de inglês está incluso na capacitação."},
+    {"pergunta": "O empregador realmente paga passagem, moradia e transporte?", "resposta": "H2A: Sim, o empregador é obrigado por lei a fornecer moradia gratuita e alimentação, além de passagem e transporte. H2B: A passagem tem obrigações de reembolso em determinadas condições, mas a moradia NÃO é obrigatória por lei federal — depende do empregador."},
+    {"pergunta": "Quanto vou ganhar por mês?", "resposta": "Entre R\$ 20.000,00 e R\$ 40.000,00 por mês, dependendo do estado, função agrícola e horas extras."},
+    {"pergunta": "Preciso ter experiência para conseguir a vaga?", "resposta": "Não obrigatoriamente, mas experiência na área aumenta as chances de contratação."},
+    {"pergunta": "Quanto tempo dura o contrato de trabalho?", "resposta": "Normalmente de 3 a 10 meses, podendo ser renovado dependendo do empregador."},
+    {"pergunta": "E se meu visto for negado?", "resposta": "Oferecemos reavaliação do caso e orientações para uma nova tentativa."},
+    {"pergunta": "Como a Elos garante que a vaga é real?", "resposta": "Trabalhamos apenas com empregadores certificados pelo governo americano, com contratos oficiais e segurança jurídica."},
+    {"pergunta": "É possível renovar o contrato e continuar nos EUA?", "resposta": "Sim, desde que o empregador ofereça novo contrato e o visto seja renovado."},
+    {"pergunta": "Como funciona a alimentação durante o trabalho?", "resposta": "H2A: O empregador fornece refeições ou instalações para cozinhar. H2B: Geralmente o trabalhador é responsável pela própria alimentação."},
+    {"pergunta": "Posso levar minha família?", "resposta": "O visto H2A/H2B é individual, mas existe o caminho do visto EB-3 para imigração definitiva com família."},
+    {"pergunta": "H2A e H2B: qual a diferença principal?", "resposta": "H2A é exclusivo para agricultura (sem limite anual de vistos, com moradia gratuita obrigatória). H2B é para setores não-agrícolas como construção e hotelaria (tem limite anual de vistos, moradia não é obrigatória)."},
+    {"pergunta": "Transporte/caminhoneiro entra no H2A ou H2B?", "resposta": "Não. Caminhoneiros em estradas nos EUA precisam de CDL (carteira de motorista comercial americana), que só pode ser obtida por residentes permanentes ou cidadãos americanos, além de inglês fluente. O transporte com máquinas dentro de fazendas no H2A é permitido."}
+  ],
+  "objeções_comuns_e_respostas": [
+    {"objecao": "É muito caro", "resposta": "O investimento se paga em 1 mês de salário nos EUA. Se comprado separadamente, os serviços ultrapassam R$10.000."},
+    {"objecao": "Tenho medo de ser golpe", "resposta": "Mais de 100 alunos contratados, empregadores certificados pelo governo americano, cases reais documentados."},
+    {"objecao": "Não sei falar inglês", "resposta": "O curso de inglês está incluso em todos os planos, do intermediário à conversação para trabalho."},
+    {"objecao": "Não tenho experiência", "resposta": "Experiência não é obrigatória. Trabalhamos com análise de perfil para encontrar a vaga certa para você."},
+    {"objecao": "E se não der certo?", "resposta": "Garantia de 6 meses extras gratuitos se cumprir 90% das atividades e não for contratado em 12 meses."},
+    {"objecao": "Não tenho passaporte", "resposta": "Oferecemos suporte no processo de solicitação do passaporte em nossos planos."}
+  ],
+  "calendario_sazonal": {
+    "janeiro_fevereiro": "Alta demanda de H2B para hotelaria e turismo de inverno. Preparação para safra de primavera H2A",
+    "marco_abril_maio": "Pico de contratações H2A para plantio e cultivo de primavera. Demanda construção civil aumenta",
+    "junho_julho_agosto": "Alta temporada H2B para turismo, parques e hospitalidade. Colheitas de verão H2A",
+    "setembro_outubro": "Colheitas de outono H2A. Demanda para H2B em preparação para fim de ano",
+    "novembro_dezembro": "Demanda de H2B para varejo e logística de fim de ano. Planejamento para próxima temporada"
+  },
+  "concorrentes_analise": {
+    "observacao": "Baseado no que o depoimento do Gustavo revelou sobre o mercado",
+    "problemas_concorrentes": [
+      "Muitas reclamações no Reclame Aqui",
+      "Falta de transparência no processo",
+      "Cobrança sem entrega de resultados",
+      "Sem plataforma própria de busca de vagas",
+      "Sem suporte durante estadia nos EUA"
+    ],
+    "diferenciais_elos": [
+      "Plataforma própria de disparo automático",
+      "Suporte do início ao fim (pré e durante estadia)",
+      "Garantia documentada",
+      "Cases reais e verificáveis",
+      "Parceria com empregadores certificados"
+    ]
+  },
+  "tom_de_voz": {
+    "personalidade": "Inspirador, acolhedor e direto",
+    "linguagem": "Português brasileiro, tom de conversa, acessível ao trabalhador brasileiro médio",
+    "valores": ["Transformação de vidas", "Trabalho legal e seguro", "Transparência", "Resultados reais", "Apoio completo"],
+    "frases_chave": [
+      "Venha trabalhar nos EUA ganhando de R\$20 mil a R\$40 mil por mês",
+      "H2A: trabalho agrícola legal com moradia gratuita e salário em dólar",
+      "O método que já levou mais de 100 trabalhadores aos EUA",
+      "Trabalho nos EUA: Salário em Dólar, Moradia e Transporte Pagos",
+      "O agro americano está chamando brasileiros — vem!"
+    ]
+  }
+}

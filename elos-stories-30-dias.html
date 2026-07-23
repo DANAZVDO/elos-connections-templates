@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elos Connections — 30 Dias de Stories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0A1628;
+      --navy-dark: #060E1A;
+      --red: #BF0A30;
+      --gold: #C9A84C;
+      --cream: #F5F5F0;
+      --slate: #94A3B8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--navy-dark);
+      font-family: 'Satoshi', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 0;
+      gap: 80px;
+    }
+
+    /* ── DESIGN TOKENS ── */
+    .bg-navy { background-color: var(--navy); }
+    .bg-navy-dark { background-color: var(--navy-dark); }
+    .bg-red-accent { background-color: var(--red); }
+    .bg-gold-accent { background-color: var(--gold); }
+
+    .pattern-dots {
+      background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .text-gold { color: var(--gold); }
+    .text-cream { color: var(--cream); }
+    .text-slate { color: var(--slate); }
+    .text-red { color: var(--red); }
+
+    .text-gold-grad {
+      font-family: 'Bebas Neue', sans-serif;
+      background: linear-gradient(135deg, #E5C86C, #C9A84C, #A88A38);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .font-bebas { font-family: 'Bebas Neue', sans-serif; }
+    .font-satoshi { font-family: 'Satoshi', sans-serif; }
+
+    .glass-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 3px;
+      background: var(--red);
+      color: var(--cream);
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 16px 40px;
+      border-radius: 999px;
+      font-size: 22px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+    .cta-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(201,168,76,0.4); }
+
+    .logo-mark {
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--gold);
+      letter-spacing: 4px;
+      font-size: 28px;
+    }
+
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .flag-stripe {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--red) 50%, var(--gold) 50%);
+    }
+
+    /* ── DAY SEPARATOR ── */
+    .day-separator {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--gold);
+      letter-spacing: 6px;
+      text-align: center;
+      padding: 20px 0;
+      width: 1080px;
+    }
+    .day-separator span {
+      display: block;
+      font-size: 16px;
+      font-family: 'Satoshi', sans-serif;
+      color: var(--slate);
+      letter-spacing: 4px;
+      margin-top: 4px;
+    }
+
+    /* ── STORY WRAPPER ── */
+    .story-wrap {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 0 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    /* ── STORY SLIDE ── */
+    .story-slide {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      padding: 0 80px;
+    }
+    .story-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .story-safe-top {
+      position: absolute;
+      top: 130px;
+      left: 60px;
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--gold);
+      letter-spacing: 4px;
+      font-size: 28px;
+    }
+
+    /* ── STORY PROGRESS BAR ── */
+    .story-progress {
+      position: absolute;
+      top: 24px;
+      left: 20px;
+      right: 20px;
+      height: 3px;
+      display: flex;
+      gap: 4px;
+      z-index: 100;
+    }
+    .story-progress .seg {
+      flex: 1;
+      height: 100%;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      transition: background 0.35s ease;
+    }
+    .story-progress .seg.done { background: rgba(201,168,76,0.7); }
+    .story-progress .seg.current { background: rgba(255,255,255,0.9); }
+
+    /* ── NAV BUTTONS ── */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 101;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--cream);
+      font-size: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s, transform 0.2s;
+      line-height: 1;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.14); transform: translateY(-50%) scale(1.08); }
+    .nav-btn.prev { left: 16px; }
+    .nav-btn.next { right: 16px; }
+
+    /* ── TYPE A: BIG STAT / QUOTE ── */
+    .type-a-stat {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 110px;
+      line-height: 0.95;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .type-a-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      line-height: 1.1;
+      text-align: center;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+    .type-a-sub {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--slate);
+      text-align: center;
+      max-width: 720px;
+      line-height: 1.4;
+    }
+
+    /* ── TYPE B: POLL ── */
+    .poll-question {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: var(--cream);
+      text-align: center;
+      margin-bottom: 60px;
+      max-width: 800px;
+      line-height: 1.15;
+    }
+    .poll-options {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      max-width: 680px;
+    }
+    .poll-option {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 36px;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 30px;
+      font-weight: 500;
+      color: var(--cream);
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .poll-option:hover {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.08);
+    }
+    .poll-bar-fill {
+      height: 6px;
+      border-radius: 3px;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 0.5s, width 0.8s;
+      align-self: stretch;
+      margin-left: auto;
+    }
+    .poll-option.selected .poll-bar-fill { opacity: 1; }
+
+    /* ── TYPE C: QUESTION BOX ── */
+    .question-box {
+      width: 100%;
+      max-width: 680px;
+      border: 2px dashed rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 60px 50px;
+      text-align: center;
+      color: var(--slate);
+      font-family: 'Satoshi', sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      transition: border-color 0.3s;
+    }
+
+    /* ── TYPE D: QUICK TIP ── */
+    .type-d-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 58px;
+      line-height: 1.1;
+      text-align: center;
+      max-width: 850px;
+    }
+    .type-d-headline.gold { color: var(--gold); }
+    .type-d-headline.cream { color: var(--cream); }
+
+    /* ── TYPE E: CTA ── */
+    .type-e-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 60px;
+      color: var(--cream);
+      text-align: center;
+      max-width: 750px;
+      line-height: 1.15;
+      margin-bottom: 40px;
+    }
+
+    /* ── EXTRA ELEMENTS ── */
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 28px;
+      color: var(--cream);
+      margin-bottom: 14px;
+    }
+    .checklist-item .icon {
+      font-size: 32px;
+    }
+
+    .stat-big {
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--gold);
+      text-align: center;
+      line-height: 0.9;
+    }
+
+    .stat-muted {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: rgba(255,255,255,0.2);
+      text-align: center;
+      text-decoration: line-through;
+      margin-bottom: 8px;
+    }
+
+    .quote-author {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 24px;
+      color: var(--slate);
+      font-weight: 400;
+      margin-top: 20px;
+    }
+
+    .highlight-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 140px;
+      color: var(--gold);
+      line-height: 0.85;
+      text-align: center;
+    }
+
+    .side-by-side {
+      display: flex;
+      gap: 24px;
+      width: 100%;
+      max-width: 800px;
+    }
+    .side-card {
+      flex: 1;
+      padding: 40px 30px;
+      text-align: center;
+    }
+    .side-card .s-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .side-card .s-desc {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 22px;
+      color: var(--slate);
+      line-height: 1.4;
+    }
+
+    .grid-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+      max-width: 760px;
+    }
+    .grid-card {
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .grid-card .gc-icon { font-size: 40px; margin-bottom: 10px; }
+    .grid-card .gc-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+    .grid-card .gc-val {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 20px;
+      color: var(--gold);
+    }
+
+    .vs-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--gold);
+      background: var(--navy-dark);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      border: 2px solid var(--gold);
+    }
+
+    .quote-mark {
+      font-family: 'Georgia', serif;
+      font-size: 120px;
+      color: var(--gold);
+      line-height: 0.5;
+      opacity: 0.5;
+    }
+
+    /* DRAMATIC REVEAL */
+    .dramatic-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 160px;
+      color: var(--gold);
+      line-height: 0.85;
+      text-align: center;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.03); }
+    }
+
+    .dramatic-sub {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 34px;
+      color: var(--cream);
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .list-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 30px;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 1 — SEGUNDA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 1<span>SEGUNDA-FEIRA</span></div>
+<div class="story-wrap" id="story-d1">
+  <div class="story-progress" id="progress-d1"></div>
+  <div class="story-slides">
+    <!-- S1: Type D — Bom dia -->
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div style="font-size:38px;margin-bottom:16px;">☕</div>
+      <div class="type-d-headline cream">BOM DIA!</div>
+      <div class="type-a-sub" style="margin-top:16px;">Hoje começa uma jornada.</div>
+    </div>
+    <!-- S2: Type A — +100 stat -->
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-stat text-gold-grad">+100</div>
+      <div class="type-a-sub" style="font-weight:500;color:var(--cream);">BRASILEIROS CONTRATADOS</div>
+      <div class="type-a-sub" style="margin-top:12px;font-size:26px;">Com salário em dólar, moradia<br>e transporte pagos.</div>
+    </div>
+    <!-- S3: Type B — Poll -->
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="poll-question">Você conhece alguém que já trabalhou nos EUA?</div>
+      <div class="poll-options">
+        <div class="poll-option glass-card" onclick="selectPoll(this)">SIM<div class="poll-bar-fill" style="width:72%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">NÃO<div class="poll-bar-fill" style="width:28%"></div></div>
+      </div>
+    </div>
+    <!-- S4: Type E — CTA -->
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline">Novo post no feed explicando como funciona!</div>
+      <button class="cta-btn">VEJA O POST ↗</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d1',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d1',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 2 — TERÇA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 2<span>TERÇA-FEIRA</span></div>
+<div class="story-wrap" id="story-d2">
+  <div class="story-progress" id="progress-d2"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-d-headline cream">VOCÊ SABIA?</div>
+      <div class="type-a-sub" style="margin-top:24px;">O governo americano criou vistos específicos para contratar trabalhadores estrangeiros.</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="poll-question" style="font-size:44px;">Qual área combina mais com você?</div>
+      <div class="poll-options">
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🌾 Agricultura<div class="poll-bar-fill" style="width:28%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🏗️ Construção<div class="poll-bar-fill" style="width:34%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🏨 Hotelaria<div class="poll-bar-fill" style="width:22%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🚛 Transporte<div class="poll-bar-fill" style="width:16%"></div></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:48px;margin-bottom:32px;">Manda sua dúvida sobre vistos aqui →</div>
+      <div class="question-box">Escreva sua dúvida...</div>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d2',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d2',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 3 — QUARTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 3<span>QUARTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d3">
+  <div class="story-progress" id="progress-d3"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-d-headline cream" style="font-size:50px;margin-bottom:48px;">H2A vs H2B</div>
+      <div class="type-a-sub" style="margin-bottom:40px;font-size:28px;color:var(--cream);">Os 2 vistos de trabalho nos EUA</div>
+      <div class="side-by-side">
+        <div class="glass-card side-card">
+          <div class="s-title">H2A</div>
+          <div class="s-desc">Setor agrícola<br>Temporada<br>Moradia garantida</div>
+        </div>
+        <div class="glass-card side-card">
+          <div class="s-title">H2B</div>
+          <div class="s-desc">Setor não-agrícola<br>Temporada<br>Hotelaria, construção</div>
+        </div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:40px;font-size:20px;">O EMPREGADOR PAGA</div>
+      <div style="display:flex;flex-direction:column;gap:20px;width:100%;max-width:600px;">
+        <div class="glass-card" style="padding:20px 32px;text-align:left;font-size:30px;color:var(--cream);"><span style="font-size:34px;">✈️</span> Passagem</div>
+        <div class="glass-card" style="padding:20px 32px;text-align:left;font-size:30px;color:var(--cream);"><span style="font-size:34px;">🏠</span> Moradia</div>
+        <div class="glass-card" style="padding:20px 32px;text-align:left;font-size:30px;color:var(--cream);"><span style="font-size:34px;">🚗</span> Transporte</div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:72px;">US$3.000 — US$5.500</div>
+      <div class="type-a-stat" style="font-size:40px;color:var(--cream);margin-top:8px;">POR MÊS</div>
+      <div class="type-a-sub" style="margin-top:16px;font-size:26px;">= R$15.000 a R$32.000</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:48px;">Dúvida sobre qual visto é o seu?</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d3',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d3',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 4 — QUINTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 4<span>QUINTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d4">
+  <div class="story-progress" id="progress-d4"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-d-headline cream" style="font-size:50px;">ANDRÉ & OZEAS</div>
+      <div class="type-a-sub" style="margin-top:16px;">Os mentores por trás da<br>Elos Connections</div>
+      <div style="display:flex;gap:32px;margin-top:48px;">
+        <div style="width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.04);border:2px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;color:var(--slate);font-size:16px;">ANDRÉ</div>
+        <div style="width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.04);border:2px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;color:var(--slate);font-size:16px;">OZEAS</div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-d-headline cream" style="font-size:42px;">Experiência real no mercado americano:</div>
+      <div class="type-a-sub" style="margin-top:28px;line-height:1.5;">Ensino de inglês, recrutamento e processos seletivos nos EUA.</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-quote" style="font-size:54px;color:var(--gold);">NOSSA MOTIVAÇÃO?</div>
+      <div class="type-a-sub" style="margin-top:20px;">Criar um caminho legal, seguro e estruturado.</div>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d4',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d4',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 5 — SEXTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 5<span>SEXTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d5">
+  <div class="story-progress" id="progress-d5"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div style="font-size:80px;color:var(--gold);font-family:'Bebas Neue',sans-serif;">7</div>
+      <div class="type-d-headline cream" style="font-size:48px;margin-top:8px;">FASES</div>
+      <div class="type-a-sub" style="margin-top:12px;">DO <span style="color:var(--gold);">"EU QUERO"</span><br>AO <span style="color:var(--gold);">"ESTOU LÁ"</span></div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="poll-question" style="font-size:44px;">Qual fase te dá mais medo?</div>
+      <div class="poll-options">
+        <div class="poll-option glass-card" onclick="selectPoll(this)">📄 Documentação<div class="poll-bar-fill" style="width:32%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🗣️ Entrevista<div class="poll-bar-fill" style="width:30%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">💰 Investimento<div class="poll-bar-fill" style="width:22%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">✈️ Medo de ir sozinho<div class="poll-bar-fill" style="width:16%"></div></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline">Post novo no feed! As 7 fases explicadas.</div>
+      <button class="cta-btn">VEJA O POST ↗</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d5',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d5',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 6 — SÁBADO -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 6<span>SÁBADO</span></div>
+<div class="story-wrap" id="story-d6">
+  <div class="story-progress" id="progress-d6"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:40px;font-size:20px;">O QUE NOS DIFERENCIA</div>
+      <div style="display:flex;flex-direction:column;gap:18px;width:100%;max-width:680px;">
+        <div class="list-row glass-card" style="padding:20px 28px;">🤖&nbsp; Plataforma própria</div>
+        <div class="list-row glass-card" style="padding:20px 28px;">🛡️&nbsp; Garantia 6 meses</div>
+        <div class="list-row glass-card" style="padding:20px 28px;">✅&nbsp; Empregadores certificados</div>
+        <div class="list-row glass-card" style="padding:20px 28px;">📱&nbsp; Suporte nos EUA</div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:52px;">Quer saber mais?</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d6',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d6',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 8 — SEGUNDA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 8<span>SEGUNDA-FEIRA</span></div>
+<div class="story-wrap" id="story-d8">
+  <div class="story-progress" id="progress-d8"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:100px;">+100</div>
+      <div class="type-a-stat" style="font-size:40px;color:var(--cream);">CURRÍCULOS</div>
+      <div class="type-a-stat" style="font-size:64px;color:var(--gold);margin-top:4px;">1</div>
+      <div class="type-a-stat" style="font-size:40px;color:var(--cream);">RESPOSTA</div>
+      <div class="type-a-sub" style="margin-top:28px;">A jornada do Gustavo antes<br>de conhecer a Elos.</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:80px;">20 DIAS</div>
+      <div class="type-a-sub" style="font-weight:500;color:var(--cream);margin-top:8px;">depois:</div>
+      <div class="type-a-quote" style="font-size:44px;color:var(--cream);margin-top:16px;">CONTRATADO como motorista e operador de máquinas nos EUA.</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="poll-question">Você já tentou vaga no exterior?</div>
+      <div class="poll-options">
+        <div class="poll-option glass-card" onclick="selectPoll(this)">Sim, muitas<div class="poll-bar-fill" style="width:24%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">Sim, poucas<div class="poll-bar-fill" style="width:38%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">Nunca tentei<div class="poll-bar-fill" style="width:38%"></div></div>
+      </div>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d8',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d8',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 9 — TERÇA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 9<span>TERÇA-FEIRA</span></div>
+<div class="story-wrap" id="story-d9">
+  <div class="story-progress" id="progress-d9"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="quote-mark" style="text-align:center;">"</div>
+      <div class="type-a-quote" style="font-size:50px;">Deu certo para mim,<br>e vai dar certo para<br>você também.</div>
+      <div class="quote-mark" style="text-align:center;transform:rotate(180deg);">"</div>
+      <div class="quote-author">— Avner, Ponta Grossa/PR</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:40px;font-size:18px;">MESES DE DEDICAÇÃO</div>
+      <div class="checklist-item"><span class="icon">📚</span> Inglês</div>
+      <div class="checklist-item"><span class="icon">🎯</span> Entrevistas</div>
+      <div class="checklist-item"><span class="icon">📄</span> Currículo</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline">Sua história pode ser a próxima.</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d9',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d9',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 10 — QUARTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 10<span>QUARTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d10">
+  <div class="story-progress" id="progress-d10"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-d-headline cream" style="font-size:48px;">DE MECÂNICO EM GOIÂNIA AOS EUA</div>
+      <div class="type-a-sub" style="margin-top:24px;">A virada do Matheus</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="poll-question" style="font-size:42px;">O que mais te impede de buscar trabalho nos EUA?</div>
+      <div class="poll-options">
+        <div class="poll-option glass-card" onclick="selectPoll(this)">😰 Medo<div class="poll-bar-fill" style="width:28%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">💰 Dinheiro<div class="poll-bar-fill" style="width:26%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🗣️ Inglês<div class="poll-bar-fill" style="width:26%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🤷 Não sei por onde começar<div class="poll-bar-fill" style="width:20%"></div></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:48px;">Sua profissão também pode te levar pros EUA.</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d10',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d10',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 11 — QUINTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 11<span>QUINTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d11">
+  <div class="story-progress" id="progress-d11"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="quote-mark" style="text-align:center;margin-bottom:0;">"</div>
+      <div class="type-a-quote" style="font-size:48px;">O valor que ganha<br>é muito bom! Sem a<br>capacitação não teria<br>conseguido.</div>
+      <div class="quote-mark" style="text-align:center;transform:rotate(180deg);margin-top:0;">"</div>
+      <div class="quote-author">— Jairo</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:52px;">Não repita o erro de tentar sozinho.</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d11',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d11',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 12 — SEXTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 12<span>SEXTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d12">
+  <div class="story-progress" id="progress-d12"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-quote" style="font-size:52px;">ELE FOI, VOLTOU<br>E FOI DE NOVO.</div>
+      <div class="type-a-sub" style="margin-top:20px;">E dessa vez levou<br><span style="color:var(--gold);font-weight:700;font-size:36px;">+6 brasileiros.</span></div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="poll-question">Você toparia ir com um grupo de brasileiros?</div>
+      <div class="poll-options">
+        <div class="poll-option glass-card" onclick="selectPoll(this)">👍 Sim<div class="poll-bar-fill" style="width:78%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🤔 Sozinho<div class="poll-bar-fill" style="width:22%"></div></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:46px;">Post novo no feed! A história completa do Roberto.</div>
+      <button class="cta-btn">VEJA O POST ↗</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d12',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d12',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 13 — SÁBADO -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 13<span>SÁBADO</span></div>
+<div class="story-wrap" id="story-d13">
+  <div class="story-progress" id="progress-d13"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:90px;">+100 VIDAS</div>
+      <div class="type-a-stat" style="font-size:44px;color:var(--cream);">TRANSFORMADAS</div>
+      <div class="type-a-sub" style="margin-top:28px;line-height:1.5;">Gustavo. Avner. Matheus. Jairo. Roberto.<br>Pessoas comuns.<br><span style="color:var(--gold);font-weight:500;">Resultados extraordinários.</span></div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:50px;">A próxima história pode ser a sua.</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d13',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d13',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 15 — SEGUNDA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 15<span>SEGUNDA-FEIRA</span></div>
+<div class="story-wrap" id="story-d15">
+  <div class="story-progress" id="progress-d15"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:32px;font-size:18px;">5 DOCUMENTOS PARA O VISTO</div>
+      <div class="checklist-item"><span class="icon">📘</span> Passaporte</div>
+      <div class="checklist-item"><span class="icon">📝</span> DS-160</div>
+      <div class="checklist-item"><span class="icon">📸</span> Foto 5x5</div>
+      <div class="checklist-item"><span class="icon">📋</span> Carta empregador</div>
+      <div class="checklist-item"><span class="icon">🏠</span> Vínculo Brasil</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="poll-question">Você já tem passaporte?</div>
+      <div class="poll-options">
+        <div class="poll-option glass-card" onclick="selectPoll(this)">✅ Sim<div class="poll-bar-fill" style="width:48%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">⏰ Vencido<div class="poll-bar-fill" style="width:22%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">❌ Não<div class="poll-bar-fill" style="width:30%"></div></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:48px;">Dúvida sobre documentação?</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d15',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d15',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 16 — TERÇA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 16<span>TERÇA-FEIRA</span></div>
+<div class="story-wrap" id="story-d16">
+  <div class="story-progress" id="progress-d16"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:24px;font-size:18px;">⚠️ ALERTA</div>
+      <div class="type-d-headline cream" style="font-size:46px;line-height:1.2;">DS-160: O FORMULÁRIO QUE MAIS REPROVA BRASILEIROS</div>
+      <div class="type-a-sub" style="margin-top:28px;font-weight:400;">Um erro simples<br>pode custar seu visto.</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-quote" style="font-size:48px;color:var(--gold);">Na nossa capacitação orientamos cada campo do DS-160.</div>
+      <div class="type-a-sub" style="margin-top:20px;font-weight:500;color:var(--cream);">Com segurança. Sem erro.</div>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d16',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d16',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 17 — QUARTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 17<span>QUARTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d17">
+  <div class="story-progress" id="progress-d17"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:24px;font-size:18px;">SEU INVESTIMENTO</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:72px;">R$2.000</div>
+      <div class="type-a-stat" style="font-size:30px;color:var(--slate);">a</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:72px;">R$4.000</div>
+      <div class="type-a-sub" style="margin-top:12px;">custo total</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-stat" style="font-size:28px;color:var(--slate);margin-bottom:4px;">SEU PRIMEIRO SALÁRIO</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:82px;">US$3.000</div>
+      <div class="type-a-stat" style="font-size:30px;color:var(--slate);">a</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:82px;">US$5.500</div>
+      <div class="glass-card" style="margin-top:32px;padding:24px 40px;text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--gold);">O investimento se paga</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--cream);">NO PRIMEIRO MÊS</div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:48px;">Quer fazer as contas para sua área?</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d17',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d17',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 18 — QUINTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 18<span>QUINTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d18">
+  <div class="story-progress" id="progress-d18"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:24px;font-size:18px;">⚠️ ATENÇÃO</div>
+      <div class="type-d-headline cream" style="font-size:44px;">3 ERROS QUE REPROVAM NO CONSULADO:</div>
+      <div style="display:flex;flex-direction:column;gap:18px;margin-top:32px;width:100%;max-width:640px;">
+        <div class="glass-card" style="padding:22px 32px;font-size:28px;color:var(--cream);">😰 Nervosismo</div>
+        <div class="glass-card" style="padding:22px 32px;font-size:28px;color:var(--cream);">🗣️ Falar demais ou de menos</div>
+        <div class="glass-card" style="padding:22px 32px;font-size:28px;color:var(--cream);">🔗 Não comprovar vínculo</div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-quote" style="font-size:44px;color:var(--gold);">A gente faz SIMULAÇÕES REAIS com você.</div>
+      <div class="type-a-sub" style="margin-top:20px;line-height:1.5;">Quando chegar a entrevista<br>de verdade, você já passou<br>por ela antes.</div>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d18',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d18',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 19 — SEXTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 19<span>SEXTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d19">
+  <div class="story-progress" id="progress-d19"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="highlight-num" style="font-size:120px;color:var(--cream);font-family:'Bebas Neue',sans-serif;">?</div>
+      <div class="type-d-headline cream" style="font-size:64px;">PRECISO FALAR INGLÊS?</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:180px;color:var(--gold);line-height:0.85;text-align:center;">NÃO</div>
+      <div class="type-a-sub" style="margin-top:16px;line-height:1.5;">Não é obrigatório.<br>Mas o curso já está <span style="color:var(--gold);font-weight:500;">INCLUSO</span><br>em todos os planos.</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:52px;">Não deixa o inglês te travar.</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d19',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d19',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 20 — SÁBADO -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 20<span>SÁBADO</span></div>
+<div class="story-wrap" id="story-d20">
+  <div class="story-progress" id="progress-d20"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:28px;font-size:18px;">MELHOR ÉPOCA PARA SE CANDIDATAR</div>
+      <div class="grid-2x2">
+        <div class="glass-card grid-card"><div class="gc-icon">❄️</div><div class="gc-title">Jan—Fev</div><div class="gc-val">Hotelaria</div></div>
+        <div class="glass-card grid-card"><div class="gc-icon">🌱</div><div class="gc-title">Mar—Mai</div><div class="gc-val">Agricultura</div></div>
+        <div class="glass-card grid-card"><div class="gc-icon">☀️</div><div class="gc-title">Jun—Ago</div><div class="gc-val">Turismo</div></div>
+        <div class="glass-card grid-card"><div class="gc-icon">🍂</div><div class="gc-title">Set—Out</div><div class="gc-val">Colheitas</div></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:46px;">Quer saber a janela ideal para sua área?</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d20',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d20',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 22 — SEGUNDA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 22<span>SEGUNDA-FEIRA</span></div>
+<div class="story-wrap" id="story-d22">
+  <div class="story-progress" id="progress-d22"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:28px;font-size:18px;">TOP 5 PROFISSÕES NOS EUA</div>
+      <div style="display:flex;flex-direction:column;gap:14px;width:100%;max-width:680px;">
+        <div class="list-row glass-card" style="padding:18px 28px;justify-content:space-between;">🏗️ Construção <span style="color:var(--gold);">US$3.5K</span></div>
+        <div class="list-row glass-card" style="padding:18px 28px;justify-content:space-between;">🏨 Hotelaria <span style="color:var(--gold);">US$3K</span></div>
+        <div class="list-row glass-card" style="padding:18px 28px;justify-content:space-between;">🌿 Paisagismo <span style="color:var(--gold);">US$3.2K</span></div>
+        <div class="list-row glass-card" style="padding:18px 28px;justify-content:space-between;">🚛 Transporte <span style="color:var(--gold);">US$4.5K</span></div>
+        <div class="list-row glass-card" style="padding:18px 28px;justify-content:space-between;">🧹 Serviços <span style="color:var(--gold);">US$3K</span></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="poll-question" style="font-size:42px;">Qual dessas áreas combina com você?</div>
+      <div class="poll-options">
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🏗️ Construção<div class="poll-bar-fill" style="width:32%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🏨 Hotelaria<div class="poll-bar-fill" style="width:22%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🚛 Transporte<div class="poll-bar-fill" style="width:26%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🧹 Outra<div class="poll-bar-fill" style="width:20%"></div></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:48px;">Sua profissão está na lista?</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d22',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d22',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 23 — TERÇA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 23<span>TERÇA-FEIRA</span></div>
+<div class="story-wrap" id="story-d23">
+  <div class="story-progress" id="progress-d23"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:24px;font-size:18px;">H2A</div>
+      <div class="type-d-headline cream" style="font-size:44px;line-height:1.15;">SETOR AGRÍCOLA DOS EUA ESTÁ CHAMANDO BRASILEIROS</div>
+      <div class="type-a-sub" style="margin-top:24px;line-height:1.5;">Colheita, plantio, máquinas,<br>tratores, pecuária.</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:66px;">US$3.000 A US$4.500</div>
+      <div class="type-a-stat" style="font-size:36px;color:var(--cream);margin-top:8px;">POR MÊS</div>
+      <div class="type-a-stat" style="font-size:24px;color:var(--slate);margin-top:4px;">+ HORAS EXTRAS</div>
+      <div class="glass-card" style="margin-top:36px;padding:24px 40px;text-align:center;">
+        <div style="font-size:28px;color:var(--cream);font-weight:500;">Moradia <span style="color:var(--gold);font-weight:700;">GRATUITA</span></div>
+        <div style="font-size:22px;color:var(--slate);margin-top:4px;">garantida por lei</div>
+      </div>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d23',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d23',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 24 — QUARTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 24<span>QUARTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d24">
+  <div class="story-progress" id="progress-d24"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:20px;font-size:18px;">CAMINHONEIRO NOS EUA</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:72px;">R$25.000</div>
+      <div class="type-a-stat" style="font-size:28px;color:var(--slate);">A</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:72px;">R$35.000</div>
+      <div class="type-a-stat" style="font-size:40px;color:var(--cream);margin-top:4px;">POR MÊS</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="poll-question" style="font-size:48px;">Você tem CNH D ou E?</div>
+      <div class="poll-options">
+        <div class="poll-option glass-card" onclick="selectPoll(this)">✅ Sim<div class="poll-bar-fill" style="width:28%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🚗 Outra<div class="poll-bar-fill" style="width:42%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">❌ Não<div class="poll-bar-fill" style="width:30%"></div></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:52px;">Tem CNH D ou E?</div>
+      <button class="cta-btn">MANDA DM AGORA</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d24',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d24',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 25 — QUINTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 25<span>QUINTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d25">
+  <div class="story-progress" id="progress-d25"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:24px;font-size:18px;">CONSTRUÇÃO CIVIL</div>
+      <div class="type-d-headline cream" style="font-size:42px;">A ÁREA QUE MAIS CONTRATA BRASILEIROS</div>
+      <div class="type-a-sub" style="margin-top:28px;line-height:1.6;">Pedreiro, Carpinteiro,<br>Eletricista, Pintor.</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:52px;">Trabalha com construção?</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d25',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d25',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 26 — SEXTA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 26<span>SEXTA-FEIRA</span></div>
+<div class="story-wrap" id="story-d26">
+  <div class="story-progress" id="progress-d26"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:28px;font-size:18px;">O QUE ESTÁ INCLUSO NA CAPACITAÇÃO</div>
+      <div class="checklist-item"><span class="icon">📋</span> Currículo</div>
+      <div class="checklist-item"><span class="icon">📚</span> Inglês</div>
+      <div class="checklist-item"><span class="icon">🤖</span> Plataforma vagas</div>
+      <div class="checklist-item"><span class="icon">🎯</span> Entrevistas</div>
+      <div class="checklist-item"><span class="icon">📱</span> Suporte EUA</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="poll-question">Qual serviço você mais precisa?</div>
+      <div class="poll-options">
+        <div class="poll-option glass-card" onclick="selectPoll(this)">📄 Currículo<div class="poll-bar-fill" style="width:28%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🗣️ Inglês<div class="poll-bar-fill" style="width:26%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🎤 Entrevista<div class="poll-bar-fill" style="width:24%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">💼 Vagas<div class="poll-bar-fill" style="width:22%"></div></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:50px;">Quer ver os planos e valores?</div>
+      <button class="cta-btn">LINK NA BIO</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d26',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d26',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 27 — SÁBADO -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 27<span>SÁBADO</span></div>
+<div class="story-wrap" id="story-d27">
+  <div class="story-progress" id="progress-d27"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="tag" style="margin-bottom:28px;font-size:18px;">O QUE +100 CONTRATADOS TÊM EM COMUM</div>
+      <div class="checklist-item"><span class="icon">✅</span> Não esperaram</div>
+      <div class="checklist-item"><span class="icon">✅</span> Confiaram</div>
+      <div class="checklist-item"><span class="icon">✅</span> Tiveram acompanhamento</div>
+      <div class="checklist-item"><span class="icon">✅</span> Persistiram</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:46px;">Semana que vem tem NOVIDADE. Fica de olho</div>
+      <div style="font-size:48px;margin-bottom:32px;">👀</div>
+      <button class="cta-btn">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d27',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d27',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 29 — SEGUNDA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 29<span>SEGUNDA-FEIRA</span></div>
+<div class="story-wrap" id="story-d29">
+  <div class="story-progress" id="progress-d29"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="stat-muted" style="font-size:64px;">1 ANO NO BRASIL</div>
+      <div class="stat-muted" style="font-size:80px;text-decoration:line-through;">R$30.000</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:80px;">~R$120.000</div>
+      <div class="type-a-stat" style="font-size:40px;color:var(--cream);margin-top:0;">6 MESES NOS EUA</div>
+      <div class="glass-card" style="margin-top:32px;padding:24px 40px;text-align:center;">
+        <div style="font-size:26px;color:var(--cream);">Com moradia, transporte<br>e passagem <span style="color:var(--gold);font-weight:700;">PAGOS</span></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:64px;">6 MESES NOS EUA</div>
+      <div class="type-a-stat" style="font-size:28px;color:var(--slate);margin-top:4px;">=</div>
+      <div class="type-a-stat text-gold-grad" style="font-size:64px;">4 ANOS NO BRASIL</div>
+      <button class="cta-btn" style="margin-top:48px;">MANDA DM</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d29',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d29',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIA 30 — TERÇA -->
+<!-- ════════════════════════════════════════════ -->
+<div class="day-separator">DIA 30<span>TERÇA-FEIRA</span></div>
+<div class="story-wrap" id="story-d30">
+  <div class="story-progress" id="progress-d30"></div>
+  <div class="story-slides">
+    <div class="story-slide active bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="poll-question">Você está pronto para dar o primeiro passo?</div>
+      <div class="poll-options">
+        <div class="poll-option glass-card" onclick="selectPoll(this)">✅ Sim<div class="poll-bar-fill" style="width:38%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">🤔 Ainda tenho dúvidas<div class="poll-bar-fill" style="width:36%"></div></div>
+        <div class="poll-option glass-card" onclick="selectPoll(this)">👀 Quero ver a novidade<div class="poll-bar-fill" style="width:26%"></div></div>
+      </div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="type-e-headline" style="font-size:44px;margin-bottom:40px;">O que você espera da novidade?</div>
+      <div class="question-box">Escreva aqui...</div>
+    </div>
+    <div class="story-slide bg-navy-dark pattern-dots">
+      <div class="story-safe-top">ELOS</div>
+      <div class="dramatic-text">AMANHÃ</div>
+      <div class="dramatic-sub">Não perde. 👀</div>
+      <button class="cta-btn" style="margin-top:44px;">ATIVA O SININHO 🔔</button>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="navStory('story-d30',-1)">‹</button>
+  <button class="nav-btn next" onclick="navStory('story-d30',1)">›</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- FLAG STRIPE & FOOTER -->
+<!-- ════════════════════════════════════════════ -->
+
+<script>
+// ── NAVIGATION ──
+function navStory(wrapId, dir) {
+  const wrap = document.getElementById(wrapId);
+  const slides = wrap.querySelectorAll('.story-slide');
+  let activeIdx = 0;
+  slides.forEach((s, i) => { if (s.classList.contains('active')) activeIdx = i; });
+  const newIdx = activeIdx + dir;
+  if (newIdx < 0 || newIdx >= slides.length) return;
+  slides[activeIdx].classList.remove('active');
+  slides[newIdx].classList.add('active');
+  updateProgress(wrapId);
+}
+
+// ── POLL ──
+function selectPoll(el) {
+  el.parentElement.querySelectorAll('.poll-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ── PROGRESS BAR SETUP ──
+function buildProgress(wrapId) {
+  const wrap = document.getElementById(wrapId);
+  const progressDiv = document.getElementById('progress-' + wrapId.replace('story-d',''));
+  if (!progressDiv) return;
+  const total = wrap.querySelectorAll('.story-slide').length;
+  progressDiv.innerHTML = '';
+  for (let i = 0; i < total; i++) {
+    const seg = document.createElement('div');
+    seg.className = 'seg';
+    if (i === 0) seg.classList.add('current');
+    progressDiv.appendChild(seg);
+  }
+}
+
+function updateProgress(wrapId) {
+  const wrap = document.getElementById(wrapId);
+  const progressDiv = document.getElementById('progress-' + wrapId.replace('story-d',''));
+  if (!progressDiv) return;
+  const slides = wrap.querySelectorAll('.story-slide');
+  let activeIdx = 0;
+  slides.forEach((s, i) => { if (s.classList.contains('active')) activeIdx = i; });
+  const segs = progressDiv.querySelectorAll('.seg');
+  segs.forEach((seg, i) => {
+    seg.classList.remove('done', 'current');
+    if (i < activeIdx) seg.classList.add('done');
+    if (i === activeIdx) seg.classList.add('current');
+  });
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  const wrapIds = [];
+  document.querySelectorAll('.story-wrap').forEach(w => wrapIds.push(w.id));
+  wrapIds.forEach(id => buildProgress(id));
+});
+</script>
+
+</body>
+</html>

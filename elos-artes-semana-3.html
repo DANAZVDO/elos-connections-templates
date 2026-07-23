@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELOS - Artes Semana 3</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #0A1628;
+      --navy-dark: #060E1A;
+      --red: #BF0A30;
+      --gold: #C9A84C;
+      --cream: #F5F5F0;
+      --slate: #94A3B8;
+    }
+
+    body {
+      background: #020810;
+      font-family: 'Satoshi', sans-serif;
+    }
+
+    /* BACKGROUNDS */
+    .bg-navy { background-color: #0A1628; }
+    .bg-navy-dark { background-color: #060E1A; }
+    .bg-red-accent { background-color: #BF0A30; }
+    .bg-gold-accent { background-color: #C9A84C; }
+
+    /* DOT PATTERN */
+    .pattern-dots {
+      background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    /* FONTS */
+    .font-bebas { font-family: 'Bebas Neue', cursive; }
+    .font-satoshi { font-family: 'Satoshi', sans-serif; }
+
+    /* TEXT GOLD GRADIENT */
+    .text-gold-grad {
+      background: linear-gradient(135deg, #C9A84C 0%, #E8C860 50%, #C9A84C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* COMPONENTS */
+    .tag {
+      display: inline-block;
+      background: rgba(191, 10, 48, 0.92);
+      color: #F5F5F0;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      letter-spacing: 5px;
+      padding: 8px 28px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #C9A84C;
+      color: #0A1628;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 32px;
+      letter-spacing: 2px;
+      padding: 18px 44px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .cta-btn:hover { background: #E8C860; }
+
+    .flag-stripe {
+      height: 6px;
+      width: 100%;
+      background: linear-gradient(90deg, #BF0A30 33.33%, #C9A84C 33.33%, #C9A84C 66.66%, #BF0A30 66.66%);
+    }
+
+    .logo-mark {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 18px;
+      letter-spacing: 4px;
+      color: #94A3B8;
+      text-transform: uppercase;
+    }
+
+    .slide-num {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: #94A3B8;
+      letter-spacing: 2px;
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(201, 168, 76, 0.3);
+      width: 120px;
+    }
+    .divider-full {
+      height: 1px;
+      background: rgba(201, 168, 76, 0.2);
+      width: 100%;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 36px 40px;
+    }
+    .glass-card-red {
+      background: rgba(191, 10, 48, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(191, 10, 48, 0.15);
+      border-radius: 24px;
+      padding: 36px 40px;
+    }
+
+    /* CAROUSEL */
+    .carousel-wrapper {
+      margin: 60px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .carousel-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .carousel-header h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 36px;
+      color: #F5F5F0;
+      letter-spacing: 3px;
+    }
+    .carousel-header p {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 16px;
+      color: #94A3B8;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(0,0,0,0.5);
+    }
+    .slide-strip {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .slide {
+      width: 1080px;
+      height: 1080px;
+      flex-shrink: 0;
+      position: relative;
+      padding: 54px;
+    }
+
+    /* NAV */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #F5F5F0;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 20;
+      transition: all 0.3s;
+      font-family: 'Satoshi', sans-serif;
+    }
+    .nav-btn:hover {
+      background: rgba(201, 168, 76, 0.2);
+      border-color: #C9A84C;
+    }
+    .prev-btn { left: 16px; }
+    .next-btn { right: 16px; }
+
+    .nav-dots {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 20;
+    }
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .nav-dot.active {
+      background: #C9A84C;
+      width: 28px;
+      border-radius: 10px;
+    }
+
+    /* SAFE ZONE */
+    .safe-zone {
+      width: calc(1080px - 108px);
+      height: calc(1080px - 108px);
+    }
+
+    /* ICON STYLES */
+    .icon-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-circle-gold {
+      background: rgba(201, 168, 76, 0.15);
+      border: 2px solid rgba(201, 168, 76, 0.4);
+    }
+    .icon-circle-red {
+      background: rgba(191, 10, 48, 0.15);
+      border: 2px solid rgba(191, 10, 48, 0.4);
+    }
+
+    .check-icon::before {
+      content: '✓';
+      font-size: 26px;
+      color: #C9A84C;
+      font-weight: 700;
+    }
+    .x-icon::before {
+      content: '✕';
+      font-size: 22px;
+      color: #BF0A30;
+      font-weight: 700;
+    }
+
+    .big-number {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 140px;
+      line-height: 0.85;
+      color: #C9A84C;
+    }
+
+    /* SWIPE HINT */
+    .swipe-hint {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 14px;
+      color: #94A3B8;
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center py-10">
+
+  <!-- ================================================================== -->
+  <!-- POST 13 - Dia 15: 5 Documentos essenciais (7 slides)              -->
+  <!-- ================================================================== -->
+  <div class="carousel-wrapper" id="post-13">
+    <div class="carousel-header">
+      <h2>POST 13 — Dia 15 (Segunda)</h2>
+      <p>5 Documentos essenciais para o visto americano</p>
+    </div>
+    <div class="carousel-container">
+      <div class="slide-strip">
+        <!-- SLIDE 1 - CAPA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <div class="tag mb-6">CHECKLIST</div>
+              <div class="flag-stripe mb-14"></div>
+              <h1 class="font-bebas text-[72px] leading-[0.9] text-cream mb-6" style="color:#F5F5F0;">
+                5 DOCUMENTOS<br>PARA O VISTO<br>AMERICANO
+              </h1>
+              <p class="font-satoshi text-xl text-slate font-light">Checklist completo e essencial</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="logo-mark">ELOS · VISTOS</span>
+              <span class="swipe-hint">Arraste para o lado →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 - DOC 01 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">2 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex items-start gap-8 flex-1 mt-8">
+              <div class="icon-circle icon-circle-gold flex-shrink-0" style="width:80px;height:80px;">
+                <span class="font-bebas text-[42px]" style="color:#C9A84C;">01</span>
+              </div>
+              <div>
+                <h2 class="font-bebas text-[52px] leading-none" style="color:#F5F5F0;">PASSAPORTE<br>VÁLIDO</h2>
+                <div class="divider my-4"></div>
+                <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed max-w-[600px]">
+                  Deve ter no mínimo <strong style="color:#F5F5F0;font-weight:500;">6 meses</strong> de validade a partir da data da entrevista. Sem isso, seu pedido é <strong style="color:#BF0A30;font-weight:500;">negado na hora.</strong>
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 - DOC 02 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">3 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex items-start gap-8 flex-1 mt-8">
+              <div class="icon-circle icon-circle-gold flex-shrink-0" style="width:80px;height:80px;">
+                <span class="font-bebas text-[42px]" style="color:#C9A84C;">02</span>
+              </div>
+              <div>
+                <h2 class="font-bebas text-[52px] leading-none" style="color:#F5F5F0;">FORMULÁRIO<br>DS-160</h2>
+                <div class="divider my-4"></div>
+                <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed max-w-[600px]">
+                  Formulário online obrigatório. Preenchimento <strong style="color:#F5F5F0;font-weight:500;">sem erros</strong> e com informações 100% verdadeiras. O principal motivo de reprovação.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 - DOC 03 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">4 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex items-start gap-8 flex-1 mt-8">
+              <div class="icon-circle icon-circle-gold flex-shrink-0" style="width:80px;height:80px;">
+                <span class="font-bebas text-[42px]" style="color:#C9A84C;">03</span>
+              </div>
+              <div>
+                <h2 class="font-bebas text-[52px] leading-none" style="color:#F5F5F0;">FOTO 5x5cm<br>FUNDO BRANCO</h2>
+                <div class="divider my-4"></div>
+                <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed max-w-[600px]">
+                  Padrão americano. Diferente da foto 3x4 brasileira. Precisa ser <strong style="color:#F5F5F0;font-weight:500;">recente</strong> (até 6 meses) e seguir especificações exatas.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 - DOC 04 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">5 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex items-start gap-8 flex-1 mt-8">
+              <div class="icon-circle icon-circle-gold flex-shrink-0" style="width:80px;height:80px;">
+                <span class="font-bebas text-[42px]" style="color:#C9A84C;">04</span>
+              </div>
+              <div>
+                <h2 class="font-bebas text-[52px] leading-none" style="color:#F5F5F0;">CARTA-CONVITE<br>DO EMPREGADOR</h2>
+                <div class="divider my-4"></div>
+                <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed max-w-[600px]">
+                  Documento emitido pelo empregador americano descrevendo cargo, salário e período de trabalho. <strong style="color:#F5F5F0;font-weight:500;">Essencial para H2A e H2B.</strong>
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6 - DOC 05 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">6 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex items-start gap-8 flex-1 mt-8">
+              <div class="icon-circle icon-circle-gold flex-shrink-0" style="width:80px;height:80px;">
+                <span class="font-bebas text-[42px]" style="color:#C9A84C;">05</span>
+              </div>
+              <div>
+                <h2 class="font-bebas text-[52px] leading-none" style="color:#F5F5F0;">COMPROVANTES<br>DE VÍNCULO</h2>
+                <div class="divider my-4"></div>
+                <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed max-w-[600px]">
+                  Documentos que provam que você <strong style="color:#F5F5F0;font-weight:500;">vai voltar ao Brasil</strong>: escritura de imóvel, contrato de trabalho, certidão de casamento, filhos.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 7 - CTA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col items-center justify-center h-full text-center">
+            <div class="mb-4 icon-circle icon-circle-gold" style="width:72px;height:72px;">
+              <span style="font-size:34px;color:#C9A84C;">?</span>
+            </div>
+            <h2 class="font-bebas text-[60px] leading-[1.05] mb-6" style="color:#F5F5F0;">
+              TEM DÚVIDA SOBRE<br>DOCUMENTAÇÃO?
+            </h2>
+            <p class="font-satoshi text-[24px] text-slate font-light mb-10 max-w-[600px]">
+              Nossa equipe analisa seu caso e te orienta sobre todos os documentos necessários.
+            </p>
+            <div class="cta-btn" style="font-size:36px;padding:22px 56px;">MANDA DM</div>
+            <div class="mt-12">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="nav-btn prev-btn">←</button>
+      <button class="nav-btn next-btn">→</button>
+      <div class="nav-dots"></div>
+    </div>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- POST 14 - Dia 16: DS-160 (7 slides)                                -->
+  <!-- ================================================================== -->
+  <div class="carousel-wrapper" id="post-14">
+    <div class="carousel-header">
+      <h2>POST 14 — Dia 16 (Terça)</h2>
+      <p>DS-160: O formulário que mais reprova</p>
+    </div>
+    <div class="carousel-container">
+      <div class="slide-strip">
+        <!-- SLIDE 1 - CAPA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <div class="tag mb-6">ALERTA</div>
+              <div class="flag-stripe mb-14"></div>
+              <h1 class="font-bebas text-[70px] leading-[0.92] text-cream mb-6" style="color:#F5F5F0;">
+                DS-160:<br>O FORMULÁRIO<br>QUE MAIS<br>REPROVA
+              </h1>
+              <p class="font-satoshi text-xl text-slate font-light">4 erros fatais que você não pode cometer</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="logo-mark">ELOS · VISTOS</span>
+              <span class="swipe-hint">Arraste para o lado →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 - O QUE E -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">2 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex items-center">
+              <div class="glass-card max-w-[750px]">
+                <p class="font-bebas text-[28px] tracking-widest mb-4" style="color:#C9A84C;">O QUE É?</p>
+                <p class="font-satoshi text-[26px] leading-relaxed" style="color:#F5F5F0;font-weight:400;">
+                  Formulário online <strong style="color:#C9A84C;font-weight:700;">obrigatório</strong> para todo solicitante de visto americano. É a <strong style="color:#C9A84C;font-weight:700;">primeira e mais importante etapa</strong> do processo.
+                </p>
+                <div class="divider mt-8 mb-6"></div>
+                <p class="font-satoshi text-[20px] text-slate font-light">
+                  Todas as suas respostas no DS-160 serão confrontadas na entrevista do consulado.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 - ERRO 1 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">3 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <span class="font-bebas text-[24px] tracking-[6px] mb-4" style="color:#BF0A30;">ERRO #1</span>
+              <div class="glass-card-red max-w-[750px]">
+                <h3 class="font-bebas text-[44px] leading-tight mb-4" style="color:#F5F5F0;">
+                  DADOS PESSOAIS DIVERGENTES DO PASSAPORTE
+                </h3>
+                <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed">
+                  Nome, data de nascimento ou número do documento com qualquer diferença = <strong style="color:#BF0A30;">reprovação automática.</strong> Confira letra por letra.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 - ERRO 2 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">4 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <span class="font-bebas text-[24px] tracking-[6px] mb-4" style="color:#BF0A30;">ERRO #2</span>
+              <div class="glass-card-red max-w-[750px]">
+                <h3 class="font-bebas text-[44px] leading-tight mb-4" style="color:#F5F5F0;">
+                  INFORMAÇÕES INCONSISTENTES SOBRE HISTÓRICO DE TRABALHO
+                </h3>
+                <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed">
+                  Datas, cargos e empregadores precisam bater <strong style="color:#F5F5F0;">exatamente</strong> com o que está no seu currículo e LinkedIn.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 - ERRO 3 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">5 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <span class="font-bebas text-[24px] tracking-[6px] mb-4" style="color:#BF0A30;">ERRO #3</span>
+              <div class="glass-card-red max-w-[750px]">
+                <h3 class="font-bebas text-[44px] leading-tight mb-4" style="color:#F5F5F0;">
+                  OMITIR INFORMAÇÕES DE VIAGENS ANTERIORES
+                </h3>
+                <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed">
+                  O consulado tem acesso ao seu <strong style="color:#F5F5F0;">histórico completo</strong> de imigração. Omitir qualquer viagem aos EUA é <strong style="color:#BF0A30;">fraude.</strong>
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6 - ERRO 4 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">6 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <span class="font-bebas text-[24px] tracking-[6px] mb-4" style="color:#BF0A30;">ERRO #4</span>
+              <div class="glass-card-red max-w-[750px]">
+                <h3 class="font-bebas text-[44px] leading-tight mb-4" style="color:#F5F5F0;">
+                  MENTIR SOBRE INTENÇÃO DE IMIGRAÇÃO
+                </h3>
+                <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed">
+                  Declarar intenção de ficar nos EUA com visto de trabalho temporário resulta em <strong style="color:#BF0A30;">negação permanente.</strong> Seja claro sobre seu vínculo com o Brasil.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 7 - CTA -->
+        <div class="slide bg-red-accent pattern-dots">
+          <div class="flex flex-col items-center justify-center h-full text-center">
+            <div class="mb-4 icon-circle" style="width:72px;height:72px;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);">
+              <span style="font-size:34px;color:#F5F5F0;">!</span>
+            </div>
+            <h2 class="font-bebas text-[58px] leading-[1.05] mb-6" style="color:#F5F5F0;">
+              NÃO ARRISQUE SEU VISTO<br>POR UM ERRO BESTA
+            </h2>
+            <p class="font-satoshi text-[24px] font-light mb-10 max-w-[650px]" style="color:rgba(245,245,240,0.85);">
+              Revisamos seu DS-160 antes do envio e fazemos simulação de entrevista com feedback.
+            </p>
+            <div class="cta-btn" style="font-size:36px;padding:22px 56px;">MANDA DM</div>
+            <div class="mt-12">
+              <span class="logo-mark" style="color:rgba(245,245,240,0.6);">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="nav-btn prev-btn">←</button>
+      <button class="nav-btn next-btn">→</button>
+      <div class="nav-dots"></div>
+    </div>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- POST 15 - Dia 17: Quanto custa REALMENTE (7 slides)               -->
+  <!-- ================================================================== -->
+  <div class="carousel-wrapper" id="post-15">
+    <div class="carousel-header">
+      <h2>POST 15 — Dia 17 (Quarta)</h2>
+      <p>Quanto custa trabalhar nos EUA?</p>
+    </div>
+    <div class="carousel-container">
+      <div class="slide-strip">
+        <!-- SLIDE 1 - CAPA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <div class="tag mb-6">DINHEIRO</div>
+              <div class="flag-stripe mb-14"></div>
+              <h1 class="font-bebas text-[68px] leading-[0.92] text-cream mb-6" style="color:#F5F5F0;">
+                QUANTO CUSTA<br>TRABALHAR<br>NOS EUA?
+              </h1>
+              <p class="font-satoshi text-xl text-slate font-light">Os números reais, sem letra miúda</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="logo-mark">ELOS · VISTOS</span>
+              <span class="swipe-hint">Arraste para o lado →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 - EMPREGADOR PAGA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">2 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center pl-8">
+              <p class="font-bebas text-[28px] tracking-[4px] mb-10" style="color:#C9A84C;">O EMPREGADOR PAGA:</p>
+              <div class="space-y-6">
+                <div class="flex items-center gap-5">
+                  <span class="icon-circle icon-circle-gold flex-shrink-0" style="width:48px;height:48px;">
+                    <span style="color:#C9A84C;font-size:24px;font-weight:700;">✓</span>
+                  </span>
+                  <span class="font-satoshi text-[26px]" style="color:#F5F5F0;font-weight:400;">Passagem aérea (ida e volta)</span>
+                </div>
+                <div class="flex items-center gap-5">
+                  <span class="icon-circle icon-circle-gold flex-shrink-0" style="width:48px;height:48px;">
+                    <span style="color:#C9A84C;font-size:24px;font-weight:700;">✓</span>
+                  </span>
+                  <span class="font-satoshi text-[26px]" style="color:#F5F5F0;font-weight:400;">Moradia durante o contrato</span>
+                </div>
+                <div class="flex items-center gap-5">
+                  <span class="icon-circle icon-circle-gold flex-shrink-0" style="width:48px;height:48px;">
+                    <span style="color:#C9A84C;font-size:24px;font-weight:700;">✓</span>
+                  </span>
+                  <span class="font-satoshi text-[26px]" style="color:#F5F5F0;font-weight:400;">Transporte local</span>
+                </div>
+                <div class="flex items-center gap-5">
+                  <span class="icon-circle icon-circle-gold flex-shrink-0" style="width:48px;height:48px;">
+                    <span style="color:#C9A84C;font-size:24px;font-weight:700;">✓</span>
+                  </span>
+                  <span class="font-satoshi text-[26px]" style="color:#F5F5F0;font-weight:400;">Busca no aeroporto</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 - VOCE PAGA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">3 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center pl-8">
+              <p class="font-bebas text-[28px] tracking-[4px] mb-10" style="color:#BF0A30;">VOCÊ PAGA:</p>
+              <div class="space-y-6">
+                <div class="flex items-center gap-5">
+                  <span class="icon-circle icon-circle-red flex-shrink-0" style="width:44px;height:44px;">
+                    <span style="color:#BF0A30;font-size:20px;font-weight:700;">$</span>
+                  </span>
+                  <div>
+                    <span class="font-satoshi text-[26px]" style="color:#F5F5F0;font-weight:400;">Taxa do visto</span>
+                    <span class="font-satoshi text-[20px] text-slate font-light ml-3">~US$ 190</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-5">
+                  <span class="icon-circle icon-circle-red flex-shrink-0" style="width:44px;height:44px;">
+                    <span style="color:#BF0A30;font-size:20px;font-weight:700;">$</span>
+                  </span>
+                  <div>
+                    <span class="font-satoshi text-[26px]" style="color:#F5F5F0;font-weight:400;">Passaporte</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-5">
+                  <span class="icon-circle icon-circle-red flex-shrink-0" style="width:44px;height:44px;">
+                    <span style="color:#BF0A30;font-size:20px;font-weight:700;">$</span>
+                  </span>
+                  <div>
+                    <span class="font-satoshi text-[26px]" style="color:#F5F5F0;font-weight:400;">Exames médicos</span>
+                    <span class="font-satoshi text-[20px] text-slate font-light ml-3">(check-up admissional)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 - STAT INVESTIMENTO -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">4 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center text-center">
+              <p class="font-bebas text-[120px] leading-none text-gold-grad">R$ 2.000</p>
+              <p class="font-bebas text-[28px] mb-4" style="color:#94A3B8;letter-spacing:2px;">A R$ 4.000</p>
+              <div class="divider my-6"></div>
+              <p class="font-satoshi text-[26px] font-light max-w-[550px]" style="color:#F5F5F0;">
+                Seu custo total estimado<br>para o processo completo
+              </p>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 - STAT RETORNO -->
+        <div class="slide bg-navy-dark pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">5 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center text-center">
+              <p class="font-bebas text-[100px] leading-none text-gold-grad">US$ 3.000</p>
+              <p class="font-bebas text-[28px] mb-4" style="color:#94A3B8;letter-spacing:2px;">A US$ 5.500</p>
+              <div class="divider my-6"></div>
+              <p class="font-satoshi text-[26px] font-light max-w-[600px]" style="color:#F5F5F0;">
+                Seu primeiro salário<br><strong style="font-weight:700;color:#C9A84C;">= R$ 15.000 a R$ 32.000</strong>
+              </p>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6 - DRAMATIC REVEAL -->
+        <div class="slide bg-red-accent pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num" style="color:rgba(245,245,240,0.6);">6 / 7</span>
+              <div class="flag-stripe my-5" style="background:linear-gradient(90deg, #F5F5F0 33.33%, #C9A84C 33.33%, #C9A84C 66.66%, #F5F5F0 66.66%);"></div>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center text-center">
+              <p class="font-bebas text-[56px] leading-[1.05] max-w-[700px] mb-8" style="color:#F5F5F0;">
+                O INVESTIMENTO<br>SE PAGA<br>NO PRIMEIRO MÊS<br>DE TRABALHO
+              </p>
+              <div class="divider mb-8" style="background:rgba(245,245,240,0.3);width:160px;"></div>
+              <p class="font-satoshi text-[22px] font-light max-w-[600px]" style="color:rgba(245,245,240,0.85);">
+                E a partir do segundo mês, é lucro limpo. Trabalhando legalmente, com visto e todos os direitos.
+              </p>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark" style="color:rgba(245,245,240,0.5);">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 7 - CTA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col items-center justify-center h-full text-center">
+            <div class="mb-4 icon-circle icon-circle-gold" style="width:72px;height:72px;">
+              <span style="font-size:34px;color:#C9A84C;">$</span>
+            </div>
+            <h2 class="font-bebas text-[58px] leading-[1.05] mb-6" style="color:#F5F5F0;">
+              QUER FAZER AS CONTAS<br>DO SEU CASO?
+            </h2>
+            <p class="font-satoshi text-[24px] text-slate font-light mb-10 max-w-[600px]">
+              Cada profissão e estado tem salários diferentes. Te ajudamos a calcular o seu retorno real.
+            </p>
+            <div class="cta-btn" style="font-size:36px;padding:22px 56px;">MANDA DM</div>
+            <div class="mt-12">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="nav-btn prev-btn">←</button>
+      <button class="nav-btn next-btn">→</button>
+      <div class="nav-dots"></div>
+    </div>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- POST 16 - Dia 18: Erros na entrevista (6 slides)                  -->
+  <!-- ================================================================== -->
+  <div class="carousel-wrapper" id="post-16">
+    <div class="carousel-header">
+      <h2>POST 16 — Dia 18 (Quinta)</h2>
+      <p>3 Erros que te reprovam no consulado</p>
+    </div>
+    <div class="carousel-container">
+      <div class="slide-strip">
+        <!-- SLIDE 1 - CAPA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <div class="tag mb-6">ENTREVISTA</div>
+              <div class="flag-stripe mb-14"></div>
+              <h1 class="font-bebas text-[66px] leading-[0.92] text-cream mb-6" style="color:#F5F5F0;">
+                3 ERROS QUE<br>TE REPROVAM<br>NO CONSULADO
+              </h1>
+              <p class="font-satoshi text-xl text-slate font-light">E como evitá-los com preparação real</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="logo-mark">ELOS · VISTOS</span>
+              <span class="swipe-hint">Arraste para o lado →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 - ERRO 1 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">2 / 6</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <span class="font-bebas text-[24px] tracking-[6px] mb-4" style="color:#BF0A30;">ERRO #1</span>
+              <h2 class="font-bebas text-[52px] leading-[1.05] mb-6 max-w-[750px]" style="color:#F5F5F0;">
+                NERVOSISMO EXTREMO E RESPOSTAS DECORADAS
+              </h2>
+              <div class="divider mb-6"></div>
+              <p class="font-satoshi text-[24px] text-slate font-light leading-relaxed max-w-[700px]">
+                O entrevistador <strong style="color:#F5F5F0;font-weight:500;">percebe na hora</strong> quando a resposta é ensaiada. Parece que você tem algo a esconder. O segredo é estar preparado mas <strong style="color:#C9A84C;font-weight:500;">soar natural.</strong>
+              </p>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 - ERRO 2 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">3 / 6</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <span class="font-bebas text-[24px] tracking-[6px] mb-4" style="color:#BF0A30;">ERRO #2</span>
+              <h2 class="font-bebas text-[52px] leading-[1.05] mb-6 max-w-[750px]" style="color:#F5F5F0;">
+                RESPOSTAS LONGAS DEMAIS OU CURTAS DEMAIS
+              </h2>
+              <div class="divider mb-6"></div>
+              <p class="font-satoshi text-[24px] text-slate font-light leading-relaxed max-w-[700px]">
+                Nem monólogo, nem monossílabo. <strong style="color:#F5F5F0;font-weight:500;">O equilíbrio é tudo.</strong> Responda o que foi perguntado de forma clara e direta, sem acrescentar o que não foi solicitado.
+              </p>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 - ERRO 3 -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">4 / 6</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <span class="font-bebas text-[24px] tracking-[6px] mb-4" style="color:#BF0A30;">ERRO #3</span>
+              <h2 class="font-bebas text-[52px] leading-[1.05] mb-6 max-w-[750px]" style="color:#F5F5F0;">
+                NÃO COMPROVAR VÍNCULO COM O BRASIL
+              </h2>
+              <div class="divider mb-6"></div>
+              <p class="font-satoshi text-[24px] text-slate font-light leading-relaxed max-w-[700px]">
+                O oficial quer ver <strong style="color:#F5F5F0;font-weight:500;">motivos concretos</strong> para você voltar: casa própria, família, emprego estável, negócio, bens. Sem isso, a presunção é de que você vai ficar ilegal.
+              </p>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 - HIGHLIGHT -->
+        <div class="slide bg-navy-dark pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">5 / 6</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex items-center justify-center">
+              <div class="glass-card max-w-[780px] text-center">
+                <div class="icon-circle icon-circle-gold mx-auto mb-8" style="width:72px;height:72px;">
+                  <span style="font-size:34px;color:#C9A84C;">★</span>
+                </div>
+                <p class="font-satoshi text-[26px] leading-relaxed mb-4" style="color:#F5F5F0;font-weight:400;">
+                  <strong style="color:#C9A84C;font-weight:700;">NA NOSSA CAPACITAÇÃO</strong><br>
+                  VOCÊ FAZ SIMULAÇÕES REAIS
+                </p>
+                <p class="font-bebas text-[40px] leading-[1.1] mb-4" style="color:#F5F5F0;">
+                  DE ENTREVISTA<br>COM FEEDBACK
+                </p>
+                <div class="divider my-6 mx-auto"></div>
+                <p class="font-satoshi text-[20px] text-slate font-light">
+                  Você chega no consulado confiante porque já treinou dezenas de vezes.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6 - CTA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col items-center justify-center h-full text-center">
+            <div class="mb-4 icon-circle icon-circle-gold" style="width:72px;height:72px;">
+              <span style="font-size:34px;color:#C9A84C;">&#9998;</span>
+            </div>
+            <h2 class="font-bebas text-[60px] leading-[1.05] mb-6" style="color:#F5F5F0;">
+              QUER TREINAR ANTES<br>DA ENTREVISTA REAL?
+            </h2>
+            <p class="font-satoshi text-[24px] text-slate font-light mb-10 max-w-[600px]">
+              Simulações com casos reais e feedback personalizado para você se sentir seguro.
+            </p>
+            <div class="cta-btn" style="font-size:36px;padding:22px 56px;">MANDA DM</div>
+            <div class="mt-12">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="nav-btn prev-btn">←</button>
+      <button class="nav-btn next-btn">→</button>
+      <div class="nav-dots"></div>
+    </div>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- POST 17 - Dia 19: Inglês é obrigatório? (6 slides)                -->
+  <!-- ================================================================== -->
+  <div class="carousel-wrapper" id="post-17">
+    <div class="carousel-header">
+      <h2>POST 17 — Dia 19 (Sexta)</h2>
+      <p>Preciso falar inglês para trabalhar nos EUA?</p>
+    </div>
+    <div class="carousel-container">
+      <div class="slide-strip">
+        <!-- SLIDE 1 - CAPA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <div class="tag mb-6">INGLÊS</div>
+              <div class="flag-stripe mb-14"></div>
+              <h1 class="font-bebas text-[72px] leading-[0.92] text-cream mb-6" style="color:#F5F5F0;">
+                PRECISO<br>FALAR<br>INGLÊS?
+              </h1>
+              <p class="font-satoshi text-xl text-slate font-light">A verdade que ninguém te conta</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="logo-mark">ELOS · VISTOS</span>
+              <span class="swipe-hint">Arraste para o lado →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 - NAO MASSIVE -->
+        <div class="slide bg-navy-dark pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">2 / 6</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center text-center">
+              <p class="font-bebas text-[200px] leading-[0.8] text-gold-grad" style="font-size:220px;">NÃO</p>
+              <p class="font-satoshi text-[28px] font-light mt-4" style="color:#F5F5F0;">
+                Não é obrigatório para vistos H2A e H2B
+              </p>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 - INFO -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">3 / 6</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex items-center">
+              <div class="glass-card max-w-[780px]">
+                <p class="font-bebas text-[26px] tracking-[3px] mb-6" style="color:#C9A84C;">COMO FUNCIONA</p>
+                <p class="font-satoshi text-[26px] leading-relaxed" style="color:#F5F5F0;font-weight:400;">
+                  Muitos empregadores têm <strong style="color:#C9A84C;font-weight:700;">equipes bilíngues</strong> e supervisores que falam português. Nas fazendas, fábricas e na hotelaria, você consegue se comunicar com o básico.
+                </p>
+                <div class="divider my-6"></div>
+                <p class="font-satoshi text-[20px] text-slate font-light">
+                  Milhares de brasileiros trabalham nos EUA todo ano sem falar inglês fluentemente.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 - MAS -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">4 / 6</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center text-center">
+              <p class="font-bebas text-[40px] tracking-[3px] mb-8" style="color:#C9A84C;">MAS</p>
+              <p class="font-bebas text-[56px] leading-[1.05] max-w-[700px] mb-6" style="color:#F5F5F0;">
+                O INGLÊS BÁSICO AUMENTA MUITO SUAS CHANCES E SEU SALÁRIO
+              </p>
+              <div class="divider my-6"></div>
+              <p class="font-satoshi text-[22px] text-slate font-light max-w-[600px]">
+                Com inglês, você concorre a cargos melhores, turnos preferenciais e ganha até <strong style="color:#C9A84C;font-weight:700;">30% a mais.</strong>
+              </p>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 - CURSO INCLUSO -->
+        <div class="slide bg-navy-dark pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">5 / 6</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex items-center justify-center">
+              <div class="glass-card max-w-[780px] text-center">
+                <div class="icon-circle icon-circle-gold mx-auto mb-8" style="width:72px;height:72px;">
+                  <span style="font-size:34px;color:#C9A84C;">&#9998;</span>
+                </div>
+                <p class="font-bebas text-[44px] leading-[1.05] mb-4" style="color:#F5F5F0;">
+                  CURSO DE INGLÊS<br>JÁ INCLUSO
+                </p>
+                <p class="font-satoshi text-[24px] leading-relaxed mb-4" style="color:#F5F5F0;font-weight:400;">
+                  Em <strong style="color:#C9A84C;font-weight:700;">todos os planos.</strong>
+                </p>
+                <div class="divider my-6 mx-auto"></div>
+                <p class="font-satoshi text-[20px] text-slate font-light">
+                  Do básico à conversação. Você aprende antes de viajar e chega nos EUA confiante.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6 - CTA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col items-center justify-center h-full text-center">
+            <div class="mb-4 icon-circle icon-circle-gold" style="width:72px;height:72px;">
+              <span style="font-size:34px;color:#C9A84C;">&#9998;</span>
+            </div>
+            <h2 class="font-bebas text-[60px] leading-[1.05] mb-6" style="color:#F5F5F0;">
+              NÃO DEIXA O INGLÊS<br>TE TRAVAR
+            </h2>
+            <p class="font-satoshi text-[24px] text-slate font-light mb-10 max-w-[600px]">
+              A gente prepara você em tudo: documentação, entrevista e inglês. Do zero.
+            </p>
+            <div class="cta-btn" style="font-size:36px;padding:22px 56px;">MANDA DM</div>
+            <div class="mt-12">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="nav-btn prev-btn">←</button>
+      <button class="nav-btn next-btn">→</button>
+      <div class="nav-dots"></div>
+    </div>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- POST 18 - Dia 20: Calendário das temporadas (7 slides)            -->
+  <!-- ================================================================== -->
+  <div class="carousel-wrapper" id="post-18">
+    <div class="carousel-header">
+      <h2>POST 18 — Dia 20 (Sábado)</h2>
+      <p>Qual a melhor época para se candidatar?</p>
+    </div>
+    <div class="carousel-container">
+      <div class="slide-strip">
+        <!-- SLIDE 1 - CAPA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <div class="tag mb-6">PLANEJAMENTO</div>
+              <div class="flag-stripe mb-14"></div>
+              <h1 class="font-bebas text-[64px] leading-[0.92] text-cream mb-6" style="color:#F5F5F0;">
+                QUAL A MELHOR<br>ÉPOCA PARA SE<br>CANDIDATAR?
+              </h1>
+              <p class="font-satoshi text-xl text-slate font-light">Calendário completo das temporadas</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="logo-mark">ELOS · VISTOS</span>
+              <span class="swipe-hint">Arraste para o lado →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 - JAN-FEV -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">2 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex items-center">
+              <div class="glass-card max-w-[800px] w-full">
+                <div class="flex items-start gap-6">
+                  <div class="icon-circle icon-circle-gold flex-shrink-0" style="width:72px;height:72px;">
+                    <span class="font-bebas text-[28px]" style="color:#C9A84C;">JAN<br>FEV</span>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-bebas text-[36px] leading-tight mb-3" style="color:#F5F5F0;">ALTA DEMANDA H2B</p>
+                    <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed">
+                      Hotelaria e turismo de inverno. Resorts, estações de esqui e hotéis contratam forte nessa janela.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 - MAR-MAI -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">3 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex items-center">
+              <div class="glass-card max-w-[800px] w-full">
+                <div class="flex items-start gap-6">
+                  <div class="icon-circle icon-circle-gold flex-shrink-0" style="width:72px;height:72px;">
+                    <span class="font-bebas text-[28px]" style="color:#C9A84C;">MAR<br>MAI</span>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-bebas text-[36px] leading-tight mb-3" style="color:#F5F5F0;">PICO H2A + CONSTRUÇÃO</p>
+                    <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed">
+                      Plantio da primavera (H2A) em alta. Construção civil também aquece com a chegada do bom tempo.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 - JUN-AGO -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">4 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex items-center">
+              <div class="glass-card max-w-[800px] w-full">
+                <div class="flex items-start gap-6">
+                  <div class="icon-circle icon-circle-gold flex-shrink-0" style="width:72px;height:72px;">
+                    <span class="font-bebas text-[28px]" style="color:#C9A84C;">JUN<br>AGO</span>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-bebas text-[36px] leading-tight mb-3" style="color:#F5F5F0;">ALTA H2B + TURISMO</p>
+                    <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed">
+                      Temporada máxima do turismo americano. Parques nacionais, resorts de verão e hospitalidade.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 - SET-OUT -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">5 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex items-center">
+              <div class="glass-card max-w-[800px] w-full">
+                <div class="flex items-start gap-6">
+                  <div class="icon-circle icon-circle-gold flex-shrink-0" style="width:72px;height:72px;">
+                    <span class="font-bebas text-[28px]" style="color:#C9A84C;">SET<br>OUT</span>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-bebas text-[36px] leading-tight mb-3" style="color:#F5F5F0;">COLHEITAS H2A + FIM DE ANO</p>
+                    <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed">
+                      Colheitas de outono e preparação para as festas de fim de ano. Demanda forte em agricultura e varejo.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6 - NOV-DEZ -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <span class="slide-num">6 / 7</span>
+              <div class="flag-stripe my-5"></div>
+            </div>
+            <div class="flex-1 flex items-center">
+              <div class="glass-card max-w-[800px] w-full">
+                <div class="flex items-start gap-6">
+                  <div class="icon-circle icon-circle-gold flex-shrink-0" style="width:72px;height:72px;">
+                    <span class="font-bebas text-[28px]" style="color:#C9A84C;">NOV<br>DEZ</span>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-bebas text-[36px] leading-tight mb-3" style="color:#F5F5F0;">H2B + PLANEJAMENTO</p>
+                    <p class="font-satoshi text-[22px] text-slate font-light leading-relaxed">
+                      Demanda aquecida em varejo, logística e entregas. Período ideal para planejar o ano seguinte.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 7 - CTA -->
+        <div class="slide bg-navy pattern-dots">
+          <div class="flex flex-col items-center justify-center h-full text-center">
+            <div class="mb-4 icon-circle icon-circle-gold" style="width:72px;height:72px;">
+              <span style="font-size:34px;color:#C9A84C;">&#9998;</span>
+            </div>
+            <h2 class="font-bebas text-[56px] leading-[1.05] mb-6" style="color:#F5F5F0;">
+              QUER SABER A JANELA<br>IDEAL PARA SUA ÁREA?
+            </h2>
+            <p class="font-satoshi text-[24px] text-slate font-light mb-10 max-w-[650px]">
+              Manda DM com sua profissão e te falamos qual a melhor época para se candidatar.
+            </p>
+            <div class="cta-btn" style="font-size:36px;padding:22px 56px;">MANDA DM<br>COM SUA PROFISSÃO</div>
+            <div class="mt-12">
+              <span class="logo-mark">ELOS · VISTOS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="nav-btn prev-btn">←</button>
+      <button class="nav-btn next-btn">→</button>
+      <div class="nav-dots"></div>
+    </div>
+  </div>
+
+  <script>
+    // ============================================================
+    // CAROUSEL NAVIGATION JS
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.carousel-container').forEach(function (container) {
+        var strip = container.querySelector('.slide-strip');
+        var slides = strip.querySelectorAll('.slide');
+        var prevBtn = container.querySelector('.prev-btn');
+        var nextBtn = container.querySelector('.next-btn');
+        var dotsContainer = container.querySelector('.nav-dots');
+        var current = 0;
+        var total = slides.length;
+
+        // Create dot buttons
+        for (var i = 0; i < total; i++) {
+          var dot = document.createElement('button');
+          dot.className = 'nav-dot';
+          if (i === 0) dot.classList.add('active');
+          dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+          dot.addEventListener('click', (function (index) {
+            return function () { goTo(index); };
+          })(i));
+          dotsContainer.appendChild(dot);
+        }
+
+        var dots = dotsContainer.querySelectorAll('.nav-dot');
+
+        function updateStrip() {
+          strip.style.transform = 'translateX(-' + (current * 1080) + 'px)';
+          dots.forEach(function (d, idx) {
+            if (idx === current) d.classList.add('active');
+            else d.classList.remove('active');
+          });
+          prevBtn.style.opacity = current === 0 ? '0.3' : '1';
+          prevBtn.style.pointerEvents = current === 0 ? 'none' : 'auto';
+          nextBtn.style.opacity = current === total - 1 ? '0.3' : '1';
+          nextBtn.style.pointerEvents = current === total - 1 ? 'none' : 'auto';
+        }
+
+        function goTo(index) {
+          if (index < 0 || index >= total) return;
+          current = index;
+          updateStrip();
+        }
+
+        prevBtn.addEventListener('click', function () {
+          if (current > 0) goTo(current - 1);
+        });
+
+        nextBtn.addEventListener('click', function () {
+          if (current < total - 1) goTo(current + 1);
+        });
+
+        // Keyboard navigation
+        container.setAttribute('tabindex', '0');
+        container.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowLeft') { e.preventDefault(); if (current > 0) goTo(current - 1); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); if (current < total - 1) goTo(current + 1); }
+        });
+
+        updateStrip();
+      });
+    });
+  </script>
+
+</body>
+</html>

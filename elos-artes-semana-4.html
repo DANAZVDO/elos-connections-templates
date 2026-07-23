@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elos Connections — Semana 4 (Profissões + Oferta Soft)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       DESIGN SYSTEM — ELOS CONNECTIONS (Identical to Semana 1)
+       ============================================================ */
+
+    :root {
+      --navy: #0A1628;
+      --navy-dark: #060F1E;
+      --red: #BF0A30;
+      --red-dark: #8B0722;
+      --gold: #C9A84C;
+      --gold-dark: #A88A35;
+      --cream: #F5F5F0;
+      --slate: #94A3B8;
+      --glass-bg: rgba(245, 245, 240, 0.06);
+      --glass-border: rgba(245, 245, 240, 0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Satoshi', sans-serif;
+      background: var(--navy-dark);
+      color: var(--cream);
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+    }
+
+    /* ---------- Backgrounds ---------- */
+    .bg-navy        { background-color: var(--navy); }
+    .bg-navy-dark   { background-color: var(--navy-dark); }
+    .bg-red-accent  { background-color: var(--red); }
+    .bg-gold-accent { background-color: var(--gold); }
+
+    /* ---------- Pattern Dots ---------- */
+    .pattern-dots {
+      background-image: radial-gradient(circle, rgba(245, 245, 240, 0.07) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .pattern-dots-light {
+      background-image: radial-gradient(circle, rgba(10, 22, 40, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* ---------- Carousel Wrapper ---------- */
+    .carousel-wrapper {
+      position: relative;
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      flex-shrink: 0;
+    }
+    .carousel-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1080px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      padding: 54px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ---------- Navigation ---------- */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(10, 22, 40, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(245, 245, 240, 0.18);
+      color: var(--cream);
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      user-select: none;
+    }
+    .nav-btn:hover {
+      background: rgba(10, 22, 40, 0.9);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .nav-btn.prev { left: 20px; }
+    .nav-btn.next { right: 20px; }
+
+    /* ---------- Slide Counter ---------- */
+    .slide-counter {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      background: rgba(10, 22, 40, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(245, 245, 240, 0.1);
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--slate);
+      letter-spacing: 0.04em;
+    }
+    .slide-counter span { color: var(--gold); font-weight: 700; }
+
+    /* ---------- Tag Label ---------- */
+    .tag {
+      display: inline-block;
+      background: rgba(191, 10, 48, 0.18);
+      border: 1px solid rgba(191, 10, 48, 0.4);
+      color: #F87171;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 7px 20px;
+      border-radius: 6px;
+      margin-bottom: 24px;
+    }
+    .tag-gold {
+      background: rgba(201, 168, 76, 0.15);
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      color: var(--gold);
+    }
+    .tag-green {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #4ADE80;
+    }
+
+    /* ---------- Headlines ---------- */
+    .headline {
+      font-family: 'Bebas Neue', cursive;
+      font-weight: 400;
+      text-align: center;
+      line-height: 1.0;
+      letter-spacing: 0.01em;
+    }
+    .headline-xl  { font-size: 78px; }
+    .headline-lg  { font-size: 64px; }
+    .headline-md  { font-size: 48px; }
+    .headline-sm  { font-size: 38px; }
+    .headline-xs  { font-size: 30px; }
+
+    /* ---------- Subtitle ---------- */
+    .subtitle {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      font-size: 20px;
+      color: var(--slate);
+      text-align: center;
+      letter-spacing: 0.03em;
+      max-width: 700px;
+    }
+    .subtitle-sm { font-size: 17px; }
+
+    /* ---------- Gold Gradient Text ---------- */
+    .text-gold-grad {
+      background: linear-gradient(135deg, #C9A84C 0%, #F5D87A 40%, #C9A84C 70%, #A88A35 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ---------- Flag Stripe ---------- */
+    .flag-stripe {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 28px;
+    }
+    .flag-stripe .bar {
+      width: 52px;
+      height: 4px;
+      border-radius: 2px;
+    }
+    .flag-stripe .bar:nth-child(1) { background: var(--red); }
+    .flag-stripe .bar:nth-child(2) { background: var(--cream); }
+    .flag-stripe .bar:nth-child(3) { background: var(--navy); border: 1px solid rgba(255,255,255,0.15); }
+
+    /* ---------- Glass Card ---------- */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 32px 40px;
+      max-width: 750px;
+      width: 100%;
+    }
+    .glass-card-red {
+      background: rgba(191, 10, 48, 0.12);
+      border: 1px solid rgba(191, 10, 48, 0.3);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 20px;
+      padding: 32px 40px;
+      max-width: 750px;
+      width: 100%;
+    }
+    .glass-card-gold {
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 20px;
+      padding: 32px 40px;
+      max-width: 750px;
+      width: 100%;
+    }
+
+    /* ---------- Glass Card Grid 2x2 ---------- */
+    .gc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 18px;
+      max-width: 750px;
+      width: 100%;
+    }
+    .gc-cell {
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 10px;
+    }
+    .gc-cell .gc-icon {
+      font-size: 40px;
+      line-height: 1;
+    }
+    .gc-cell .gc-label {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 26px;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+    }
+    .gc-cell .gc-sub {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--slate);
+    }
+
+    /* ---------- Stat Block ---------- */
+    .stat-gold {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 88px;
+      line-height: 1.0;
+      text-align: center;
+    }
+    .stat-sub {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--slate);
+      text-align: center;
+      letter-spacing: 0.06em;
+      margin-top: 8px;
+    }
+
+    /* ---------- Highlight Red ---------- */
+    .highlight-red {
+      background: rgba(191, 10, 48, 0.12);
+      border-left: 5px solid var(--red);
+      padding: 22px 32px;
+      border-radius: 0 12px 12px 0;
+      max-width: 750px;
+      width: 100%;
+    }
+    .highlight-red p {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: 21px;
+      color: #FCA5A5;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- CTA Button ---------- */
+    .cta-btn {
+      display: inline-block;
+      background: var(--red);
+      color: var(--cream);
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 16px 42px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+    .cta-btn:hover {
+      background: #E0103A;
+      box-shadow: 0 6px 24px rgba(191, 10, 48, 0.35);
+    }
+    .cta-btn-gold {
+      background: var(--gold);
+      color: var(--navy-dark);
+    }
+    .cta-btn-gold:hover {
+      background: #D4B55A;
+      box-shadow: 0 6px 24px rgba(201, 168, 76, 0.35);
+    }
+
+    /* ---------- Divider ---------- */
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: var(--red);
+      border-radius: 2px;
+      margin: 18px auto;
+    }
+    .divider-gold {
+      background: var(--gold);
+    }
+
+    /* ---------- Logo Mark ---------- */
+    .logo-mark {
+      position: absolute;
+      top: 54px;
+      left: 54px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 22px;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      opacity: 0.5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-mark .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* ---------- Slide Number ---------- */
+    .slide-num {
+      position: absolute;
+      top: 54px;
+      right: 54px;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--slate);
+      letter-spacing: 0.05em;
+    }
+
+    /* ---------- Info Text ---------- */
+    .info-text {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      font-size: 21px;
+      color: var(--slate);
+      text-align: center;
+      max-width: 680px;
+      line-height: 1.55;
+      letter-spacing: 0.02em;
+    }
+    .info-text b, .info-text strong { font-weight: 700; color: var(--cream); }
+
+    /* ---------- Checklist ---------- */
+    .checklist {
+      list-style: none;
+      max-width: 700px;
+      width: 100%;
+    }
+    .checklist li {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: var(--cream);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(245, 245, 240, 0.06);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      letter-spacing: 0.02em;
+    }
+    .checklist li .check-icon {
+      color: var(--gold);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* ---------- Number Badge ---------- */
+    .num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(191, 10, 48, 0.15);
+      border: 2px solid var(--red);
+      color: var(--red);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 30px;
+      flex-shrink: 0;
+    }
+    .num-badge-gold {
+      background: rgba(201, 168, 76, 0.12);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ---------- Row layout ---------- */
+    .card-row {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      max-width: 750px;
+      width: 100%;
+    }
+    .card-row .card-text {
+      flex: 1;
+    }
+    .card-row .card-label {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 38px;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+      line-height: 1.0;
+      margin-bottom: 4px;
+    }
+    .card-row .card-value {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--gold);
+    }
+
+    /* ---------- Icon placeholder ---------- */
+    .icon-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+      border: 1px solid;
+    }
+    .icon-circle-red { background: rgba(191,10,48,0.12); border-color: rgba(191,10,48,0.3); color: var(--red); }
+    .icon-circle-gold { background: rgba(201,168,76,0.12); border-color: rgba(201,168,76,0.3); color: var(--gold); }
+    .icon-circle-slate { background: rgba(148,163,184,0.08); border-color: rgba(148,163,184,0.2); color: var(--slate); }
+
+    /* ---------- Section header ---------- */
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-header h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--slate);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .section-header p {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--slate);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     POST 19 — Top 5 Profissões H2B (7 slides)
+     ================================================================ -->
+<div class="carousel-wrapper" id="post-19">
+  <div class="carousel-inner">
+
+    <!-- Slide 1: Capa -->
+    <div class="slide active bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">1/7</div>
+      <div class="tag">VAGAS 2026</div>
+      <h1 class="headline headline-lg" style="max-width:700px; color:var(--cream);">
+        TOP 5 PROFISSÕES COM MAIS VAGAS NOS EUA
+      </h1>
+      <p class="subtitle" style="margin-top:16px;">H2B 2026 — temporada de contratação aberta</p>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+    <!-- Slide 2: #1 Construção Civil -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">2/7</div>
+      <div class="glass-card">
+        <div class="card-row">
+          <div class="num-badge">1</div>
+          <div class="card-text">
+            <div class="card-label">CONSTRUÇÃO CIVIL</div>
+            <div class="card-value">US$ 3.500 / mês</div>
+          </div>
+          <div class="icon-circle icon-circle-gold">🏗</div>
+        </div>
+      </div>
+      <p class="info-text" style="margin-top:28px;">Pedreiros, carpinteiros e eletricistas brasileiros são os mais procurados. Demanda estável o ano todo.</p>
+    </div>
+
+    <!-- Slide 3: #2 Hotelaria -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">3/7</div>
+      <div class="glass-card">
+        <div class="card-row">
+          <div class="num-badge num-badge-gold">2</div>
+          <div class="card-text">
+            <div class="card-label">HOTELARIA</div>
+            <div class="card-value">US$ 3.000 / mês</div>
+          </div>
+          <div class="icon-circle icon-circle-gold">🏨</div>
+        </div>
+      </div>
+      <p class="info-text" style="margin-top:28px;">Governança, recepção e manutenção em hotéis e resorts. Alta temporada de maio a setembro.</p>
+    </div>
+
+    <!-- Slide 4: #3 Paisagismo -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">4/7</div>
+      <div class="glass-card">
+        <div class="card-row">
+          <div class="num-badge num-badge-gold">3</div>
+          <div class="card-text">
+            <div class="card-label">PAISAGISMO</div>
+            <div class="card-value">US$ 3.200 / mês</div>
+          </div>
+          <div class="icon-circle icon-circle-gold">🌿</div>
+        </div>
+      </div>
+      <p class="info-text" style="margin-top:28px;">Jardinagem, poda e manutenção de gramados. Trabalho ao ar livre com horas extras garantidas.</p>
+    </div>
+
+    <!-- Slide 5: #4 Transporte -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">5/7</div>
+      <div class="glass-card">
+        <div class="card-row">
+          <div class="num-badge num-badge-gold">4</div>
+          <div class="card-text">
+            <div class="card-label">TRANSPORTE</div>
+            <div class="card-value">US$ 4.500 / mês</div>
+          </div>
+          <div class="icon-circle icon-circle-gold">🚛</div>
+        </div>
+      </div>
+      <p class="info-text" style="margin-top:28px;">O setor que mais paga! Caminhoneiros e motoristas de entrega estão em altíssima demanda.</p>
+    </div>
+
+    <!-- Slide 6: #5 Serviços Gerais -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">6/7</div>
+      <div class="glass-card">
+        <div class="card-row">
+          <div class="num-badge num-badge-gold">5</div>
+          <div class="card-text">
+            <div class="card-label">SERVIÇOS GERAIS</div>
+            <div class="card-value">US$ 3.000 / mês</div>
+          </div>
+          <div class="icon-circle icon-circle-gold">🔧</div>
+        </div>
+      </div>
+      <p class="info-text" style="margin-top:28px;">Limpeza, manutenção predial e auxiliar de cozinha. Ideal para quem busca primeira experiência.</p>
+    </div>
+
+    <!-- Slide 7: CTA -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">7/7</div>
+      <h2 class="headline headline-md" style="color:var(--cream); max-width:650px;">
+        SUA PROFISSÃO ESTÁ NA LISTA?
+      </h2>
+      <p class="info-text" style="margin-top:20px;">Manda DM que eu vejo as vagas disponíveis para o seu perfil agora.</p>
+      <a href="#" class="cta-btn">MANDAR DM AGORA</a>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide('post-19')">&#10094;</button>
+  <button class="nav-btn next" onclick="nextSlide('post-19')">&#10095;</button>
+  <div class="slide-counter">POST 19 &nbsp;<span id="counter-19">1</span> / 7</div>
+</div>
+
+
+<!-- ================================================================
+     POST 20 — H2A Setor Agrícola (7 slides)
+     ================================================================ -->
+<div class="carousel-wrapper" id="post-20">
+  <div class="carousel-inner">
+
+    <!-- Slide 1: Capa -->
+    <div class="slide active bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">1/7</div>
+      <div class="tag tag-green">H2A</div>
+      <h1 class="headline headline-lg" style="max-width:750px; color:var(--cream);">
+        SETOR AGRÍCOLA DOS EUA ESTÁ CHAMANDO BRASILEIROS
+      </h1>
+      <p class="subtitle" style="margin-top:16px;">Visto H2A — trabalho temporário agrícola com benefícios exclusivos</p>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+    <!-- Slide 2: Info -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">2/7</div>
+      <div class="icon-circle icon-circle-gold" style="margin-bottom:28px; width:80px; height:80px; font-size:36px;">🌾</div>
+      <p class="info-text" style="max-width:680px;">
+        <b>Escassez crônica</b> de mão de obra rural nos EUA. Fazendas americanas enfrentam déficit histórico de trabalhadores — e os <b>brasileiros são altamente valorizados</b> pela disciplina e produtividade no campo.
+      </p>
+      <div class="divider divider-gold"></div>
+    </div>
+
+    <!-- Slide 3: Glass Cards Grid 2x2 -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">3/7</div>
+      <h2 class="section-header" style="margin-top:0;">
+        <h2>PRINCIPAIS SETORES</h2>
+      </h2>
+      <div class="gc-grid">
+        <div class="gc-cell">
+          <div class="gc-icon">🌽</div>
+          <div class="gc-label">COLHEITA</div>
+          <div class="gc-sub">Grãos, frutas, vegetais</div>
+        </div>
+        <div class="gc-cell">
+          <div class="gc-icon">🌱</div>
+          <div class="gc-label">PLANTIO</div>
+          <div class="gc-sub">Preparo do solo e semeadura</div>
+        </div>
+        <div class="gc-cell">
+          <div class="gc-icon">🚜</div>
+          <div class="gc-label">MÁQUINAS</div>
+          <div class="gc-sub">Operação de tratores e colheitadeiras</div>
+        </div>
+        <div class="gc-cell">
+          <div class="gc-icon">🐄</div>
+          <div class="gc-label">PECUÁRIA</div>
+          <div class="gc-sub">Manejo de gado, leite e confinamento</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Stat -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">4/7</div>
+      <div class="stat-gold text-gold-grad">US$3.000 A US$4.500</div>
+      <p class="stat-sub" style="font-size:20px; margin-top:12px;">POR MÊS + HORAS EXTRAS</p>
+      <div class="divider divider-gold"></div>
+      <p class="info-text" style="font-size:17px;">Salário base garantido por contrato federal. Hora extra paga com adicional de 50%.</p>
+    </div>
+
+    <!-- Slide 5: Highlight -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">5/7</div>
+      <div class="highlight-red">
+        <p>MORADIA GRATUITA GARANTIDA POR LEI</p>
+      </div>
+      <div style="margin-top:20px;"></div>
+      <div class="highlight-red" style="border-left-color: var(--gold); background: rgba(201,168,76,0.08);">
+        <p style="color: #F5D87A;">ALIMENTAÇÃO SUBSIDIADA</p>
+      </div>
+      <p class="info-text" style="margin-top:32px;">O visto H2A obriga o empregador a fornecer moradia digna e sem custo para o trabalhador. Transporte e alimentação também são cobertos ou subsidiados.</p>
+    </div>
+
+    <!-- Slide 6: Info -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">6/7</div>
+      <div class="icon-circle icon-circle-slate" style="margin-bottom:24px; width:72px; height:72px; font-size:32px;">📋</div>
+      <p class="info-text" style="max-width:680px;">
+        <b>Experiência não é obrigatória</b> para todas as vagas. O que conta pontos: experiência anterior em fazenda, operação de máquinas agrícolas e referências comprovadas. Mas muitas vagas aceitam <b>primeira experiência</b>.
+      </p>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Slide 7: CTA -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">7/7</div>
+      <h2 class="headline headline-md" style="color:var(--cream); max-width:650px;">
+        TEM EXPERIÊNCIA RURAL?
+      </h2>
+      <p class="info-text" style="margin-top:20px;">Manda DM e veja as vagas abertas para o setor agrícola americano.</p>
+      <a href="#" class="cta-btn cta-btn-gold">MANDAR DM AGORA</a>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide('post-20')">&#10094;</button>
+  <button class="nav-btn next" onclick="nextSlide('post-20')">&#10095;</button>
+  <div class="slide-counter">POST 20 &nbsp;<span id="counter-20">1</span> / 7</div>
+</div>
+
+
+<!-- ================================================================
+     POST 21 — Caminhoneiro (6 slides)
+     ================================================================ -->
+<div class="carousel-wrapper" id="post-21">
+  <div class="carousel-inner">
+
+    <!-- Slide 1: Capa -->
+    <div class="slide active bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">1/6</div>
+      <div class="tag">MOTORISTA</div>
+      <h1 class="headline headline-xl" style="max-width:800px; color:var(--cream);">
+        CAMINHONEIRO NOS EUA
+      </h1>
+      <p class="subtitle" style="margin-top:14px; font-weight:500; color:var(--cream); font-size:24px;">
+        Salário de R$25.000 a R$35.000/mês
+      </p>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+    <!-- Slide 2: Stat -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">2/6</div>
+      <div class="stat-gold text-gold-grad">R$25.000 A R$35.000</div>
+      <p class="stat-sub">POR MÊS</p>
+      <div class="divider divider-gold"></div>
+      <p class="info-text" style="font-size:18px;">Conversão aproximada: US$4.500 a US$6.500 mensais + bônus por milhagem. O setor de transporte é o que mais paga entre os vistos de trabalho.</p>
+    </div>
+
+    <!-- Slide 3: Requirements -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">3/6</div>
+      <h2 class="headline headline-md" style="color:var(--cream); margin-bottom:28px;">REQUISITOS</h2>
+      <ul class="checklist">
+        <li><span class="check-icon">&#10003;</span> CNH brasileira categoria <b>D</b> ou <b>E</b></li>
+        <li><span class="check-icon">&#10003;</span> Experiência comprovada com cargas</li>
+        <li><span class="check-icon">&#10003;</span> Carteira de motorista válida e limpa</li>
+        <li><span class="check-icon">&#10003;</span> Disponibilidade para longas rotas</li>
+      </ul>
+    </div>
+
+    <!-- Slide 4: Benefits -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">4/6</div>
+      <div class="glass-card-gold" style="text-align:center;">
+        <p class="info-text" style="font-size:22px; color:var(--cream); max-width:600px;">
+          O <b>empregador paga</b> moradia, visto e passagem aérea. Você só precisa <b>dirigir</b> e entregar no prazo.
+        </p>
+      </div>
+      <p class="info-text" style="margin-top:32px;">Contrato de 12 a 36 meses com possibilidade de renovação. Plano de saúde incluso.</p>
+    </div>
+
+    <!-- Slide 5: Highlight -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">5/6</div>
+      <div class="highlight-red" style="max-width:700px; text-align:center; border-radius:12px; border-left:none; background:rgba(191,10,48,0.15);">
+        <p style="font-family:'Bebas Neue',cursive; font-size:38px; font-weight:400; line-height:1.1;">
+          DEMANDA ALTÍSSIMA.<br>FALTA MOTORISTA NOS EUA.
+        </p>
+      </div>
+      <p class="info-text" style="margin-top:36px; max-width:650px;">Os EUA têm déficit de mais de <b>80 mil motoristas</b>. Empresas disputam profissionais qualificados com salários cada vez mais altos.</p>
+    </div>
+
+    <!-- Slide 6: CTA -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">6/6</div>
+      <h2 class="headline headline-md" style="color:var(--cream); max-width:650px;">
+        TEM CNH D OU E?
+      </h2>
+      <p class="info-text" style="margin-top:20px;">Manda DM AGORA. As vagas para caminhoneiro são as que fecham mais rápido.</p>
+      <a href="#" class="cta-btn">MANDAR DM AGORA</a>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide('post-21')">&#10094;</button>
+  <button class="nav-btn next" onclick="nextSlide('post-21')">&#10095;</button>
+  <div class="slide-counter">POST 21 &nbsp;<span id="counter-21">1</span> / 6</div>
+</div>
+
+
+<!-- ================================================================
+     POST 22 — Construção Civil (7 slides)
+     ================================================================ -->
+<div class="carousel-wrapper" id="post-22">
+  <div class="carousel-inner">
+
+    <!-- Slide 1: Capa -->
+    <div class="slide active bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">1/7</div>
+      <div class="tag">CONSTRUÇÃO</div>
+      <h1 class="headline headline-lg" style="max-width:750px; color:var(--cream);">
+        A ÁREA QUE MAIS CONTRATA BRASILEIROS NOS EUA
+      </h1>
+      <p class="subtitle" style="margin-top:14px;">E o motivo vai te surpreender</p>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+    <!-- Slide 2: Info -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">2/7</div>
+      <div class="icon-circle icon-circle-gold" style="margin-bottom:28px; width:80px; height:80px; font-size:36px;">🏆</div>
+      <p class="info-text" style="max-width:680px;">
+        Por que <b>construção é #1</b>? Simples: o profissional brasileiro tem fama de <b>trabalhador, dedicado e caprichoso</b>. Os empregadores americanos reconhecem isso e preferem contratar brasileiros.
+      </p>
+      <div class="divider divider-gold"></div>
+    </div>
+
+    <!-- Slide 3: Glass Cards Grid 2x2 -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">3/7</div>
+      <h2 style="font-family:'Bebas Neue',cursive; font-size:28px; color:var(--slate); letter-spacing:0.06em; text-transform:uppercase; text-align:center; margin-bottom:28px;">PROFISSÕES EM DEMANDA</h2>
+      <div class="gc-grid">
+        <div class="gc-cell">
+          <div class="gc-icon">🧱</div>
+          <div class="gc-label">PEDREIRO</div>
+        </div>
+        <div class="gc-cell">
+          <div class="gc-icon">🪚</div>
+          <div class="gc-label">CARPINTEIRO</div>
+        </div>
+        <div class="gc-cell">
+          <div class="gc-icon">⚡</div>
+          <div class="gc-label">ELETRICISTA</div>
+        </div>
+        <div class="gc-cell" style="position:relative;">
+          <div class="gc-icon">🎨</div>
+          <div class="gc-label">PINTOR + AJUDANTE</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Stat -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">4/7</div>
+      <div class="stat-gold text-gold-grad">US$3.200 A US$4.800</div>
+      <p class="stat-sub" style="font-size:20px; margin-top:12px;">POR MÊS COM HORAS EXTRAS</p>
+      <div class="divider divider-gold"></div>
+      <p class="info-text" style="font-size:17px;">Especialistas ganham até US$6.000 em grandes centros como NY, Miami e Los Angeles.</p>
+    </div>
+
+    <!-- Slide 5: Highlight -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">5/7</div>
+      <div class="highlight-red" style="max-width:720px; text-align:center; border-radius:12px; border-left:none; background:rgba(191,10,48,0.13); padding:34px 40px;">
+        <p style="font-family:'Bebas Neue',cursive; font-size:42px; font-weight:400; line-height:1.1; text-transform:none;">
+          NÃO PRECISA DE DIPLOMA.
+        </p>
+        <p style="font-family:'Satoshi',sans-serif; font-weight:400; font-size:20px; color:var(--cream); text-transform:none; margin-top:8px;">
+          Precisa de experiência prática e vontade.
+        </p>
+      </div>
+      <div class="divider" style="margin-top:32px;"></div>
+    </div>
+
+    <!-- Slide 6: Info -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">6/7</div>
+      <div class="glass-card-gold" style="text-align:center;">
+        <p class="info-text" style="font-size:22px; color:var(--cream); max-width:620px;">
+          A construção americana <b>valoriza MUITO</b> o profissional brasileiro. Acabamento, pontualidade e compromisso fazem a diferença no mercado.
+        </p>
+      </div>
+      <p class="info-text" style="margin-top:28px; font-size:17px;">Vagas com contrato de 10 a 36 meses. Renovação baseada em desempenho.</p>
+    </div>
+
+    <!-- Slide 7: CTA -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">7/7</div>
+      <h2 class="headline headline-md" style="color:var(--cream); max-width:600px;">
+        TRABALHA COM CONSTRUÇÃO?
+      </h2>
+      <p class="info-text" style="margin-top:20px;">Manda DM e veja se tem vaga para o seu perfil nos EUA.</p>
+      <a href="#" class="cta-btn">MANDAR DM AGORA</a>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide('post-22')">&#10094;</button>
+  <button class="nav-btn next" onclick="nextSlide('post-22')">&#10095;</button>
+  <div class="slide-counter">POST 22 &nbsp;<span id="counter-22">1</span> / 7</div>
+</div>
+
+
+<!-- ================================================================
+     POST 23 — O que está incluso (8 slides)
+     ================================================================ -->
+<div class="carousel-wrapper" id="post-23">
+  <div class="carousel-inner">
+
+    <!-- Slide 1: Capa -->
+    <div class="slide active bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">1/8</div>
+      <div class="tag tag-gold">CAPACITAÇÃO</div>
+      <h1 class="headline headline-lg" style="max-width:750px; color:var(--cream);">
+        TUDO QUE VOCÊ RECEBE NA ELOS CONNECTIONS
+      </h1>
+      <p class="subtitle" style="margin-top:16px;">Do diagnóstico ao suporte nos EUA — a jornada completa</p>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+    <!-- Slide 2: Diagnóstico -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">2/8</div>
+      <div class="glass-card">
+        <div class="card-row">
+          <div class="num-badge num-badge-gold" style="font-size:22px;">1</div>
+          <div class="card-text">
+            <div class="card-label">DIAGNÓSTICO DE PERFIL</div>
+            <p style="font-family:'Satoshi',sans-serif; font-weight:300; font-size:16px; color:var(--slate); margin-top:4px;">Análise individual com especialista para identificar suas melhores oportunidades no mercado americano.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Currículo + Carta + Vídeo -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">3/8</div>
+      <div class="glass-card">
+        <div class="card-row">
+          <div class="num-badge num-badge-gold" style="font-size:22px;">2</div>
+          <div class="card-text">
+            <div class="card-label">CURRÍCULO + CARTA + VÍDEO</div>
+            <p style="font-family:'Satoshi',sans-serif; font-weight:300; font-size:16px; color:var(--slate); margin-top:4px;">Currículo no padrão americano, carta de apresentação profissional e vídeo de apresentação editado. Tudo em inglês.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Curso de Inglês -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">4/8</div>
+      <div class="glass-card-gold">
+        <div class="card-row">
+          <div class="num-badge num-badge-gold" style="font-size:22px;">3</div>
+          <div class="card-text">
+            <div class="card-label">CURSO DE INGLÊS COMPLETO</div>
+            <p style="font-family:'Satoshi',sans-serif; font-weight:300; font-size:16px; color:var(--slate); margin-top:4px;">Do básico à conversação. Aulas focadas no vocabulário da sua profissão e em situações reais de trabalho.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: Plataforma de Vagas -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">5/8</div>
+      <div class="glass-card">
+        <div class="card-row">
+          <div class="num-badge num-badge-gold" style="font-size:22px;">4</div>
+          <div class="card-text">
+            <div class="card-label">PLATAFORMA DE VAGAS</div>
+            <p style="font-family:'Satoshi',sans-serif; font-weight:300; font-size:16px; color:var(--slate); margin-top:4px;">Plataforma própria com busca automática de vagas. O sistema cruza seu perfil com milhares de oportunidades em tempo real.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: Preparação para Entrevistas -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">6/8</div>
+      <div class="glass-card-gold">
+        <div class="card-row">
+          <div class="num-badge num-badge-gold" style="font-size:22px;">5</div>
+          <div class="card-text">
+            <div class="card-label">PREPARAÇÃO PARA ENTREVISTAS</div>
+            <p style="font-family:'Satoshi',sans-serif; font-weight:300; font-size:16px; color:var(--slate); margin-top:4px;">Treinamento completo para entrevistas com empregador americano e com o consulado. Simulações reais.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: Suporte Remoto -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">7/8</div>
+      <div class="glass-card">
+        <div class="card-row">
+          <div class="num-badge num-badge-gold" style="font-size:22px;">6</div>
+          <div class="card-text">
+            <div class="card-label">SUPORTE REMOTO NOS EUA</div>
+            <p style="font-family:'Satoshi',sans-serif; font-weight:300; font-size:16px; color:var(--slate); margin-top:4px;">Acompanhamento durante <b>TODA</b> sua estadia nos EUA. Alguém que fala português disponível para te ajudar com qualquer imprevisto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 8: CTA -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">8/8</div>
+      <h2 class="headline headline-md" style="color:var(--cream); max-width:600px;">
+        QUER VER OS PLANOS E VALORES?
+      </h2>
+      <p class="info-text" style="margin-top:20px;">Manda DM ou acessa o link na bio para conhecer todos os planos.</p>
+      <a href="#" class="cta-btn cta-btn-gold">MANDAR DM AGORA</a>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide('post-23')">&#10094;</button>
+  <button class="nav-btn next" onclick="nextSlide('post-23')">&#10095;</button>
+  <div class="slide-counter">POST 23 &nbsp;<span id="counter-23">1</span> / 8</div>
+</div>
+
+
+<!-- ================================================================
+     POST 24 — O Segredo dos 100+ (6 slides)
+     ================================================================ -->
+<div class="carousel-wrapper" id="post-24">
+  <div class="carousel-inner">
+
+    <!-- Slide 1: Capa -->
+    <div class="slide active bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">1/6</div>
+      <div class="tag tag-gold">O SEGREDO</div>
+      <h1 class="headline headline-lg" style="max-width:750px; color:var(--cream);">
+        O QUE +100 CONTRATADOS TÊM EM COMUM?
+      </h1>
+      <p class="subtitle" style="margin-top:16px;">Não é sorte. É método.</p>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+    <!-- Slide 2: Segredo 1 -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">2/6</div>
+      <div class="glass-card">
+        <div class="card-row">
+          <div class="num-badge" style="font-size:22px;">1</div>
+          <div class="card-text">
+            <p style="font-family:'Satoshi',sans-serif; font-weight:500; font-size:22px; color:var(--cream); line-height:1.4;">
+              Não esperaram o momento perfeito.<br>
+              <span style="font-weight:700; color:var(--gold);">Começaram.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <p class="info-text" style="margin-top:28px; font-size:17px;">O timing nunca é ideal. Quem foi contratado deu o primeiro passo mesmo com medo.</p>
+    </div>
+
+    <!-- Slide 3: Segredo 2 -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">3/6</div>
+      <div class="glass-card-gold">
+        <div class="card-row">
+          <div class="num-badge num-badge-gold" style="font-size:22px;">2</div>
+          <div class="card-text">
+            <p style="font-family:'Satoshi',sans-serif; font-weight:500; font-size:22px; color:var(--cream); line-height:1.4;">
+              Confiaram em um método<br>
+              <span style="font-weight:700; color:var(--gold);">já validado.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <p class="info-text" style="margin-top:28px; font-size:17px;">Não tentaram reinventar a roda. Seguiram o caminho que já deu certo para dezenas de brasileiros.</p>
+    </div>
+
+    <!-- Slide 4: Segredo 3 -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">4/6</div>
+      <div class="glass-card">
+        <div class="card-row">
+          <div class="num-badge" style="font-size:22px;">3</div>
+          <div class="card-text">
+            <p style="font-family:'Satoshi',sans-serif; font-weight:500; font-size:22px; color:var(--cream); line-height:1.4;">
+              Tiveram acompanhamento profissional<br>
+              <span style="font-weight:700; color:var(--gold);">do início ao fim.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <p class="info-text" style="margin-top:28px; font-size:17px;">Ninguém fez sozinho. Ter um especialista ao lado evita erros que custam tempo e dinheiro.</p>
+    </div>
+
+    <!-- Slide 5: Segredo 4 -->
+    <div class="slide bg-navy-dark pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">5/6</div>
+      <div class="glass-card-red">
+        <div class="card-row">
+          <div class="num-badge" style="font-size:22px;">4</div>
+          <div class="card-text">
+            <p style="font-family:'Satoshi',sans-serif; font-weight:500; font-size:22px; color:var(--cream); line-height:1.4;">
+              Não desistiram na<br>
+              <span style="font-weight:700; color:#FCA5A5;">primeira dificuldade.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <p class="info-text" style="margin-top:28px; font-size:17px;">O processo tem obstáculos — documentação, entrevista, adaptação. Só chega lá quem persiste.</p>
+    </div>
+
+    <!-- Slide 6: CTA -->
+    <div class="slide bg-navy pattern-dots">
+      <div class="logo-mark"><span class="dot"></span> ELOS</div>
+      <div class="slide-num">6/6</div>
+      <h2 class="headline headline-md" style="color:var(--cream); max-width:650px;">
+        SEMANA QUE VEM TEM NOVIDADE
+      </h2>
+      <p class="info-text" style="margin-top:20px;">Fica de olho. Manda DM para saber mais sobre o método que já aprovou +100 brasileiros.</p>
+      <a href="#" class="cta-btn">MANDAR DM AGORA</a>
+      <div class="flag-stripe">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide('post-24')">&#10094;</button>
+  <button class="nav-btn next" onclick="nextSlide('post-24')">&#10095;</button>
+  <div class="slide-counter">POST 24 &nbsp;<span id="counter-24">1</span> / 6</div>
+</div>
+
+
+<!-- ================================================================
+     NAVIGATION JAVASCRIPT
+     ================================================================ -->
+<script>
+  const carousels = {};
+
+  // Initialize all carousels
+  document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
+    const id = wrapper.id;
+    const slides = wrapper.querySelectorAll('.slide');
+    carousels[id] = { current: 0, total: slides.length };
+  });
+
+  function updateSlide(carouselId) {
+    const wrapper = document.getElementById(carouselId);
+    const slides = wrapper.querySelectorAll('.slide');
+    const data = carousels[carouselId];
+
+    slides.forEach((s, i) => s.classList.toggle('active', i === data.current));
+
+    const counterSpan = document.getElementById('counter-' + carouselId.split('-')[1]);
+    if (counterSpan) {
+      counterSpan.textContent = data.current + 1;
+    }
+  }
+
+  function nextSlide(carouselId) {
+    const data = carousels[carouselId];
+    if (data.current < data.total - 1) {
+      data.current++;
+      updateSlide(carouselId);
+    }
+  }
+
+  function prevSlide(carouselId) {
+    const data = carousels[carouselId];
+    if (data.current > 0) {
+      data.current--;
+      updateSlide(carouselId);
+    }
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight') {
+      document.querySelectorAll('.carousel-wrapper').forEach(w => nextSlide(w.id));
+    } else if (e.key === 'ArrowLeft') {
+      document.querySelectorAll('.carousel-wrapper').forEach(w => prevSlide(w.id));
+    }
+  });
+</script>
+
+</body>
+</html>
